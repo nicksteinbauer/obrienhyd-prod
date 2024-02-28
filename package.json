@@ -6,6 +6,7 @@
   "scripts": {
     "build": "shopify hydrogen build",
     "dev": "shopify hydrogen dev --codegen",
+    "sass": "sass --watch app/sass/:app/styles",
     "preview": "npm run build && shopify hydrogen preview",
     "lint": "eslint --no-error-on-unmatched-pattern --ext .js,.ts,.jsx,.tsx .",
     "codegen": "shopify hydrogen codegen"
@@ -19,11 +20,13 @@
     "@shopify/cli-hydrogen": "^7.0.1",
     "@shopify/hydrogen": "~2024.1.1",
     "@shopify/remix-oxygen": "^2.0.3",
+    "css-loader": "^6.10.0",
     "graphql": "^16.6.0",
     "graphql-tag": "^2.12.6",
     "isbot": "^3.6.6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.5.1",
@@ -37,6 +40,7 @@
     "eslint": "^8.20.0",
     "eslint-plugin-hydrogen": "0.12.2",
     "prettier": "^2.8.4",
+    "sass": "^1.70.0",
     "typescript": "^5.2.2"
   },
   "engines": {

@@ -2,7 +2,7 @@ import {defer} from '@shopify/remix-oxygen';
 import {Await, useLoaderData, Link} from '@remix-run/react';
 import {Suspense} from 'react';
 import {Image, Money} from '@shopify/hydrogen';
-
+import heroimg from '../../public/HeroTest.jpg';
 /**
  * @type {MetaFunction}
  */
@@ -27,6 +27,9 @@ export default function Homepage() {
   const data = useLoaderData();
   return (
     <div className="home">
+      <div className="hero">
+        <img src={heroimg} alt="heroimg" />
+      </div>
       <FeaturedCollection collection={data.featuredCollection} />
       <RecommendedProducts products={data.recommendedProducts} />
     </div>

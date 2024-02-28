@@ -1,0 +1,50 @@
+.header {
+    background-color: transparent;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+    > div {
+        border-bottom: 1px solid #fff;
+        margin: 10px 10px 0 10px;
+        padding: 0 10px;
+        position: relative;
+        height: 72px;
+        border-radius: 4px 4px 0 0;
+    }
+    .logoTogether {
+        position: absolute;
+        width: 100%;
+        left: 0;
+    }
+    .logoContainer {
+        width: 110px;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 12px;
+        padding-bottom: 8px;
+    }
+    #AGLogo {
+        padding: 5px 36px;
+        display: block;
+        fill: #fff;
+    }
+    #AquaglideLogo {
+        display: block;
+        fill: #fff;
+    }
+    .aqNav, .header-menu-desktop {
+        //position: relative;
+        z-index: 11;
+    }
+    
+}
+
+
+.hero {
+    background-color: #000;
+    border-radius: 4px;
+    img {
+        opacity: .8;
+    }
+}

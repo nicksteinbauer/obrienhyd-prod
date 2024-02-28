@@ -1,0 +1,83 @@
+Arguments: 
+  /Users/nicksm1/.nvm/versions/node/v18.17.0/bin/node /opt/homebrew/Cellar/yarn/1.22.17_2/libexec/bin/yarn.js add react-transition-group
+
+PATH: 
+  /Users/nicksm1/.nvm/versions/node/v18.17.0/bin:/Users/nicksm1/.nvm/versions/node/v16.12.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/nicksm1/.nvm/versions/node/v16.12.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  18.17.0
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  TypeError [ERR_INVALID_URL]: Invalid URL
+      at new NodeError (node:internal/errors:405:5)
+      at Url.parse (node:url:445:17)
+      at urlParse (node:url:167:13)
+      at Function.isVersion (/opt/homebrew/Cellar/yarn/1.22.17_2/libexec/lib/cli.js:37196:21)
+      at getExoticResolver (/opt/homebrew/Cellar/yarn/1.22.17_2/libexec/lib/cli.js:29714:18)
+      at PackageRequest.<anonymous> (/opt/homebrew/Cellar/yarn/1.22.17_2/libexec/lib/cli.js:36558:76)
+      at Generator.next (<anonymous>)
+      at step (/opt/homebrew/Cellar/yarn/1.22.17_2/libexec/lib/cli.js:310:30)
+      at /opt/homebrew/Cellar/yarn/1.22.17_2/libexec/lib/cli.js:321:13
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+npm manifest: 
+  {
+    "name": "aquaglide",
+    "private": true,
+    "sideEffects": false,
+    "version": "1.0.3",
+    "scripts": {
+      "build": "shopify hydrogen build",
+      "dev": "shopify hydrogen dev --codegen",
+      "sass": "sass --watch app/sass/:app/styles",
+      "preview": "npm run build && shopify hydrogen preview",
+      "lint": "eslint --no-error-on-unmatched-pattern --ext .js,.ts,.jsx,.tsx .",
+      "codegen": "shopify hydrogen codegen"
+    },
+    "prettier": "@shopify/prettier-config",
+    "dependencies": {
+      "@remix-run/css-bundle": "^2.5.1",
+      "@remix-run/react": "^2.5.1",
+      "@remix-run/server-runtime": "^2.5.1",
+      "@shopify/cli": "3.52.0",
+      "@shopify/cli-hydrogen": "^7.0.1",
+      "@shopify/hydrogen": "~2024.1.1",
+      "@shopify/remix-oxygen": "^2.0.3",
+      "css-loader": "^6.10.0",
+      "graphql": "^16.6.0",
+      "graphql-tag": "^2.12.6",
+      "isbot": "^3.6.6",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0"
+    },
+    "devDependencies": {
+      "@remix-run/dev": "^2.5.1",
+      "@remix-run/eslint-config": "^2.5.1",
+      "@shopify/oxygen-workers-types": "^4.0.0",
+      "@shopify/prettier-config": "^1.1.2",
+      "@total-typescript/ts-reset": "^0.4.2",
+      "@types/eslint": "^8.4.10",
+      "@types/react": "^18.2.22",
+      "@types/react-dom": "^18.2.7",
+      "eslint": "^8.20.0",
+      "eslint-plugin-hydrogen": "0.12.2",
+      "prettier": "^2.8.4",
+      "sass": "^1.70.0",
+      "typescript": "^5.2.2"
+    },
+    "engines": {
+      "node": ">=18.0.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

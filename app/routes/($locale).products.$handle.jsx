@@ -407,7 +407,7 @@ const PRODUCT_VARIANTS_FRAGMENT = `#graphql
 `;
 
 const VARIANTS_QUERY = `#graphql
-  ${PRODUCT_VARIANTS_FRAGMENT}
+ ${PRODUCT_VARIANTS_FRAGMENT}
   query ProductVariants(
     $country: CountryCode
     $language: LanguageCode

@@ -2,7 +2,8 @@ import {Await} from '@remix-run/react';
 import {Suspense} from 'react';
 import {Aside} from '~/components/Aside';
 import {Footer} from '~/components/Footer';
-import {Header, HeaderMenu} from '~/components/Header';
+import {HeaderMenu} from '~/components/Header';
+import {HeaderAquaglide} from './Header/Header';
 import {CartMain} from '~/components/Cart';
 import {
   PredictiveSearchForm,
@@ -18,7 +19,9 @@ export function Layout({cart, children = null, footer, header, isLoggedIn}) {
       <CartAside cart={cart} />
       <SearchAside />
       <MobileMenuAside menu={header?.menu} shop={header?.shop} />
-      {header && <Header header={header} cart={cart} isLoggedIn={isLoggedIn} />}
+      {header && (
+        <HeaderAquaglide header={header} cart={cart} isLoggedIn={isLoggedIn} />
+      )}
       <main>{children}</main>
       <Suspense>
         <Await resolve={footer}>
