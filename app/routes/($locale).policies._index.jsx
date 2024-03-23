@@ -20,7 +20,7 @@ export default function Policies() {
   const {policies} = useLoaderData();
 
   return (
-    <div className="policies">
+    <main className="policies interior">
       <h1>Policies</h1>
       <div>
         {policies.map((policy) => {
@@ -32,7 +32,7 @@ export default function Policies() {
           );
         })}
       </div>
-    </div>
+    </main>
   );
 }
 

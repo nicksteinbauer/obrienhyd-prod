@@ -1,0 +1,106 @@
+.productFlex {
+    
+    > div {
+        @media screen and (min-width: $screen-sm) {
+            flex: 0 0 50%;
+        }
+    }
+    .product-image {
+        @media screen and (min-width: $screen-sm) {
+            order: 1;
+        }
+        img {
+            margin-bottom: 10px;
+        }
+        img:last-child {
+            margin-bottom: 0;
+        }
+    }
+    .product-main {
+        @media screen and (min-width: $screen-sm) {
+            order: 2;
+        }
+    }
+}
+
+.product-main {
+    position: static;
+    top: 0;
+    color: $navBlueGray;
+    @media screen and (min-width: $screen-sm) {
+        position: sticky;
+        aspect-ratio: 1 / 1;
+    }
+    > div {
+        padding: 80px 20px;
+    }
+    h1 {
+        padding-top: 0;
+        font-family: $passion;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
+    &-interior {
+        &-padding {
+            max-width: 620px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    .product-price {
+        color: $navBlue;
+        font-family: $passion;
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+    .product-description {
+        margin-bottom: 10px;
+    }
+    button[type=submit]  {
+        border-radius: 20px;
+        background-color: $navBlue;
+        color: #fff;
+        transition: background-color .4s ease;
+        padding: 4px 8px;
+        display: inline-block;
+        font-size: .9em;
+        border: 2px solid $navBlue;
+    }
+    button[type=submit]:hover {
+        background-color: $navBlueGray;
+    }
+    button[type=submit]:disabled {
+        opacity: .4;
+    }
+    
+}
+
+.productMain {
+    .featureIcon {
+        position: relative;
+        
+        &::before {
+            font-family: $icon-font-family;
+            content: $test;
+            font-size: 40px;
+        }
+        h4 {
+            padding-top: 1px;
+            font-family: $passion;
+            text-transform: uppercase;
+        }
+    }
+    .individualIcon {
+        background-color: #fff;
+        padding: 30px 10px;
+        text-align: center;
+        color: $navBlueGray;
+        border-radius: 4px;
+        p {
+            margin-top: 4px;
+            margin-bottom: 4px;
+        }
+    }
+}
+
+

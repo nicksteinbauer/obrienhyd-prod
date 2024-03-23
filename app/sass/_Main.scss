@@ -3,3 +3,17 @@ body {
         padding: 10px;
     }
 }
+
+.interior {
+    padding-top: 90px;
+    .inside-xxl {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+h2.sectionTitle {
+    color: $navBlueGray;
+    margin-bottom: 20px;
+    margin-top: 40px;
+}

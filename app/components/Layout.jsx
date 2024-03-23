@@ -1,7 +1,8 @@
 import {Await} from '@remix-run/react';
 import {Suspense} from 'react';
 import {Aside} from '~/components/Aside';
-import {Footer} from '~/components/Footer';
+//import {Footer} from '~/components/Footer';
+import {NewFooter} from './Footer/NewFooter';
 import {HeaderMenu} from '~/components/Header';
 import {HeaderAquaglide} from './Header/Header';
 import {CartMain} from '~/components/Cart';
@@ -13,21 +14,28 @@ import {
 /**
  * @param {LayoutProps}
  */
-export function Layout({cart, children = null, footer, header, isLoggedIn}) {
+export function Layout({
+  cart,
+  children = null,
+  //footer,
+  header,
+  isLoggedIn,
+}) {
   return (
     <>
       <CartAside cart={cart} />
       <SearchAside />
       <MobileMenuAside menu={header?.menu} shop={header?.shop} />
+      {children}
       {header && (
         <HeaderAquaglide header={header} cart={cart} isLoggedIn={isLoggedIn} />
       )}
-      <main>{children}</main>
-      <Suspense>
+      {/* <Suspense>
         <Await resolve={footer}>
           {(footer) => <Footer menu={footer?.menu} shop={header?.shop} />}
         </Await>
-      </Suspense>
+      </Suspense> */}
+      <NewFooter />
     </>
   );
 }

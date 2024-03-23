@@ -34,12 +34,12 @@ export default function Page() {
   const {page} = useLoaderData();
 
   return (
-    <div className="page">
+    <main className="page interior">
       <header>
         <h1>{page.title}</h1>
       </header>
       <main dangerouslySetInnerHTML={{__html: page.body}} />
-    </div>
+    </main>
   );
 }
 

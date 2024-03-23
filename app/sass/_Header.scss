@@ -3,26 +3,31 @@
     position: absolute;
     width: 100%;
     z-index: 10;
+    top: 0;
     > div {
-        border-bottom: 1px solid #fff;
-        margin: 10px 10px 0 10px;
-        padding: 0 10px;
+        margin: 10px 0 0 0;
         position: relative;
-        height: 72px;
+        //height: 72px;
         border-radius: 4px 4px 0 0;
     }
     .logoTogether {
-        position: absolute;
-        width: 100%;
-        left: 0;
+        position: relative;
+        z-index: 12;
+        a {
+            position: relative;
+            top: -2px;
+        }
     }
     .logoContainer {
         width: 110px;
-        position: relative;
         margin-left: auto;
         margin-right: auto;
         padding-top: 12px;
         padding-bottom: 8px;
+    }
+
+    #AGLogo, #AquaglideLogo {
+        transition: fill .6s ease-in-out;
     }
     #AGLogo {
         padding: 5px 36px;
@@ -35,9 +40,183 @@
     }
     .aqNav, .header-menu-desktop {
         //position: relative;
-        z-index: 11;
+        //z-index: 11;
+        width: auto;
+        @media screen and (min-width: $screen-md) {
+            width: 350px;
+        }
     }
+    .aqNav {
+        justify-content: flex-end;
+        .contactLink {
+            display: none;
+            @media screen and (min-width: $screen-sm) {
+                display: flex;
+            }
+        }
+    }
+    .bottomLine {
+        border-bottom: 1px solid #fff;
+        height: 0;
+        padding: 0;
+        margin: 0;
+        transition: border-bottom .6s ease-in-out;
+        margin: 0 10px;
+        position: relative;
+        z-index: -1;
+    }
+    li.navbar-item {
+        .fullHeight {
+            transition: color .6s ease-in-out;
+        }
+    }
+}
+
+.headerContainer {
+    .header {
+        transition: transform .6s ease-in-out;
+    }
+}
+
+.heightFixUnder.inside-xl {
+    padding-left: 10px;
+    padding-right: 10px;
+    @media screen and (min-width: $screen-sm) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.interior + .headerContainer {
+    .header {
+        background-color: $navLightest;
+        .heightFix {
+            background-color: #fff;
+            margin: 10px 10px 0;
+            .fullHeight {
+                color: $navBlueGray;
+            }
+        }
+        #AGLogo, #AquaglideLogo, .searchIcon svg, .cartIcon svg {
+            fill: $navBlueGray
+        }
+        .ham-button .line {
+            background: $navBlueGray;
+        }
+    }
+}
+
+.headerContainer.active {
+    .header {
+        position: fixed;
+        top: -72px;
+        transform: translateY(72px);
+        
+        background-color: $navLightest;
+        //bottom: 0;
+        .logoContainer {
+            height: 52.92px;
+        }
+        .heightFix {
+            background-color: #fff;
+            margin: 10px 10px 0 10px;
+            .heightFixUnder {
+                height: 52.92px;
+            }
+            
+        }
+        #AquaglideLogo {
+            visibility: hidden;
+            //52.92
+            //display: none;
+            //68.48
+        }
+        #AquaglideLogo, #AGLogo {
+            fill: $navBlueGray;
+        }
+        li.navbar-item {
+            .fullHeight {
+                color: $navBlueGray;
+            }
+        }
+        
+        .submenu, .newSearch {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+        .newSearch.mobileNav {
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+        }
+        .ham-button {
+            .line {
+                background: $navBlueGray;
+            }
+        }
+        
+    }
+    .subLine {
+        margin-top: -15px !important;
+    }
+    .searchIcon, .cartIcon {
+        svg {
+            fill: $navBlueGray;
+        }
+    }
+}
+.headerContainer.active {
+    .header.switcheroo {
+        bottom: 0;
+        @media screen and (min-width: $screen-sm) {
+            bottom: auto;
+        }
+    }
+}
+.header.switcheroo {
     
+    #AquaglideLogo, #AGLogo {
+        fill: $navBlueGray;
+    }
+    li.navbar-item {
+        .fullHeight {
+            color: $navBlueGray;
+        }
+    }
+   
+    
+    .searchIcon, .cartIcon {
+        svg {
+            fill: $navBlueGray !important;
+        }
+    }
+    .heightFixUnder {
+        .ham-trigger, .flexFiller, .logoTogether, .cartIcon {
+            @media screen and (max-width: $screen-sm) {
+                background-color: #fff;
+            }
+        }
+        .ham-trigger {
+            @media screen and (max-width: $screen-sm) {
+                border-top-left-radius: 4px;
+            }
+        }
+        .cartIcon {
+            @media screen and (max-width: $screen-sm) {
+                border-top-right-radius: 4px;
+            }
+        }
+    }
+}
+
+.headerContainer.active {
+    .header.switcheroo {
+        .submenu, .newSearch {
+            @media screen and (min-width: $screen-sm) {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+        }
+    }
 }
 
 
@@ -47,4 +226,97 @@
     img {
         opacity: .8;
     }
+}
+
+.searchIcon {
+    width: 40px;
+    padding: 8px;
+    button {
+        cursor: pointer;
+    }
+    a {
+        display: block;
+        height: 24px;
+    }
+    .hideAway {
+        position: fixed;
+        left: -999em;
+    }
+    svg {
+        fill: #fff;
+        transition: fill .3s ease-in-out;
+    }
+    display: none;
+    @media screen and (min-width: $screen-sm) {
+        display:flex;
+    }
+}
+
+.cartIcon {
+    position: relative;
+    @media screen and (min-width: $screen-sm) {
+        margin-left: 5px;
+    }
+    a {
+        position: relative;
+        top: 4px;
+        @media screen and (min-width: $screen-sm) {
+            top: 2px;
+        }
+        color: #fff;
+        .count {
+            transition: background-color .3s ease-in-out;
+        }
+    }
+    a:hover {
+        text-decoration: none;
+        .count {
+            background-color: rgba($color: $navRed, $alpha: 1);
+        }
+    }
+    svg {
+        width: 24px;
+        fill: #fff;
+        transition: fill .3s ease-in-out;
+    }
+    .count {
+        background-color: rgba($color: $navRed, $alpha: .8);
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        text-align: center;
+        font-size: .8em;
+        position: relative;
+        left: -10px;
+        top: -10px;
+    }
+}
+
+.contactLink {
+    position: relative;
+    font-family: $open;
+    font-weight: 700;
+    font-size: .75em;
+    a {
+        background-color: rgba($color: $navRed, $alpha: .8);
+        transition: background-color .3s ease-in-out;
+        color: #fff;
+        padding: 5px 8px;
+        border-radius: 20px;
+        
+    }
+    a:hover {
+        text-decoration: none;
+        background-color: rgba($color: $navRed, $alpha: 1);
+    }
+}
+
+.flexFiller {
+    //background-color: #fff;
+    flex: 1;
+    position: relative;
+}
+
+.overlay {
+    z-index: 1000;
 }

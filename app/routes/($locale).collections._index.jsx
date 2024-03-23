@@ -22,7 +22,7 @@ export default function Collections() {
   const {collections} = useLoaderData();
 
   return (
-    <div className="collections">
+    <main className="collection interior">
       <h1>Collections</h1>
       <Pagination connection={collections}>
         {({nodes, isLoading, PreviousLink, NextLink}) => (
@@ -37,7 +37,7 @@ export default function Collections() {
           </div>
         )}
       </Pagination>
-    </div>
+    </main>
   );
 }
 

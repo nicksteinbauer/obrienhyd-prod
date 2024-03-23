@@ -29,7 +29,12 @@ $mobile-1: #dcdcdc;
 $mobile-2: #c2c2c2;
 $mobile-3: #acacac;
 
-
+$navLightest: #efefef;
+$navGray: #515254;
+$navLtGray: #c6c6c5;
+$navBlueGray: #3a4e66;
+$navRed: #d13f3e;
+$navBlue: #27aae1;
 
 
 
@@ -40,6 +45,31 @@ $passion: "Passion One", sans-serif;
 
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Passion+One:wght@400;700;900&display=swap");
 
+
+$icon-font-family: 'Font Awesome 5 Free';
+$solid-icon-weight: 900;
+$outline-icon-weight: 400;
+
+
+@font-face {
+  font-family: $icon-font-family;
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: $outline-icon-weight;
+  font-display: auto;
+  src: url('../../public/webfonts/fa-regular-400.woff2') format('woff2'), url('../../public/webfonts/fa-regular-400.woff') format('woff');
+}
+
+@font-face {
+  font-family: $icon-font-family;
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: $solid-icon-weight;
+  font-display: auto;
+  src: url('../../public/webfonts/fa-solid-900.woff2') format('woff2'), url('../../public/webfonts/fa-solid-900.woff') format('woff');
+}
+
+$test: '\f27a';
 
 html,
 body {
@@ -58,10 +88,36 @@ dl, ol, ul {
 tbody, td, tfoot, th, thead, tr {
   font-weight: 300;
 }
-// body {
-//   font-size: 18px;
-//   line-height: 1.5;
-// }
+
+a {
+  transition: color .3s ease;
+}
+a:link, a:active, a:visited {
+  color: $navBlue;
+}
+a:hover {
+  color: $navGray;
+}
+
+a.button  {
+  border-radius: 20px;
+  background-color: $navBlue;
+  color: #fff;
+  transition: background-color .4s ease;
+  padding: 4px 8px;
+  display: inline-block;
+  font-size: .9em;
+  border: 2px solid $navBlue;
+}
+a.button:hover {
+  background-color: $navBlueGray;
+  text-decoration: none;
+}
+
+section {
+  padding: 14px 0;
+}
+
 h1,
 h2,
 h3,
@@ -71,6 +127,8 @@ h5 {
   font-weight: 400;
   margin: 0;
   padding: 20px 0 0;
+  font-family: $passion;
+  text-transform: uppercase;
 }
 
 strong {
@@ -268,7 +326,6 @@ img {
   display: block;
   @media screen and (min-width: $screen-sm) {
       display: flex;
-      flex-wrap: wrap;
   }
 }
 
@@ -394,7 +451,7 @@ img {
 
 .auto-grid-home {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   @media screen and (min-width: $screen-sm) {
       grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
   }

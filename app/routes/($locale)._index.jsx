@@ -26,13 +26,13 @@ export default function Homepage() {
   /** @type {LoaderReturnData} */
   const data = useLoaderData();
   return (
-    <div className="home">
+    <main className="home">
       <div className="hero">
         <img src={heroimg} alt="heroimg" />
       </div>
       <FeaturedCollection collection={data.featuredCollection} />
       <RecommendedProducts products={data.recommendedProducts} />
-    </div>
+    </main>
   );
 }
 

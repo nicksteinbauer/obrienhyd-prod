@@ -41,7 +41,7 @@ export default function Blog() {
   const {articles} = blog;
 
   return (
-    <div className="blog">
+    <main className="blogs interior">
       <h1>{blog.title}</h1>
       <div className="blog-grid">
         <Pagination connection={articles}>
@@ -68,7 +68,7 @@ export default function Blog() {
           }}
         </Pagination>
       </div>
-    </div>
+    </main>
   );
 }
 

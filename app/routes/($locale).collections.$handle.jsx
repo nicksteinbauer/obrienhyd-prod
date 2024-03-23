@@ -46,7 +46,7 @@ export default function Collection() {
   const {collection} = useLoaderData();
 
   return (
-    <div className="collection">
+    <main className="collection interior">
       <h1>{collection.title}</h1>
       <p className="collection-description">{collection.description}</p>
       <Pagination connection={collection.products}>
@@ -63,7 +63,7 @@ export default function Collection() {
           </>
         )}
       </Pagination>
-    </div>
+    </main>
   );
 }
 

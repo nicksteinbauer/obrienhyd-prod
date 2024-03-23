@@ -1,17 +1,30 @@
+import PlayStructuresMenu from './PlayStructuresMenu';
 import OperationMenu from './OperationMenu';
 import ConfigurationsMenu from './ConfigurationsMenu';
+import NavFooterMenu from './NavFooterMenu';
 
-function AquaparkDeskMenu(onClick, AquaparkMenu) {
+function AquaparkDeskMenu(onClick) {
   return (
-    <div className={`fade-in-out ${AquaparkMenu ? 'visible' : ''}`}>
+    <div>
       <div className="submenu">
-        <div className="flex-md">
-          <div className="sixty">
-            <OperationMenu onClick={onClick} />
+        <div className="submenuJump">
+          <div className="subLine" />
+          <div className="flex-sm inside-xl menuPadd">
+            <div className="notAside">
+              <PlayStructuresMenu onClick={onClick} />
+            </div>
+            <div className="aside extraSpace">
+              <OperationMenu onClick={onClick} />
+            </div>
+            <div className="aside">
+              <ConfigurationsMenu onClick={onClick} />
+            </div>
           </div>
-          <div className="forty">
-            <ConfigurationsMenu onClick={onClick} />
-          </div>
+          <footer className="megaFooter">
+            <nav className="inside-xl">
+              <NavFooterMenu onClick={onClick} />
+            </nav>
+          </footer>
         </div>
       </div>
     </div>

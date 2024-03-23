@@ -94,7 +94,7 @@ export default function Cart() {
   const cartPromise = rootData.cart;
 
   return (
-    <div className="cart">
+    <main className="cart interior">
       <h1>Cart</h1>
       <Suspense fallback={<p>Loading cart ...</p>}>
         <Await
@@ -106,7 +106,7 @@ export default function Cart() {
           }}
         </Await>
       </Suspense>
-    </div>
+    </main>
   );
 }
 

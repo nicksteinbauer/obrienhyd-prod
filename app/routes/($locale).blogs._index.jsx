@@ -31,7 +31,7 @@ export default function Blogs() {
   const {blogs} = useLoaderData();
 
   return (
-    <div className="blogs">
+    <main className="blogs interior">
       <h1>Blogs</h1>
       <div className="blogs-grid">
         <Pagination connection={blogs}>
@@ -61,7 +61,7 @@ export default function Blogs() {
           }}
         </Pagination>
       </div>
-    </div>
+    </main>
   );
 }
 

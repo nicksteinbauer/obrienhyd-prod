@@ -44,7 +44,7 @@ export default function Article() {
   }).format(new Date(article.publishedAt));
 
   return (
-    <div className="article">
+    <main className="article interior">
       <h1>
         {title}
         <span>
@@ -57,7 +57,7 @@ export default function Article() {
         dangerouslySetInnerHTML={{__html: contentHtml}}
         className="article"
       />
-    </div>
+    </main>
   );
 }
 

@@ -464,8 +464,18 @@
   .account-logout {
     display: inline-block;
   }
-  
+
+  * {
+    box-sizing: border-box
+  }
+
+
   @import 'vars';
   @import 'Header';
+  @import 'Footer';
+  @import 'Search';
   @import 'Nav';
   @import 'Main';
+  @import 'Mobile';
+  @import 'Cart';
+  @import 'Product';

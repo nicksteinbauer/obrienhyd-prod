@@ -106,34 +106,79 @@ export default function Product() {
   /** @type {LoaderReturnData} */
   const {product, variants} = useLoaderData();
   const {selectedVariant} = product;
+  const FeatureListTitles = JSON.parse(product.featureListTitles.value);
+  const FeatureListContents = JSON.parse(product.featureListContents.value);
   return (
-    <div className="product">
-      <ProductImage image={selectedVariant?.image} />
-      <ProductMain
-        selectedVariant={selectedVariant}
-        product={product}
-        variants={variants}
-      />
-    </div>
+    <main className="interior productMain">
+      <div className="inside-xxl flex-sm productFlex">
+        {/* <ProductImage image={selectedVariant?.image} /> */}
+        <ProductMain
+          selectedVariant={selectedVariant}
+          product={product}
+          variants={variants}
+        />
+        <ProductImages productimages={product.images} />
+      </div>
+      <section id="features">
+        <div className="inside-xxl text-center">
+          <h2 className="sectionTitle">Features</h2>
+        </div>
+        <div className="inside-xxl auto-grid-home">
+          {FeatureListTitles.map((FeatureListTitle, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <div key={index} className="individualIcon">
+              <div className="featureIcon">
+                <h4>{FeatureListTitle}</h4>
+              </div>
+              <p>{FeatureListContents[index]}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }
 
 /**
  * @param {{image: ProductVariantFragment['image']}}
  */
-function ProductImage({image}) {
-  if (!image) {
+// function ProductImage({image}) {
+//   if (!image) {
+//     return <div className="product-image" />;
+//   }
+//   return (
+//     <div className="product-image">
+//       <Image
+//         alt={image.altText || 'Product Image'}
+//         aspectRatio="1/1"
+//         data={image}
+//         key={image.id}
+//         sizes="(min-width: 45em) 50vw, 100vw"
+//       />
+//     </div>
+//   );
+// }
+
+/**
+ @param {{
+  *   product: ProductFragment;
+  * }}
+ */
+function ProductImages({productimages}) {
+  if (!productimages) {
     return <div className="product-image" />;
   }
   return (
     <div className="product-image">
-      <Image
-        alt={image.altText || 'Product Image'}
-        aspectRatio="1/1"
-        data={image}
-        key={image.id}
-        sizes="(min-width: 45em) 50vw, 100vw"
-      />
+      {productimages.nodes.map((image, index) => (
+        <Image
+          alt={image.altText || `Image ${index + 1}`}
+          aspectRatio="1/1"
+          data={image}
+          key={image.id}
+          sizes="(min-width: 45em) 50vw, 100vw"
+        />
+      ))}
     </div>
   );
 }
@@ -148,40 +193,39 @@ function ProductImage({image}) {
 function ProductMain({selectedVariant, product, variants}) {
   const {title, descriptionHtml} = product;
   return (
-    <div className="product-main">
-      <h1>{title}</h1>
-      <ProductPrice selectedVariant={selectedVariant} />
-      <br />
-      <Suspense
-        fallback={
-          <ProductForm
-            product={product}
-            selectedVariant={selectedVariant}
-            variants={[]}
+    <div className="product-main flex-vertical">
+      <div className="product-main-interior">
+        <div className="product-main-interior-padding">
+          <h1>{title}</h1>
+          <ProductPrice selectedVariant={selectedVariant} />
+          <div
+            className="product-description"
+            dangerouslySetInnerHTML={{__html: descriptionHtml}}
           />
-        }
-      >
-        <Await
-          errorElement="There was a problem loading product variants"
-          resolve={variants}
-        >
-          {(data) => (
-            <ProductForm
-              product={product}
-              selectedVariant={selectedVariant}
-              variants={data.product?.variants.nodes || []}
-            />
-          )}
-        </Await>
-      </Suspense>
-      <br />
-      <br />
-      <p>
-        <strong>Description</strong>
-      </p>
-      <br />
-      <div dangerouslySetInnerHTML={{__html: descriptionHtml}} />
-      <br />
+          <Suspense
+            fallback={
+              <ProductForm
+                product={product}
+                selectedVariant={selectedVariant}
+                variants={[]}
+              />
+            }
+          >
+            <Await
+              errorElement="There was a problem loading product variants"
+              resolve={variants}
+            >
+              {(data) => (
+                <ProductForm
+                  product={product}
+                  selectedVariant={selectedVariant}
+                  variants={data.product?.variants.nodes || []}
+                />
+              )}
+            </Await>
+          </Suspense>
+        </div>
+      </div>
     </div>
   );
 }
@@ -229,25 +273,36 @@ function ProductForm({product, selectedVariant, variants}) {
       >
         {({option}) => <ProductOptions key={option.name} option={option} />}
       </VariantSelector>
-      <br />
-      <AddToCartButton
-        disabled={!selectedVariant || !selectedVariant.availableForSale}
-        onClick={() => {
-          window.location.href = window.location.href + '#cart-aside';
-        }}
-        lines={
-          selectedVariant
-            ? [
-                {
-                  merchandiseId: selectedVariant.id,
-                  quantity: 1,
-                },
-              ]
-            : []
+      <div
+        className={
+          selectedVariant?.availableForSale ? 'availableTrue' : 'availableFalse'
         }
       >
-        {selectedVariant?.availableForSale ? 'Add to cart' : 'Sold out'}
-      </AddToCartButton>
+        <AddToCartButton
+          disabled={!selectedVariant || !selectedVariant.availableForSale}
+          onClick={() => {
+            window.location.href = window.location.href + '#cart-aside';
+          }}
+          lines={
+            selectedVariant
+              ? [
+                  {
+                    merchandiseId: selectedVariant.id,
+                    quantity: 1,
+                  },
+                ]
+              : []
+          }
+        >
+          {product.notForSale.value == 'true' ? (
+            <>Contact Us</>
+          ) : (
+            <>
+              {selectedVariant?.availableForSale ? 'Add to cart' : 'Sold out'}
+            </>
+          )}
+        </AddToCartButton>
+      </div>
     </div>
   );
 }
@@ -361,6 +416,16 @@ const PRODUCT_FRAGMENT = `#graphql
     handle
     descriptionHtml
     description
+    images(first: 10) {
+      nodes {
+        url
+        id
+        url
+        altText
+        width
+        height
+      }
+    }
     options {
       name
       values
@@ -376,6 +441,15 @@ const PRODUCT_FRAGMENT = `#graphql
     seo {
       description
       title
+    }
+    featureListTitles: metafield(namespace: "custom", key: "feature_list_title") {
+      value
+    }
+    featureListContents: metafield(namespace: "custom", key: "feature_list_content") {
+      value
+    }
+    notForSale: metafield(namespace: "custom", key: "not_for_sale") {
+      value
     }
   }
   ${PRODUCT_VARIANT_FRAGMENT}

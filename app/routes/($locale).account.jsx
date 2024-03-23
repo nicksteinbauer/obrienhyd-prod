@@ -40,14 +40,14 @@ export default function AccountLayout() {
     : 'Account Details';
 
   return (
-    <div className="account">
+    <main className="account interior">
       <h1>{heading}</h1>
       <br />
       <AccountMenu />
       <br />
       <br />
       <Outlet context={{customer}} />
-    </div>
+    </main>
   );
 }
 

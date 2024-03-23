@@ -1,14 +1,18 @@
 //import {NavLink} from '@remix-run/react';
-import {useState} from 'react';
 import AquaparkDeskMenu from './AquaparkDeskMenu';
 import LakefrontDeskMenu from './LakefrontDeskMenu';
+import WhyDeskMenu from './WhyDeskMenu';
 
 import {CSSTransition} from 'react-transition-group';
 
-function DesktopNav() {
-  const [AquaparkMenu, setAquaparkMenu] = useState(false);
-  const [LakefrontMenu, setLakefrontMenu] = useState(false);
-  //   const [WhyMenu, setWhyMenu] = useState(false);
+function DesktopNav({
+  AquaparkMenu,
+  setAquaparkMenu,
+  LakefrontMenu,
+  setLakefrontMenu,
+  WhyMenu,
+  setWhyMenu,
+}) {
   return (
     <>
       <ul className="navBar always-flex justify">
@@ -34,20 +38,43 @@ function DesktopNav() {
           </CSSTransition>
         </li>
         <li
-          className="navbar-item"
+          className="navbar-item notAqua"
           onMouseEnter={() => setLakefrontMenu(!LakefrontMenu)}
           onMouseLeave={() => setLakefrontMenu(!LakefrontMenu)}
         >
           <div className="flex-vertical fullHeight">
             <span className="subSpan">Lakefront</span>
           </div>
-          {LakefrontMenu && (
+          <CSSTransition
+            in={LakefrontMenu}
+            timeout={300} // Adjust as needed
+            classNames="fade"
+            unmountOnExit
+          >
             <LakefrontDeskMenu
               onClick={() => setLakefrontMenu(!LakefrontMenu)}
             />
-          )}
+          </CSSTransition>
+        </li>
+        <li
+          className="navbar-item notAqua"
+          onMouseEnter={() => setWhyMenu(!WhyMenu)}
+          onMouseLeave={() => setWhyMenu(!WhyMenu)}
+        >
+          <div className="flex-vertical fullHeight">
+            <span className="subSpan">Why Aquaglide</span>
+          </div>
+          <CSSTransition
+            in={WhyMenu}
+            timeout={300} // Adjust as needed
+            classNames="fade"
+            unmountOnExit
+          >
+            <WhyDeskMenu onClick={() => setWhyMenu(!WhyMenu)} />
+          </CSSTransition>
         </li>
       </ul>
+      <div className="flexFiller" />
     </>
   );
 }

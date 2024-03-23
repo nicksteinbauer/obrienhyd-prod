@@ -45,7 +45,7 @@ export default function Policy() {
   const {policy} = useLoaderData();
 
   return (
-    <div className="policy">
+    <main className="policy interior">
       <br />
       <br />
       <div>
@@ -54,7 +54,7 @@ export default function Policy() {
       <br />
       <h1>{policy.title}</h1>
       <div dangerouslySetInnerHTML={{__html: policy.body}} />
-    </div>
+    </main>
   );
 }
 
