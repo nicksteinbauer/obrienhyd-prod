@@ -12,7 +12,7 @@ import {useVariantUrl} from '~/lib/variants';
  * @type {MetaFunction<typeof loader>}
  */
 export const meta = ({data}) => {
-  return [{title: `Hydrogen | ${data?.collection.title ?? ''} Collection`}];
+  return [{title: `Aquaglide | ${data?.collection.title ?? ''} Collection`}];
 };
 
 /**
@@ -22,7 +22,7 @@ export async function loader({request, params, context}) {
   const {handle} = params;
   const {storefront} = context;
   const paginationVariables = getPaginationVariables(request, {
-    pageBy: 8,
+    pageBy: 20,
   });
 
   if (!handle) {
@@ -80,7 +80,7 @@ function ProductsGrid({products}) {
           <ProductItem
             key={product.id}
             product={product}
-            loading={index < 8 ? 'eager' : undefined}
+            loading={index < 20 ? 'eager' : undefined}
           />
         );
       })}
