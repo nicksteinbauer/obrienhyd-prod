@@ -1,6 +1,11 @@
 import {Suspense} from 'react';
 import {defer, redirect} from '@shopify/remix-oxygen';
 import {Await, Link, useLoaderData} from '@remix-run/react';
+import StockNotification from '../components/klaviyo/StockNotification';
+import {Link as SmoothLink} from 'react-scroll';
+import VideoContainer from '../components/Video/VideoContainer';
+
+import {RichTextRenderer} from '@novatize-mattheri/shopify-richtext-renderer';
 
 import {
   Image,
@@ -105,12 +110,61 @@ function redirectToFirstVariant({product, request}) {
 export default function Product() {
   /** @type {LoaderReturnData} */
   const {product, variants} = useLoaderData();
-  const {selectedVariant} = product;
-  const FeatureListTitles = JSON.parse(product.featureListTitles.value);
-  const FeatureListContents = JSON.parse(product.featureListContents.value);
+  const {
+    selectedVariant,
+    featuredImage,
+    productvideo,
+    productvideo2,
+    keytechfeatures,
+    keyuseractivities,
+    techspecifications,
+    productnotes,
+  } = product;
+
+  const FeaturedImage = featuredImage?.reference?.image
+    ? featuredImage?.reference?.image
+    : null;
+
+  const productVideo = productvideo?.value ? productvideo?.value : null;
+  const productVideo2 = productvideo2?.value ? productvideo2?.value : null;
+
+  const keyTechFeatures = keytechfeatures?.value
+    ? keytechfeatures?.value
+    : null;
+
+  const keyUserActivities = keyuseractivities?.value
+    ? keyuseractivities?.value
+    : null;
+
+  const techSpecifications = techspecifications?.value
+    ? techspecifications?.value
+    : null;
+
+  const productNotes = productnotes?.value ? productnotes?.value : null;
+
+  let FeatureListTitles = [];
+  if (product.featureListTitles?.value) {
+    try {
+      FeatureListTitles = JSON.parse(product.featureListTitles.value);
+    } catch (error) {
+      throw new Error('Error parsing FeatureListTitles JSON:', error);
+      // Optionally handle the error, e.g., set default values or log it
+    }
+  }
+
+  let FeatureListContents = [];
+  if (product.featureListContents?.value) {
+    try {
+      FeatureListContents = JSON.parse(product.featureListContents.value);
+    } catch (error) {
+      throw new Error('Error parsing FeatureListContents JSON:', error);
+      // Optionally handle the error, e.g., set default values or log it
+    }
+  }
+
   return (
     <main className="interior productMain">
-      <div className="inside-xxl flex-sm productFlex">
+      <div className="flex-sm productFlex">
         {/* <ProductImage image={selectedVariant?.image} /> */}
         <ProductMain
           selectedVariant={selectedVariant}
@@ -119,23 +173,114 @@ export default function Product() {
         />
         <ProductImages productimages={product.images} />
       </div>
-      <section id="features">
-        <div className="inside-xxl text-center">
-          <h2 className="sectionTitle">Features</h2>
-        </div>
-        <div className="inside-xxl auto-grid-home">
-          {FeatureListTitles.map((FeatureListTitle, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <div key={index} className="individualIcon">
-              <div className="featureIcon">
-                <h4>{FeatureListTitle}</h4>
-              </div>
-              <p>{FeatureListContents[index]}</p>
+      {FeatureListTitles ? (
+        <section id="features" name="features">
+          <div className="inside-xxl text-center">
+            <h2 className="sectionTitle">Features</h2>
+          </div>
+
+          <div className="inside-xxl auto-grid-home">
+            {FeatureListTitles.map((FeatureListTitle, index) => (
+              // eslint-disable-next-line react/jsx-key
+              <FeatureLoop
+                FeatureListTitle={FeatureListTitle}
+                index={index}
+                FeatureListContents={FeatureListContents}
+              />
+            ))}
+          </div>
+        </section>
+      ) : null}
+      {productVideo !== null && (
+        <section id="media">
+          <div className="featuredContainer">
+            <div className="aboveGrade text-center">
+              <h2 className="sectionTitle">Media</h2>
+
+              <section id="video">
+                <VideoContainer
+                  productVideo={productVideo}
+                  productVideo2={productVideo2}
+                />
+              </section>
             </div>
-          ))}
-        </div>
-      </section>
+            <Image data={FeaturedImage} sizes="(min-width: 45em) 50vw, 100vw" />
+          </div>
+        </section>
+      )}
+      {keyTechFeatures ||
+      keyUserActivities ||
+      techSpecifications ||
+      productNotes ? (
+        <section id="specs" className="inside-xxl">
+          <div className="text-center">
+            <h2 className="sectionTitle">More Specs</h2>
+          </div>
+          {keyTechFeatures ? (
+            <div className="indSpec keyTechFeatures">
+              <h3>Key Tech Features</h3>
+              <RichTextRenderer data={keyTechFeatures} />
+            </div>
+          ) : null}
+          {keyUserActivities ? (
+            <div className="indSpec keyUserActivities">
+              <h3>Key User Activities</h3>
+              <RichTextRenderer data={keyUserActivities} />
+            </div>
+          ) : null}
+          {techSpecifications ? (
+            <div className="indSpec techSpecifications">
+              <h3>Technical Specifications</h3>
+              <RichTextRenderer data={techSpecifications} />
+            </div>
+          ) : null}
+          {productNotes ? (
+            <div className="indSpec productNotes">
+              <h3>Product Notes</h3>
+              <RichTextRenderer data={productNotes} />
+            </div>
+          ) : null}
+        </section>
+      ) : null}
     </main>
+  );
+}
+
+function FeatureLoop({index, FeatureListTitle, FeatureListContents}) {
+  const getClassNames = () => {
+    if (FeatureListTitle == 'Best For') {
+      return 'featureIcon bestFor';
+    } else if (FeatureListTitle == 'Capacity') {
+      return 'featureIcon capacity';
+    } else if (FeatureListTitle == 'Warranty') {
+      return 'featureIcon warranty';
+    } else if (FeatureListTitle == 'Dimensions') {
+      return 'featureIcon dimensions';
+    } else if (FeatureListTitle == 'Slide Height') {
+      return 'featureIcon slideHeight';
+    } else if (FeatureListTitle == 'Box Dimensions') {
+      return 'featureIcon boxDimensions';
+    } else if (FeatureListTitle == 'Min Water Depth') {
+      return 'featureIcon minWaterDepth';
+    } else if (FeatureListTitle == 'Includes') {
+      return 'featureIcon includes';
+    } else if (FeatureListTitle == 'Not Included') {
+      return 'featureIcon notIncluded';
+    } else if (FeatureListTitle == 'Max Pressure') {
+      return 'featureIcon maxPressure';
+    } else if (FeatureListTitle == 'Air Flow') {
+      return 'featureIcon airFlow';
+    } else {
+      return 'featureIcon';
+    }
+  };
+  return (
+    <div key={index} className="individualIcon">
+      <div className={getClassNames()}>
+        <h4>{FeatureListTitle}</h4>
+      </div>
+      <p>{FeatureListContents[index]}</p>
+    </div>
   );
 }
 
@@ -191,7 +336,17 @@ function ProductImages({productimages}) {
  * }}
  */
 function ProductMain({selectedVariant, product, variants}) {
-  const {title, descriptionHtml} = product;
+  const {
+    title,
+    descriptionHtml,
+    featureListTitles,
+    productvideo,
+    keytechfeatures,
+    keyuseractivities,
+    techspecifications,
+    productnotes,
+  } = product;
+  const productVideo = productvideo?.value ? productvideo?.value : null;
   return (
     <div className="product-main flex-vertical">
       <div className="product-main-interior">
@@ -202,6 +357,30 @@ function ProductMain({selectedVariant, product, variants}) {
             className="product-description"
             dangerouslySetInnerHTML={{__html: descriptionHtml}}
           />
+          {featureListTitles ? (
+            <nav className="smoothOperator">
+              <ul>
+                {featureListTitles ? (
+                  <li>
+                    <SmoothLink to="features">Features</SmoothLink>
+                  </li>
+                ) : null}
+                {productVideo ? (
+                  <li>
+                    <SmoothLink to="media">Media</SmoothLink>
+                  </li>
+                ) : null}
+                {keytechfeatures ||
+                keyuseractivities ||
+                techspecifications ||
+                productnotes ? (
+                  <li>
+                    <SmoothLink to="specs">More Specs</SmoothLink>
+                  </li>
+                ) : null}
+              </ul>
+            </nav>
+          ) : null}
           <Suspense
             fallback={
               <ProductForm
@@ -240,9 +419,8 @@ function ProductPrice({selectedVariant}) {
     <div className="product-price">
       {selectedVariant?.compareAtPrice ? (
         <>
-          <p>Sale</p>
-          <br />
           <div className="product-price-on-sale">
+            <span className="sale">Sale</span>
             {selectedVariant ? <Money data={selectedVariant.price} /> : null}
             <s>
               <Money data={selectedVariant.compareAtPrice} />
@@ -278,30 +456,42 @@ function ProductForm({product, selectedVariant, variants}) {
           selectedVariant?.availableForSale ? 'availableTrue' : 'availableFalse'
         }
       >
-        <AddToCartButton
-          disabled={!selectedVariant || !selectedVariant.availableForSale}
-          onClick={() => {
-            window.location.href = window.location.href + '#cart-aside';
-          }}
-          lines={
-            selectedVariant
-              ? [
-                  {
-                    merchandiseId: selectedVariant.id,
-                    quantity: 1,
-                  },
-                ]
-              : []
-          }
-        >
-          {product.notForSale.value == 'true' ? (
-            <>Contact Us</>
-          ) : (
-            <>
-              {selectedVariant?.availableForSale ? 'Add to cart' : 'Sold out'}
-            </>
-          )}
-        </AddToCartButton>
+        {product.notForSale.value === 'false' ? (
+          <>
+            {selectedVariant?.availableForSale ? (
+              <AddToCartButton
+                disabled={!selectedVariant || !selectedVariant.availableForSale}
+                onClick={() => {
+                  window.location.href = window.location.href + '#cart-aside';
+                }}
+                lines={
+                  selectedVariant
+                    ? [
+                        {
+                          merchandiseId: selectedVariant.id,
+                          quantity: 1,
+                        },
+                      ]
+                    : []
+                }
+              >
+                <>Add To Cart</>
+              </AddToCartButton>
+            ) : (
+              <StockNotification selectedVariant={selectedVariant} />
+            )}
+          </>
+        ) : (
+          <div className="contactAcception always-flex">
+            <button type="submit">Contact Us</button>
+            <span className="smol flex-vertical">
+              <span>
+                Contact our sales team for more info on product configurations
+                that fit your needs.
+              </span>
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -449,6 +639,35 @@ const PRODUCT_FRAGMENT = `#graphql
       value
     }
     notForSale: metafield(namespace: "custom", key: "not_for_sale") {
+      value
+    }
+    featuredImage: metafield(namespace: "custom", key: "featured_image") {
+      value
+      reference {
+        ... on MediaImage {
+          id
+          image {
+            height
+            url
+            width
+            altText
+          }
+        }
+      }
+    }
+    productvideo: metafield(namespace: "custom", key: "product_video") {
+      value
+    }
+    keytechfeatures: metafield(namespace: "custom", key: "key_technical_features") {
+      value
+    }
+    keyuseractivities: metafield(namespace: "custom", key: "key_user_activities") {
+      value
+    }
+    techspecifications: metafield(namespace: "custom", key: "technical_specifications") {
+      value
+    }
+    productnotes: metafield(namespace: "custom", key: "product_notes") {
       value
     }
   }

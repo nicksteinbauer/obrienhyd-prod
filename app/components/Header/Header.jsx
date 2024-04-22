@@ -59,7 +59,7 @@ export function HeaderAquaglide({header, isLoggedIn, cart}) {
         }`}
       >
         <div className="heightFix">
-          <div className="heightFixUnder always-flex justify inside-xl">
+          <div className="heightFixUnder always-flex justify inside-xxl">
             <HeaderMenu
               menu={menu}
               viewport="desktop"

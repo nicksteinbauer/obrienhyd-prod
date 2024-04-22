@@ -1,13 +1,16 @@
 import {defer} from '@shopify/remix-oxygen';
-import {Await, useLoaderData, Link} from '@remix-run/react';
+import {Await, useLoaderData, Link, NavLink} from '@remix-run/react';
 import {Suspense} from 'react';
 import {Image, Money} from '@shopify/hydrogen';
+import Hero from '../components/Hero/Hero';
+// import LineDrawing from '../components/Hero/LineDrawing';
 import heroimg from '../../public/HeroTest.jpg';
+
 /**
  * @type {MetaFunction}
  */
 export const meta = () => {
-  return [{title: 'Hydrogen | Home'}];
+  return [{title: 'Aquaglide Aquaparks & Lakefront Play Structures | Home'}];
 };
 
 /**
@@ -27,9 +30,77 @@ export default function Homepage() {
   const data = useLoaderData();
   return (
     <main className="home">
-      <div className="hero">
-        <img src={heroimg} alt="heroimg" />
-      </div>
+      <Hero />
+      {/* <LineDrawing /> */}
+      <section id="underHome" className="underHome">
+        <div className="underHomeLine inside-sm">
+          <div className="underHomeLineActual" />
+        </div>
+        <div className="inside-xxl flex-sm fullLine noGap">
+          <div className="underHomeInd always-flex">
+            <div className="filler" />
+            <div className="underHomeLineActualSmall" />
+            <div className="filler topLine" />
+          </div>
+          <div className="underHomeInd always-flex noGap">
+            <div className="filler topLine" />
+            <div className="underHomeLineActualSmall" />
+            <div className="filler" />
+          </div>
+        </div>
+        <div className="inside-xxl flex-sm gap50 pushUp">
+          <div className="underHomeInd">
+            <img src={heroimg} alt="heroimg" />
+            <div className="underHomeIndContent">
+              <div className="titleContainer text-center">
+                <h3>Commercial Aquaparks</h3>
+              </div>
+              <div className="content">
+                <p>
+                  Aquaglide Aquapark products are designed for the long-term
+                  durability demands of commercial, resort, and camp use. Each
+                  design is vetted and third-party tested to meet the highest
+                  quality and product safety standards, then continuously
+                  refined by using feedback from our global customer network.
+                  Aquaglide inflatable structures can be used as standalone
+                  features or combined with other Aquapark features to create
+                  the ultimate water playground.
+                </p>
+              </div>
+              <div className="buttonContainer text-center">
+                <NavLink className="button" to="">
+                  Explore Aquapark
+                </NavLink>
+              </div>
+            </div>
+          </div>
+          <div className="underHomeInd">
+            <img src={heroimg} alt="heroimg" />
+            <div className="underHomeIndContent">
+              <div className="titleContainer text-center">
+                <h3>Commercial Aquaparks</h3>
+              </div>
+              <div className="content">
+                <p>
+                  Aquaglide Aquapark products are designed for the long-term
+                  durability demands of commercial, resort, and camp use. Each
+                  design is vetted and third-party tested to meet the highest
+                  quality and product safety standards, then continuously
+                  refined by using feedback from our global customer network.
+                  Aquaglide inflatable structures can be used as standalone
+                  features or combined with other Aquapark features to create
+                  the ultimate water playground.
+                </p>
+              </div>
+              <div className="buttonContainer text-center">
+                <NavLink className="button" to="">
+                  Explore Aquapark
+                </NavLink>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <FeaturedCollection collection={data.featuredCollection} />
       <RecommendedProducts products={data.recommendedProducts} />
     </main>

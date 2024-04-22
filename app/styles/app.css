@@ -400,14 +400,14 @@ aside li {
   font-style: normal;
   font-weight: 400;
   font-display: auto;
-  src: url("../../public/webfonts/fa-regular-400.woff2") format("woff2"), url("../../public/webfonts/fa-regular-400.woff") format("woff"); }
+  src: url("../../public/webfonts-new/fa-regular-400.woff2") format("woff2"), url("../../public/webfonts-new/fa-regular-400.ttf") format("woff"); }
 @font-face {
   font-family: "Font Awesome 5 Free";
   font-family: 'Font Awesome 5 Free';
   font-style: normal;
   font-weight: 900;
   font-display: auto;
-  src: url("../../public/webfonts/fa-solid-900.woff2") format("woff2"), url("../../public/webfonts/fa-solid-900.woff") format("woff"); }
+  src: url("../../public/webfonts-new/fa-solid-900.woff2") format("woff2"), url("../../public/webfonts-new/fa-solid-900.ttf") format("woff"); }
 html,
 body {
   font-family: "Open Sans", sans-serif !important;
@@ -437,7 +437,7 @@ a.button {
   background-color: #27aae1;
   color: #fff;
   transition: background-color .4s ease;
-  padding: 4px 8px;
+  padding: 4px 12px;
   display: inline-block;
   font-size: .9em;
   border: 2px solid #27aae1; }
@@ -718,10 +718,13 @@ img {
   justify-content: center; }
 
 .gap5 {
-  gap: 5px; }
+  gap: .5rem; }
 
 .gap10 {
   gap: 10px; }
+
+.gap50 {
+  gap: 50px; }
 
 .formFlex {
   flex: 1; }
@@ -764,6 +767,9 @@ img {
 
 .flex1 {
   flex: 1; }
+
+.smol {
+  font-size: .8em; }
 
 .header {
   background-color: transparent;
@@ -900,12 +906,6 @@ img {
   .headerContainer.active .header.switcheroo .submenu, .headerContainer.active .header.switcheroo .newSearch {
     padding-left: 0 !important;
     padding-right: 0 !important; } }
-
-.hero {
-  background-color: #000;
-  border-radius: 4px; }
-  .hero img {
-    opacity: .8; }
 
 .searchIcon {
   width: 40px;
@@ -1265,7 +1265,8 @@ body > main {
   padding: 10px; }
 
 .interior {
-  padding-top: 90px; }
+  padding-top: 90px;
+  color: #3a4e66; }
   .interior .inside-xxl {
     padding-left: 0;
     padding-right: 0; }
@@ -1511,19 +1512,21 @@ aside {
 .continueCheckout {
   margin-top: 10px; }
 
-@media screen and (min-width: 768px) {
-  .productFlex > div {
-    flex: 0 0 50%; } }
-@media screen and (min-width: 768px) {
-  .productFlex .product-image {
-    order: 1; } }
-.productFlex .product-image img {
-  margin-bottom: 10px; }
-.productFlex .product-image img:last-child {
-  margin-bottom: 0; }
-@media screen and (min-width: 768px) {
-  .productFlex .product-main {
-    order: 2; } }
+.productFlex {
+  grid-gap: 14px; }
+  @media screen and (min-width: 768px) {
+    .productFlex > div {
+      flex: 1; } }
+  @media screen and (min-width: 768px) {
+    .productFlex .product-image {
+      order: 1; } }
+  .productFlex .product-image img {
+    margin-bottom: 10px; }
+  .productFlex .product-image img:last-child {
+    margin-bottom: 0; }
+  @media screen and (min-width: 768px) {
+    .productFlex .product-main {
+      order: 2; } }
 
 .product-main {
   position: static;
@@ -1544,11 +1547,6 @@ aside {
     max-width: 620px;
     margin-left: auto;
     margin-right: auto; }
-  .product-main .product-price {
-    color: #27aae1;
-    font-family: "Passion One", sans-serif;
-    font-size: 1.2em;
-    margin-bottom: 10px; }
   .product-main .product-description {
     margin-bottom: 10px; }
   .product-main button[type=submit] {
@@ -1559,22 +1557,56 @@ aside {
     padding: 4px 8px;
     display: inline-block;
     font-size: .9em;
-    border: 2px solid #27aae1; }
+    border: 2px solid #27aae1;
+    min-width: 110px; }
   .product-main button[type=submit]:hover {
     background-color: #3a4e66; }
   .product-main button[type=submit]:disabled {
     opacity: .4; }
+
+.product-price {
+  color: #27aae1;
+  font-family: "Passion One", sans-serif;
+  font-size: 1.2em;
+  margin-bottom: 10px; }
+  .product-price s {
+    opacity: .5; }
+  .product-price .sale {
+    color: #d13f3e; }
 
 .productMain .featureIcon {
   position: relative; }
   .productMain .featureIcon::before {
     font-family: "Font Awesome 5 Free";
     content: "";
-    font-size: 40px; }
+    font-size: 40px;
+    font-weight: 900; }
   .productMain .featureIcon h4 {
     padding-top: 1px;
     font-family: "Passion One", sans-serif;
     text-transform: uppercase; }
+.productMain .featureIcon.bestFor::before {
+  content: ""; }
+.productMain .featureIcon.capacity::before {
+  content: ""; }
+.productMain .featureIcon.warranty::before {
+  content: ""; }
+.productMain .featureIcon.dimensions::before {
+  content: ""; }
+.productMain .featureIcon.slideHeight::before {
+  content: ""; }
+.productMain .featureIcon.boxDimensions::before {
+  content: ""; }
+.productMain .featureIcon.minWaterDepth::before {
+  content: ""; }
+.productMain .featureIcon.includes::before {
+  content: ""; }
+.productMain .featureIcon.notIncluded::before {
+  content: ""; }
+.productMain .featureIcon.maxPressure::before {
+  content: ""; }
+.productMain .featureIcon.airFlow::before {
+  content: ""; }
 .productMain .individualIcon {
   background-color: #fff;
   padding: 30px 10px;
@@ -1584,5 +1616,281 @@ aside {
   .productMain .individualIcon p {
     margin-top: 4px;
     margin-bottom: 4px; }
+.productMain .contactAcception {
+  padding: 4px;
+  background-color: #c6c6c5;
+  border-radius: 20px;
+  color: #fff;
+  text-align: center; }
+  .productMain .contactAcception button, .productMain .contactAcception a {
+    flex: 0 0 110px;
+    align-self: center; }
+  .productMain .contactAcception .smol {
+    margin-left: 10px;
+    margin-right: 10px; }
+.productMain .smoothOperator {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 5px;
+  margin-bottom: 10px; }
+  .productMain .smoothOperator ul {
+    display: flex;
+    grid-gap: 5px; }
+    .productMain .smoothOperator ul li {
+      margin: 0;
+      padding: 0;
+      display: inline-block;
+      text-align: center; }
+      .productMain .smoothOperator ul li a {
+        border-radius: 20px;
+        display: block;
+        padding: 4px 12px;
+        min-width: 110px;
+        transition: background-color .4s ease;
+        background-color: #efefef; }
+      .productMain .smoothOperator ul li a:hover {
+        background-color: #c6c6c5; }
+.productMain #media .featuredContainer {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #000;
+  padding: 20px 0 40px; }
+  .productMain #media .featuredContainer h2.sectionTitle {
+    color: #fff; }
+  .productMain #media .featuredContainer .aboveGrade {
+    position: relative;
+    z-index: 10;
+    color: #fff; }
+  .productMain #media .featuredContainer img {
+    opacity: .5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 200%;
+    width: auto;
+    height: auto; }
+    @media screen and (min-width: 992px) {
+      .productMain #media .featuredContainer img {
+        min-width: 100%; } }
+
+#specs {
+  padding-bottom: 50px; }
+  #specs h3 {
+    margin-bottom: 10px; }
+  #specs ul {
+    list-style-type: disc;
+    padding-left: 18px; }
+
+#specs.inside-xxl {
+  padding-left: 20px;
+  padding-right: 20px; }
+
+.products-grid {
+  grid-gap: 20px; }
+  .products-grid a h3 {
+    color: #3a4e66;
+    transition: color .4s ease; }
+  .products-grid a:hover {
+    text-decoration: none; }
+    .products-grid a:hover h3 {
+      color: #27aae1; }
+
+.klaviyoBackInStock {
+  background: #c6c6c5;
+  padding: 15px 10px;
+  border-radius: 20px; }
+  .klaviyoBackInStock p {
+    margin-top: 0; }
+  .klaviyoBackInStock .nope {
+    color: #d13f3e; }
+  .klaviyoBackInStock .displayBlock input, .klaviyoBackInStock .displayBlock label {
+    display: block; }
+  .klaviyoBackInStock .displayBlock input {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    padding: 4px 8px; }
+  .klaviyoBackInStock .displayBlock label {
+    position: absolute;
+    left: -999em; }
+  .klaviyoBackInStock .buttonHolder {
+    margin-top: 5px; }
+    .klaviyoBackInStock .buttonHolder button, .klaviyoBackInStock .buttonHolder div.button {
+      border: none;
+      background-color: #27aae1;
+      color: #fff;
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 20px;
+      cursor: pointer;
+      min-width: 110px;
+      text-align: center; }
+    .klaviyoBackInStock .buttonHolder button:hover {
+      background-color: #efefef; }
+
+main .klaviyoBackInStock p {
+  margin-bottom: 10px; }
+
+#video {
+  padding: 20px 0; }
+
+.obrien-vimeo {
+  position: relative;
+  padding-top: 56.25%;
+  /* 720 / 1280 = 0.5625 */ }
+
+.product-player {
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+.flexFix .possibleFix {
+  flex: 0 0 50%; }
+.flexFix .possibleFix.imgFix {
+  flex: 0 0 63.6%; }
+
+.heroContainer {
+  position: relative;
+  top: -10px;
+  padding-top: 10px;
+  height: 100vh;
+  padding-bottom: 10px; }
+  .heroContainer .hero {
+    background-color: #000;
+    border-radius: 4px;
+    height: 100%;
+    position: relative;
+    overflow: hidden; }
+    .heroContainer .hero img {
+      opacity: .9;
+      object-fit: cover;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-height: 100vh;
+      top: 50%;
+      transform: translateY(-50%); }
+
+.heroContentContainer {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 10px;
+  min-height: 100vh;
+  left: 0; }
+  .heroContentContainer .heroContent {
+    position: absolute;
+    width: 100%;
+    padding: 20px 20px 80px;
+    bottom: 0;
+    left: -5px; }
+    .heroContentContainer .heroContent h1 {
+      color: #fff;
+      font-size: 3em;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #3D3939; }
+      .heroContentContainer .heroContent h1 span {
+        display: block; }
+      .heroContentContainer .heroContent h1 span.smol {
+        text-transform: none; }
+      @media screen and (min-width: 992px) {
+        .heroContentContainer .heroContent h1 {
+          font-size: 5em; } }
+    .heroContentContainer .heroContent a.smoothOperator {
+      display: inline-block;
+      color: #fff;
+      font-family: "Passion One", sans-serif;
+      border-radius: 20px;
+      background-color: #27aae1;
+      padding: 6px 12px;
+      min-width: 150px;
+      font-size: 1.2em;
+      transition: background-color .4s ease; }
+    .heroContentContainer .heroContent a.smoothOperator:hover {
+      text-decoration: none;
+      background-color: #d13f3e; }
+
+.funLine {
+  fill: none;
+  stroke: #27AAE1;
+  stroke-width: 4;
+  stroke-miterlimit: 8; }
+
+.funLink svg {
+  display: block;
+  margin: 0 auto; }
+.funLink #scrollElement {
+  position: fixed;
+  top: 0;
+  height: 2200px; }
+
+.underHome {
+  position: relative;
+  margin-top: -80px; }
+  .underHome .pushUp {
+    margin-top: -40px; }
+  .underHomeInd.noGap {
+    margin-bottom: 0; }
+  .underHomeInd {
+    margin-bottom: 40px; }
+    @media screen and (min-width: 992px) {
+      .underHomeInd {
+        margin-bottom: 0; } }
+    .underHomeIndContent {
+      margin-left: 30px;
+      margin-right: 30px;
+      margin-top: -34px;
+      position: relative; }
+      .underHomeIndContent .titleContainer {
+        border-radius: 4px 4px 0 0;
+        background-color: #3a4e66; }
+        .underHomeIndContent .titleContainer h3 {
+          color: #fff;
+          padding-top: 20px;
+          padding-bottom: 20px; }
+      .underHomeIndContent .content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 0 0 4px 4px; }
+        .underHomeIndContent .content p {
+          margin-top: 10px;
+          margin-bottom: 10px; }
+      .underHomeIndContent .buttonContainer {
+        position: relative;
+        margin-top: -15px; }
+        .underHomeIndContent .buttonContainer .button {
+          font-weight: 600; }
+
+.underHomeLine {
+  position: relative; }
+  .underHomeLineActual {
+    width: 2px;
+    background-color: #27aae1;
+    height: 160px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto; }
+  .underHomeLineActualSmall {
+    width: 2px;
+    width: 2px;
+    background-color: #27aae1; }
+    @media screen and (min-width: 768px) {
+      .underHomeLineActualSmall {
+        height: 150px; } }
+
+.fullLine {
+  position: relative; }
+  .fullLine .underHomeInd {
+    flex: 1; }
+    .fullLine .underHomeInd .filler {
+      flex: 1; }
+    @media screen and (min-width: 768px) {
+      .fullLine .underHomeInd .topLine {
+        border-top: 2px solid #27aae1; } }
 
 /*# sourceMappingURL=app.css.map */

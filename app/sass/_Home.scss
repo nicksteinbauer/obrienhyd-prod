@@ -1,0 +1,174 @@
+.heroContainer {
+    position: relative;
+    top: -10px;
+    padding-top: 10px;
+    height: 100vh;
+    padding-bottom: 10px;
+    .hero {
+        background-color: #000;
+        border-radius: 4px;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        img {
+            opacity: .9;
+            object-fit: cover;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-height: 100vh;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+}
+
+.heroContentContainer {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 10px;
+    min-height: 100vh;
+    left: 0;
+    .heroContent {
+        position: absolute;
+        width: 100%;
+        padding: 20px 20px 80px;
+        bottom: 0;
+        left: -5px;
+        h1 {
+            color: #fff;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #3D3939;
+            span {
+                display: block;
+            }
+            span.smol {
+                text-transform: none;
+            }
+            @media screen and (min-width: $screen-md) {
+                font-size: 5em;
+            }
+        }
+        a.smoothOperator {
+            display: inline-block;
+            color: #fff;
+            font-family: $passion;
+            border-radius: 20px;
+            background-color: $navBlue;
+            padding: 6px 12px;
+            min-width: 150px;
+            font-size: 1.2em;
+            transition: background-color .4s ease;
+        }
+        a.smoothOperator:hover {
+            text-decoration: none;
+            background-color: $navRed;
+        }
+    }
+}
+
+.funLine {
+    fill:none;
+    stroke:#27AAE1;
+    stroke-width:4;
+    stroke-miterlimit:8;
+}
+
+.funLink {
+    svg{
+        display: block;
+        margin: 0 auto;
+    }
+    #scrollElement{
+        position: fixed;
+        top: 0;
+        height: 2200px;
+    }
+}
+
+.underHome {
+    .pushUp {
+        margin-top: -40px;
+    }
+    position: relative;
+    margin-top: -80px;
+    &Ind.noGap {
+        margin-bottom: 0;
+    }
+    &Ind {
+        margin-bottom: 40px;
+        @media screen and (min-width: $screen-md) {
+            margin-bottom: 0;
+        }
+        &Content {
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-top: -34px;
+            position: relative;
+            .titleContainer {
+                border-radius: 4px 4px 0 0;
+                background-color: $navBlueGray;
+                h3 {
+                    color: #fff;
+                    padding-top: 20px;
+                    padding-bottom: 20px;
+                }
+            }
+            .content {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 0 0 4px 4px;
+                p {
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                }
+            }
+            .buttonContainer {
+                position: relative;
+                margin-top: -15px;
+                .button {
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
+
+.underHomeLine {
+    position: relative;
+    &Actual {
+        width: 2px;
+        background-color: $navBlue;
+        height: 160px;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    &ActualSmall {
+        width: 2px;
+        width: 2px;
+        background-color: $navBlue;
+        @media screen and (min-width: $screen-sm) {
+        height: 150px;
+        }
+    }
+    
+}
+
+.fullLine {
+    position: relative;
+    .underHomeInd {
+        flex: 1;
+        .filler {
+            flex: 1;
+        }
+        .topLine {
+            @media screen and (min-width: $screen-sm) {
+            border-top: 2px solid $navBlue;
+            }
+        }
+    }
+}

@@ -14,7 +14,7 @@ import LinkedIn from '../Logos/LinkedIn';
 export function NewFooter() {
   return (
     <footer className="mainFooter">
-      <div className="inside-xl flex-sm justify-center theMainFooter">
+      <div className="inside-xl flex-sm justify theMainFooter">
         <div>
           <PlayStructuresMenu />
         </div>

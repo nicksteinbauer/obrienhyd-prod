@@ -47,7 +47,9 @@ export default function Collection() {
 
   return (
     <main className="collection interior">
-      <h1>{collection.title}</h1>
+      <div className="text-center">
+        <h1>{collection.title}</h1>
+      </div>
       <p className="collection-description">{collection.description}</p>
       <Pagination connection={collection.products}>
         {({nodes, isLoading, PreviousLink, NextLink}) => (
@@ -103,18 +105,28 @@ function ProductItem({product, loading}) {
       to={variantUrl}
     >
       {product.featuredImage && (
-        <Image
-          alt={product.featuredImage.altText || product.title}
-          aspectRatio="1/1"
-          data={product.featuredImage}
-          loading={loading}
-          sizes="(min-width: 45em) 400px, 100vw"
-        />
+        <div>
+          <Image
+            alt={product.featuredImage.altText || product.title}
+            aspectRatio="1/1"
+            data={product.featuredImage}
+            loading={loading}
+            sizes="(min-width: 45em) 400px, 100vw"
+          />
+        </div>
       )}
-      <h4>{product.title}</h4>
-      <small>
+      <h3>{product.title}</h3>
+      <div className="always-flex gap5 product-price">
+        {product.compareAtPriceRange.minVariantPrice.amount !== '0.0' ? (
+          <span className="sale">Sale</span>
+        ) : null}
         <Money data={product.priceRange.minVariantPrice} />
-      </small>
+        {product.compareAtPriceRange.minVariantPrice.amount !== '0.0' ? (
+          <s>
+            <Money data={product.compareAtPriceRange.minVariantPrice} />
+          </s>
+        ) : null}
+      </div>
     </Link>
   );
 }
@@ -140,6 +152,14 @@ const PRODUCT_ITEM_FRAGMENT = `#graphql
         ...MoneyProductItem
       }
       maxVariantPrice {
+        ...MoneyProductItem
+      }
+    }
+    compareAtPriceRange {
+      maxVariantPrice {
+        ...MoneyProductItem
+      }
+      minVariantPrice {
         ...MoneyProductItem
       }
     }

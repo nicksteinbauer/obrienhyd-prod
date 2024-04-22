@@ -2,7 +2,6 @@ import Accordion from 'react-bootstrap/Accordion';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import PlayStructuresMenu from './PlayStructuresMenu';
-import OperationMenu from './OperationMenu';
 import ConfigurationsMenu from './ConfigurationsMenu';
 import LakeFrontMenu from './LakeFrontMenu';
 import WhyMenu from './WhyMenu';
@@ -52,17 +51,6 @@ export default function MobileNav(onClick) {
               <li className="navbar-item">
                 <Accordion.Item eventKey="1">
                   <Accordion.Header>
-                    <span>Aquapark Operations</span>
-                    <SmallX />
-                  </Accordion.Header>
-                  <Accordion.Body>
-                    <OperationMenu onClick={onClick} />
-                  </Accordion.Body>
-                </Accordion.Item>
-              </li>
-              <li className="navbar-item">
-                <Accordion.Item eventKey="2">
-                  <Accordion.Header>
                     <span>Aquapark Configurations</span>
                     <SmallX />
                   </Accordion.Header>
@@ -72,7 +60,7 @@ export default function MobileNav(onClick) {
                 </Accordion.Item>
               </li>
               <li className="navbar-item">
-                <Accordion.Item eventKey="3">
+                <Accordion.Item eventKey="2">
                   <Accordion.Header>
                     <span>Lakefront</span>
                     <SmallX />
@@ -83,7 +71,7 @@ export default function MobileNav(onClick) {
                 </Accordion.Item>
               </li>
               <li className="navbar-item">
-                <Accordion.Item eventKey="4">
+                <Accordion.Item eventKey="3">
                   <Accordion.Header>
                     <span>Why Aquaglide</span>
                     <SmallX />
@@ -94,7 +82,7 @@ export default function MobileNav(onClick) {
                 </Accordion.Item>
               </li>
               <li className="navbar-item">
-                <Accordion.Item eventKey="5">
+                <Accordion.Item eventKey="4">
                   <Accordion.Header>
                     <span>Support</span>
                     <SmallX />

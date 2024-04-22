@@ -57,7 +57,7 @@ $outline-icon-weight: 400;
   font-style: normal;
   font-weight: $outline-icon-weight;
   font-display: auto;
-  src: url('../../public/webfonts/fa-regular-400.woff2') format('woff2'), url('../../public/webfonts/fa-regular-400.woff') format('woff');
+  src: url('../../public/webfonts-new/fa-regular-400.woff2') format('woff2'), url('../../public/webfonts-new/fa-regular-400.ttf') format('woff');
 }
 
 @font-face {
@@ -66,10 +66,21 @@ $outline-icon-weight: 400;
   font-style: normal;
   font-weight: $solid-icon-weight;
   font-display: auto;
-  src: url('../../public/webfonts/fa-solid-900.woff2') format('woff2'), url('../../public/webfonts/fa-solid-900.woff') format('woff');
+  src: url('../../public/webfonts-new/fa-solid-900.woff2') format('woff2'), url('../../public/webfonts-new/fa-solid-900.ttf') format('woff');
 }
 
 $test: '\f27a';
+$bestFor: '\f005';
+$capacity: '\f496';
+$warranty: '\f559';
+$dimensions: '\f545';
+$slideHeight: '\f7a5';
+$boxDimensions: '\f466';
+$minWaterDepth: '\f773';
+$includes: '\f49e';
+$notIncluded: '\f057';
+$maxPressure: '\f06a';
+$airFlow: '\f72e';
 
 html,
 body {
@@ -104,7 +115,7 @@ a.button  {
   background-color: $navBlue;
   color: #fff;
   transition: background-color .4s ease;
-  padding: 4px 8px;
+  padding: 4px 12px;
   display: inline-block;
   font-size: .9em;
   border: 2px solid $navBlue;
@@ -439,10 +450,13 @@ img {
   justify-content: center;
 }
 .gap5 {
-  gap: 5px;
+  gap: .5rem;
 }
 .gap10 {
   gap: 10px;
+}
+.gap50 {
+  gap: 50px;
 }
 
 .formFlex {
@@ -498,4 +512,9 @@ img {
 
 .flex1 {
   flex: 1;
+}
+
+.smol {
+  font-size: .8em;
+  
 }

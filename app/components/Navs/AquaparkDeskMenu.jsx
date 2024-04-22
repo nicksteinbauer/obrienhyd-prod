@@ -1,5 +1,4 @@
 import PlayStructuresMenu from './PlayStructuresMenu';
-import OperationMenu from './OperationMenu';
 import ConfigurationsMenu from './ConfigurationsMenu';
 import NavFooterMenu from './NavFooterMenu';
 
@@ -12,9 +11,6 @@ function AquaparkDeskMenu(onClick) {
           <div className="flex-sm inside-xl menuPadd">
             <div className="notAside">
               <PlayStructuresMenu onClick={onClick} />
-            </div>
-            <div className="aside extraSpace">
-              <OperationMenu onClick={onClick} />
             </div>
             <div className="aside">
               <ConfigurationsMenu onClick={onClick} />

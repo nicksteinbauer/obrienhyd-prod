@@ -6,22 +6,28 @@ export default function LakeFrontMenu({onClick}) {
       <h4>Lakefront Play Structures</h4>
       <ul className="aquapark-nav-container__list">
         <li className="aquapark-nav-container__list-item">
-          <NavLink to="/collections/shoes" onClick={onClick}>
+          <NavLink to="/collections/lakefront-mini-parks" onClick={onClick}>
             Lakefront Mini Parks
           </NavLink>
         </li>
         <li className="aquapark-nav-container__list-item">
-          <NavLink to="products/beanie?Color=Green" onClick={onClick}>
+          <NavLink
+            to="/collections/lakefront-bouncers-and-trampolines"
+            onClick={onClick}
+          >
             Bouncers &amp; Trampolines
           </NavLink>
         </li>
         <li className="aquapark-nav-container__list-item">
-          <NavLink to="/lakefront/lounges" onClick={onClick}>
+          <NavLink to="/collections/lakefront-lounges" onClick={onClick}>
             Lounges
           </NavLink>
         </li>
         <li className="aquapark-nav-container__list-item">
-          <NavLink to="/lakefront/parts-accessories" onClick={onClick}>
+          <NavLink
+            to="/collections/lakefront-parts-and-accessories"
+            onClick={onClick}
+          >
             Parts &amp; Accessories
           </NavLink>
         </li>

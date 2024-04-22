@@ -15,7 +15,17 @@ export default async function handleRequest(
   responseHeaders,
   remixContext,
 ) {
-  const {nonce, header, NonceProvider} = createContentSecurityPolicy();
+  const {nonce, header, NonceProvider} = createContentSecurityPolicy({
+    defautSrc: [
+      "'self'",
+      'https://cdn.shopify.com',
+      'https://some-custom-css.cdn',
+      'https://shopify.com',
+      'http://localhost:*',
+      'https://www.youtube.com/',
+    ],
+    frameSrc: ["'self'", 'https://www.youtube.com/'],
+  });
 
   const body = await renderToReadableStream(
     <NonceProvider>
