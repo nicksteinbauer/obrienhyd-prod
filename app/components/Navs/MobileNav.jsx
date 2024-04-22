@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import PlayStructuresMenu from './PlayStructuresMenu';
 import ConfigurationsMenu from './ConfigurationsMenu';
-import LakeFrontMenu from './LakeFrontMenu';
+import LakeFrontMenu from './LakefrontMenu';
 import WhyMenu from './WhyMenu';
 import SupportMenu from './SupportMenu';
 

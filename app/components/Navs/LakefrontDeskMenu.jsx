@@ -1,4 +1,4 @@
-import LakeFrontMenu from './LakeFrontMenu';
+import LakeFrontMenu from './LakefrontMenu';
 import NavFooterMenu from './NavFooterMenu';
 
 function LakefrontDeskMenu(onClick) {
