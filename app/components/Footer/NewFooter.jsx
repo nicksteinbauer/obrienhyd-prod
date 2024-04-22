@@ -1,7 +1,7 @@
 import {NavLink} from '@remix-run/react';
 
 import PlayStructuresMenu from '../Navs/PlayStructuresMenu';
-import LakeFrontMenu from '../Navs/LakeFrontMenu';
+import LakeFrontMenu from '../Navs/LakefrontMenu';
 import WhyMenu from '../Navs/WhyMenu';
 import SupportMenu from '../Navs/SupportMenu';
 
