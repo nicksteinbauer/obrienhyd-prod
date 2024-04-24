@@ -5,7 +5,6 @@ import Hero from '../components/Hero/Hero';
 // import heroimg from '../../public/HeroTest.jpg';
 import {RichTextRenderer} from '@novatize-mattheri/shopify-richtext-renderer';
 
-
 /**
  * @type {MetaFunction}
  */
