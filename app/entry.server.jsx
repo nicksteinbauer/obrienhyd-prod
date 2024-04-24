@@ -16,15 +16,22 @@ export default async function handleRequest(
   remixContext,
 ) {
   const {nonce, header, NonceProvider} = createContentSecurityPolicy({
-    defautSrc: [
+    defaultSrc: [
       "'self'",
       'https://cdn.shopify.com',
       'https://some-custom-css.cdn',
       'https://shopify.com',
       'http://localhost:*',
       'https://www.youtube.com/',
+      'https://fonts.gstatic.com',
     ],
     frameSrc: ["'self'", 'https://www.youtube.com/'],
+    styleSrc: [
+      "'self'",
+      "'unsafe-inline'",
+      'https://fonts.googleapis.com/',
+      'https://fonts.gstatic.com',
+    ],
   });
 
   const body = await renderToReadableStream(

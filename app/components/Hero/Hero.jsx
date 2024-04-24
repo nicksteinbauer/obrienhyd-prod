@@ -1,11 +1,12 @@
 import {useRef, useEffect} from 'react';
 import {gsap} from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import {Image} from '@shopify/hydrogen';
 
-import heroimg from '../../../public/HeroTest.jpg';
+// import heroimg from '../../../public/HeroTest.jpg';
 import {Link as SmoothLink} from 'react-scroll';
 
-function Hero() {
+function Hero({homeHero}) {
   let backScroll = useRef(null);
   //let stickyFingaz = useRef(null);
 
@@ -32,7 +33,7 @@ function Hero() {
         }}
       >
         <div className="hero">
-          <img src={heroimg} alt="heroimg" />
+          <Image data={homeHero} sizes="(min-width: 45em) 50vw, 100vw" />
         </div>
       </div>
       <div className="heroContentContainer">

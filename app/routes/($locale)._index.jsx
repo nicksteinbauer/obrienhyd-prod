@@ -1,10 +1,10 @@
-import {defer} from '@shopify/remix-oxygen';
-import {Await, useLoaderData, Link, NavLink} from '@remix-run/react';
-import {Suspense} from 'react';
-import {Image, Money} from '@shopify/hydrogen';
+import {useLoaderData, NavLink, Link} from '@remix-run/react';
+import {Image} from '@shopify/hydrogen';
 import Hero from '../components/Hero/Hero';
 // import LineDrawing from '../components/Hero/LineDrawing';
-import heroimg from '../../public/HeroTest.jpg';
+// import heroimg from '../../public/HeroTest.jpg';
+import {RichTextRenderer} from '@novatize-mattheri/shopify-richtext-renderer';
+
 
 /**
  * @type {MetaFunction}
@@ -17,21 +17,69 @@ export const meta = () => {
  * @param {LoaderFunctionArgs}
  */
 export async function loader({context}) {
-  const {storefront} = context;
-  const {collections} = await storefront.query(FEATURED_COLLECTION_QUERY);
-  const featuredCollection = collections.nodes[0];
-  const recommendedProducts = storefront.query(RECOMMENDED_PRODUCTS_QUERY);
-
-  return defer({featuredCollection, recommendedProducts});
+  return await context.storefront.query(HOME_QUERY);
 }
 
 export default function Homepage() {
   /** @type {LoaderReturnData} */
-  const data = useLoaderData();
+  const {pages} = useLoaderData();
+
   return (
     <main className="home">
-      <Hero />
-      {/* <LineDrawing /> */}
+      <HomePage pages={pages} />
+    </main>
+  );
+}
+
+// Render the fetched data in the React component
+function HomePage({pages}) {
+  return (
+    <div>
+      {pages.nodes.map((page) => {
+        return <HomePageHero page={page} key={page.id} />;
+      })}
+    </div>
+  );
+}
+
+function HomePageHero({page}) {
+  const homeHero = page.homehero?.reference?.image
+    ? page.homehero?.reference?.image
+    : null;
+  const featuredImage1 = page.featuredimage1?.reference?.image
+    ? page.featuredimage1?.reference?.image
+    : null;
+  const featuredTitle1 = page.featuredtitle1?.value
+    ? page.featuredtitle1?.value
+    : null;
+  const featuredContent1 = page.featuredcontent1?.value
+    ? page.featuredcontent1?.value
+    : null;
+  const featuredLink1 = page.featuredlink1?.reference.onlineStoreUrl
+    ? page.featuredlink1?.reference.onlineStoreUrl
+    : null;
+  const featuredLink1Text = page.featuredlink1text?.value
+    ? page.featuredlink1text?.value
+    : null;
+  const featuredImage2 = page.featuredimage2?.reference?.image
+    ? page.featuredimage2?.reference?.image
+    : null;
+  const featuredTitle2 = page.featuredtitle2?.value
+    ? page.featuredtitle2?.value
+    : null;
+  const featuredContent2 = page.featuredcontent2?.value
+    ? page.featuredcontent2?.value
+    : null;
+  const featuredLink2 = page.featuredlink2?.value
+    ? page.featuredlink2?.value
+    : null;
+  const featuredLink2Text = page.featuredlink2text?.value
+    ? page.featuredlink2text?.value
+    : null;
+
+  return (
+    <div>
+      <Hero homeHero={homeHero} />
       <section id="underHome" className="underHome">
         <div className="underHomeLine inside-sm">
           <div className="underHomeLineActual" />
@@ -48,49 +96,38 @@ export default function Homepage() {
             <div className="filler" />
           </div>
         </div>
-        <div className="inside-xxl flex-sm gap50 pushUp">
-          <div className="underHomeInd">
-            <img src={heroimg} alt="heroimg" />
+        <div className="inside-xxl flex-sm pushUp">
+          <div className="underHomeInd fifty">
+            <Image
+              data={featuredImage1}
+              sizes="(min-width: 45em) 50vw, 100vw"
+            />
             <div className="underHomeIndContent">
               <div className="titleContainer text-center">
-                <h3>Commercial Aquaparks</h3>
+                <h3>{featuredTitle1}</h3>
               </div>
               <div className="content">
-                <p>
-                  Aquaglide Aquapark products are designed for the long-term
-                  durability demands of commercial, resort, and camp use. Each
-                  design is vetted and third-party tested to meet the highest
-                  quality and product safety standards, then continuously
-                  refined by using feedback from our global customer network.
-                  Aquaglide inflatable structures can be used as standalone
-                  features or combined with other Aquapark features to create
-                  the ultimate water playground.
-                </p>
+                <RichTextRenderer data={featuredContent1} />
               </div>
               <div className="buttonContainer text-center">
-                <NavLink className="button" to="">
-                  Explore Aquapark
-                </NavLink>
+                {featuredLink1}
+                <Link className="button" to={featuredLink1}>
+                  {featuredLink1Text}
+                </Link>
               </div>
             </div>
           </div>
-          <div className="underHomeInd">
-            <img src={heroimg} alt="heroimg" />
+          <div className="underHomeInd fifty">
+            <Image
+              data={featuredImage2}
+              sizes="(min-width: 45em) 50vw, 100vw"
+            />
             <div className="underHomeIndContent">
               <div className="titleContainer text-center">
-                <h3>Commercial Aquaparks</h3>
+                <h3>{featuredTitle2}</h3>
               </div>
               <div className="content">
-                <p>
-                  Aquaglide Aquapark products are designed for the long-term
-                  durability demands of commercial, resort, and camp use. Each
-                  design is vetted and third-party tested to meet the highest
-                  quality and product safety standards, then continuously
-                  refined by using feedback from our global customer network.
-                  Aquaglide inflatable structures can be used as standalone
-                  features or combined with other Aquapark features to create
-                  the ultimate water playground.
-                </p>
+                <RichTextRenderer data={featuredContent2} />
               </div>
               <div className="buttonContainer text-center">
                 <NavLink className="button" to="">
@@ -101,130 +138,91 @@ export default function Homepage() {
           </div>
         </div>
       </section>
-      <FeaturedCollection collection={data.featuredCollection} />
-      <RecommendedProducts products={data.recommendedProducts} />
-    </main>
-  );
-}
-
-/**
- * @param {{
- *   collection: FeaturedCollectionFragment;
- * }}
- */
-function FeaturedCollection({collection}) {
-  if (!collection) return null;
-  const image = collection?.image;
-  return (
-    <Link
-      className="featured-collection"
-      to={`/collections/${collection.handle}`}
-    >
-      {image && (
-        <div className="featured-collection-image">
-          <Image data={image} sizes="100vw" />
-        </div>
-      )}
-      <h1>{collection.title}</h1>
-    </Link>
-  );
-}
-
-/**
- * @param {{
- *   products: Promise<RecommendedProductsQuery>;
- * }}
- */
-function RecommendedProducts({products}) {
-  return (
-    <div className="recommended-products">
-      <h2>Recommended Products</h2>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Await resolve={products}>
-          {({products}) => (
-            <div className="recommended-products-grid">
-              {products.nodes.map((product) => (
-                <Link
-                  key={product.id}
-                  className="recommended-product"
-                  to={`/products/${product.handle}`}
-                >
-                  <Image
-                    data={product.images.nodes[0]}
-                    aspectRatio="1/1"
-                    sizes="(min-width: 45em) 20vw, 50vw"
-                  />
-                  <h4>{product.title}</h4>
-                  <small>
-                    <Money data={product.priceRange.minVariantPrice} />
-                  </small>
-                </Link>
-              ))}
-            </div>
-          )}
-        </Await>
-      </Suspense>
-      <br />
     </div>
   );
 }
 
-const FEATURED_COLLECTION_QUERY = `#graphql
-  fragment FeaturedCollection on Collection {
-    id
-    title
-    image {
-      id
-      url
-      altText
-      width
-      height
-    }
-    handle
-  }
-  query FeaturedCollection($country: CountryCode, $language: LanguageCode)
-    @inContext(country: $country, language: $language) {
-    collections(first: 1, sortKey: UPDATED_AT, reverse: true) {
-      nodes {
-        ...FeaturedCollection
-      }
-    }
-  }
-`;
-
-const RECOMMENDED_PRODUCTS_QUERY = `#graphql
-  fragment RecommendedProduct on Product {
-    id
-    title
-    handle
-    priceRange {
-      minVariantPrice {
-        amount
-        currencyCode
-      }
-    }
-    images(first: 1) {
+const HOME_QUERY = `#graphql
+  query FeaturedPages {
+    pages(query: "home", first: 1) {
       nodes {
         id
-        url
-        altText
-        width
-        height
-      }
-    }
-  }
-  query RecommendedProducts ($country: CountryCode, $language: LanguageCode)
-    @inContext(country: $country, language: $language) {
-    products(first: 4, sortKey: UPDATED_AT, reverse: true) {
-      nodes {
-        ...RecommendedProduct
+        title
+        handle
+        homehero: metafield(namespace: "custom", key: "home_hero") {
+          value
+          reference {
+            ... on MediaImage {
+              id
+              image {
+                height
+                url
+                width
+                altText
+              }
+            }
+          }
+        }
+        featuredimage1: metafield(namespace: "custom", key: "featured_image_1") {
+          value
+          reference {
+            ... on MediaImage {
+              id
+              image {
+                height
+                url
+                width
+                altText
+              }
+            }
+          }
+        }
+        featuredtitle1: metafield(namespace: "custom", key: "featured_title_1") {
+          value
+        }
+        featuredcontent1: metafield(namespace: "custom", key: "featured_content_1") {
+          value
+        }
+        featuredlink1text: metafield(namespace: "custom", key: "featured_link_1_text") {
+          value
+        }
+        featuredlink1: metafield(namespace: "custom", key: "featured_link_1") {
+          value
+            reference {
+            ... on Page {
+              id
+              handle
+              onlineStoreUrl
+            }
+          }
+        }
+        featuredimage2: metafield(namespace: "custom", key: "featured_image_2") {
+          value
+          reference {
+            ... on MediaImage {
+              id
+              image {
+                height
+                url
+                width
+                altText
+              }
+            }
+          }
+        }
+        featuredtitle2: metafield(namespace: "custom", key: "featured_title_2") {
+          value
+        }
+        featuredcontent2: metafield(namespace: "custom", key: "featured_content_2") {
+          value
+        }
+        featuredlink2Text: metafield(namespace: "custom", key: "featured_link_2_text") {
+          value
+        }
+        featuredlink2: metafield(namespace: "custom", key: "featured_link_2") {
+          value
+        }
       }
     }
   }
 `;
-
-/** @typedef {import('@shopify/remix-oxygen').LoaderFunctionArgs} LoaderFunctionArgs */
-/** @template T @typedef {import('@remix-run/react').MetaFunction<T>} MetaFunction */
-/** @typedef {import('storefrontapi.generated').FeaturedCollectionFragment} FeaturedCollectionFragment */
-/** @typedef {import('storefrontapi.generated').RecommendedProductsQuery} RecommendedProductsQuery */
-/** @typedef {import('@shopify/remix-oxygen').SerializeFrom<typeof loader>} LoaderReturnData */

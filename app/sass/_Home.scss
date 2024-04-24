@@ -92,6 +92,12 @@
 .underHome {
     .pushUp {
         margin-top: -40px;
+        .underHomeInd {
+            @media screen and (min-width: $screen-md) {
+                padding: 0 40px;
+            }
+        }
+        
     }
     position: relative;
     margin-top: -80px;
@@ -157,6 +163,9 @@
     }
     
 }
+
+
+
 
 .fullLine {
     position: relative;
