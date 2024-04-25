@@ -93,8 +93,16 @@
     .pushUp {
         margin-top: -40px;
         .underHomeInd {
-            @media screen and (min-width: $screen-md) {
+            @media screen and (min-width: $screen-sm) {
                 padding: 0 40px;
+                display: flex;
+                flex-direction: column;
+            }
+            &Content {
+                flex: 1;
+                background: #fff;
+                border-radius: 4px;
+                margin-bottom: 20px;
             }
         }
         
@@ -124,17 +132,16 @@
                 }
             }
             .content {
-                background-color: #fff;
                 padding: 20px;
-                border-radius: 0 0 4px 4px;
                 p {
                     margin-top: 10px;
                     margin-bottom: 10px;
                 }
             }
             .buttonContainer {
-                position: relative;
-                margin-top: -15px;
+                position: absolute;
+                bottom: -15px;
+                width: 100%;
                 .button {
                     font-weight: 600;
                 }

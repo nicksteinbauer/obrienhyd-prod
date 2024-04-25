@@ -54,8 +54,8 @@ function HomePageHero({page}) {
   const featuredContent1 = page.featuredcontent1?.value
     ? page.featuredcontent1?.value
     : null;
-  const featuredLink1 = page.featuredlink1?.reference.onlineStoreUrl
-    ? page.featuredlink1?.reference.onlineStoreUrl
+  const featuredLink1 = page.featuredlink1?.value
+    ? page.featuredlink1?.value
     : null;
   const featuredLink1Text = page.featuredlink1text?.value
     ? page.featuredlink1text?.value
@@ -109,7 +109,6 @@ function HomePageHero({page}) {
                 <RichTextRenderer data={featuredContent1} />
               </div>
               <div className="buttonContainer text-center">
-                {featuredLink1}
                 <Link className="button" to={featuredLink1}>
                   {featuredLink1Text}
                 </Link>
@@ -129,9 +128,9 @@ function HomePageHero({page}) {
                 <RichTextRenderer data={featuredContent2} />
               </div>
               <div className="buttonContainer text-center">
-                <NavLink className="button" to="">
-                  Explore Aquapark
-                </NavLink>
+                <Link className="button" to={featuredLink2}>
+                  {featuredLink2Text}
+                </Link>
               </div>
             </div>
           </div>
@@ -187,13 +186,6 @@ const HOME_QUERY = `#graphql
         }
         featuredlink1: metafield(namespace: "custom", key: "featured_link_1") {
           value
-            reference {
-            ... on Page {
-              id
-              handle
-              onlineStoreUrl
-            }
-          }
         }
         featuredimage2: metafield(namespace: "custom", key: "featured_image_2") {
           value
@@ -215,7 +207,7 @@ const HOME_QUERY = `#graphql
         featuredcontent2: metafield(namespace: "custom", key: "featured_content_2") {
           value
         }
-        featuredlink2Text: metafield(namespace: "custom", key: "featured_link_2_text") {
+        featuredlink2text: metafield(namespace: "custom", key: "featured_link_2_text") {
           value
         }
         featuredlink2: metafield(namespace: "custom", key: "featured_link_2") {

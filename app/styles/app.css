@@ -1835,9 +1835,16 @@ main .klaviyoBackInStock p {
   margin-top: -80px; }
   .underHome .pushUp {
     margin-top: -40px; }
-    @media screen and (min-width: 992px) {
+    @media screen and (min-width: 768px) {
       .underHome .pushUp .underHomeInd {
-        padding: 0 40px; } }
+        padding: 0 40px;
+        display: flex;
+        flex-direction: column; } }
+    .underHome .pushUp .underHomeIndContent {
+      flex: 1;
+      background: #fff;
+      border-radius: 4px;
+      margin-bottom: 20px; }
   .underHomeInd.noGap {
     margin-bottom: 0; }
   .underHomeInd {
@@ -1858,15 +1865,14 @@ main .klaviyoBackInStock p {
           padding-top: 20px;
           padding-bottom: 20px; }
       .underHomeIndContent .content {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 0 0 4px 4px; }
+        padding: 20px; }
         .underHomeIndContent .content p {
           margin-top: 10px;
           margin-bottom: 10px; }
       .underHomeIndContent .buttonContainer {
-        position: relative;
-        margin-top: -15px; }
+        position: absolute;
+        bottom: -15px;
+        width: 100%; }
         .underHomeIndContent .buttonContainer .button {
           font-weight: 600; }
 

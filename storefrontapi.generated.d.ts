@@ -291,11 +291,7 @@ export type FeaturedPagesQuery = {
           Pick<StorefrontAPI.Metafield, 'value'>
         >;
         featuredlink1?: StorefrontAPI.Maybe<
-          Pick<StorefrontAPI.Metafield, 'value'> & {
-            reference?: StorefrontAPI.Maybe<
-              Pick<StorefrontAPI.Page, 'id' | 'handle' | 'onlineStoreUrl'>
-            >;
-          }
+          Pick<StorefrontAPI.Metafield, 'value'>
         >;
         featuredimage2?: StorefrontAPI.Maybe<
           Pick<StorefrontAPI.Metafield, 'value'> & {
@@ -317,7 +313,7 @@ export type FeaturedPagesQuery = {
         featuredcontent2?: StorefrontAPI.Maybe<
           Pick<StorefrontAPI.Metafield, 'value'>
         >;
-        featuredlink2Text?: StorefrontAPI.Maybe<
+        featuredlink2text?: StorefrontAPI.Maybe<
           Pick<StorefrontAPI.Metafield, 'value'>
         >;
         featuredlink2?: StorefrontAPI.Maybe<
@@ -1185,7 +1181,7 @@ interface GeneratedQueryTypes {
     return: SitemapQuery;
     variables: SitemapQueryVariables;
   };
-  '#graphql\n  query FeaturedPages {\n    pages(query: "home", first: 1) {\n      nodes {\n        id\n        title\n        handle\n        homehero: metafield(namespace: "custom", key: "home_hero") {\n          value\n          reference {\n            ... on MediaImage {\n              id\n              image {\n                height\n                url\n                width\n                altText\n              }\n            }\n          }\n        }\n        featuredimage1: metafield(namespace: "custom", key: "featured_image_1") {\n          value\n          reference {\n            ... on MediaImage {\n              id\n              image {\n                height\n                url\n                width\n                altText\n              }\n            }\n          }\n        }\n        featuredtitle1: metafield(namespace: "custom", key: "featured_title_1") {\n          value\n        }\n        featuredcontent1: metafield(namespace: "custom", key: "featured_content_1") {\n          value\n        }\n        featuredlink1text: metafield(namespace: "custom", key: "featured_link_1_text") {\n          value\n        }\n        featuredlink1: metafield(namespace: "custom", key: "featured_link_1") {\n          value\n            reference {\n            ... on Page {\n              id\n              handle\n              onlineStoreUrl\n            }\n          }\n        }\n        featuredimage2: metafield(namespace: "custom", key: "featured_image_2") {\n          value\n          reference {\n            ... on MediaImage {\n              id\n              image {\n                height\n                url\n                width\n                altText\n              }\n            }\n          }\n        }\n        featuredtitle2: metafield(namespace: "custom", key: "featured_title_2") {\n          value\n        }\n        featuredcontent2: metafield(namespace: "custom", key: "featured_content_2") {\n          value\n        }\n        featuredlink2Text: metafield(namespace: "custom", key: "featured_link_2_text") {\n          value\n        }\n        featuredlink2: metafield(namespace: "custom", key: "featured_link_2") {\n          value\n        }\n      }\n    }\n  }\n': {
+  '#graphql\n  query FeaturedPages {\n    pages(query: "home", first: 1) {\n      nodes {\n        id\n        title\n        handle\n        homehero: metafield(namespace: "custom", key: "home_hero") {\n          value\n          reference {\n            ... on MediaImage {\n              id\n              image {\n                height\n                url\n                width\n                altText\n              }\n            }\n          }\n        }\n        featuredimage1: metafield(namespace: "custom", key: "featured_image_1") {\n          value\n          reference {\n            ... on MediaImage {\n              id\n              image {\n                height\n                url\n                width\n                altText\n              }\n            }\n          }\n        }\n        featuredtitle1: metafield(namespace: "custom", key: "featured_title_1") {\n          value\n        }\n        featuredcontent1: metafield(namespace: "custom", key: "featured_content_1") {\n          value\n        }\n        featuredlink1text: metafield(namespace: "custom", key: "featured_link_1_text") {\n          value\n        }\n        featuredlink1: metafield(namespace: "custom", key: "featured_link_1") {\n          value\n        }\n        featuredimage2: metafield(namespace: "custom", key: "featured_image_2") {\n          value\n          reference {\n            ... on MediaImage {\n              id\n              image {\n                height\n                url\n                width\n                altText\n              }\n            }\n          }\n        }\n        featuredtitle2: metafield(namespace: "custom", key: "featured_title_2") {\n          value\n        }\n        featuredcontent2: metafield(namespace: "custom", key: "featured_content_2") {\n          value\n        }\n        featuredlink2text: metafield(namespace: "custom", key: "featured_link_2_text") {\n          value\n        }\n        featuredlink2: metafield(namespace: "custom", key: "featured_link_2") {\n          value\n        }\n      }\n    }\n  }\n': {
     return: FeaturedPagesQuery;
     variables: FeaturedPagesQueryVariables;
   };
