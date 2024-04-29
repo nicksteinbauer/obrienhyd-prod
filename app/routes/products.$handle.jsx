@@ -18,7 +18,7 @@ import 'react-slideshow-image/dist/styles.css';
 
 import Dinp from '~/components/prop65/Dinp';
 import Dnhp from '~/components/prop65/Dnhp';
-import VideoContainer from '~/components/video/VideoContainer';
+import VideoContainer from '~/components/video/VideoContainer.jsx';
 import Locator from '~/components/locator/Locator';
 import StockNotification from '~/components/klaviyo/StockNotification';
 import {Link as ScrollLink} from 'react-scroll';

@@ -1,5 +1,5 @@
 // import AboveFooter from './AboveFooter';
-import WhiteStackedLogo from '../logos/WhiteStackedLogo';
+import WhiteStackedLogo from '../logos/WhiteStackedLogo.jsx';
 
 import {NavLink} from '@remix-run/react';
 

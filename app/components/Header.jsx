@@ -3,7 +3,7 @@ import {NavLink} from '@remix-run/react';
 import Logo from './obrien/Logo';
 
 import DesktopNav from './obrien/navigation/DesktopNav';
-import SearchLogo from './logos/SearchLogo';
+import SearchLogo from './logos/SearchLogo.jsx';
 
 import HamNew from './obrien/navigation/HamNew';
 
