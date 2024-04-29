@@ -1,120 +1,54 @@
-import {Await} from '@remix-run/react';
-import {Suspense} from 'react';
-import {Aside} from '~/components/Aside';
-//import {Footer} from '~/components/Footer';
-import {NewFooter} from './Footer/NewFooter';
-import {HeaderMenu} from '~/components/Header';
-import {HeaderAquaglide} from './Header/Header';
-import {CartMain} from '~/components/Cart';
-import {
-  PredictiveSearchForm,
-  PredictiveSearchResults,
-} from '~/components/Search';
+import {Suspense, useRef, useEffect} from 'react';
+// import loadScript from '@shopify/hydrogen';
+import ObrienFooter from './obrien/Footer';
+import {Header} from '~/components/Header';
+
+import {gsap} from 'gsap';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 
 /**
  * @param {LayoutProps}
  */
-export function Layout({
-  cart,
-  children = null,
-  //footer,
-  header,
-  isLoggedIn,
-}) {
-  return (
-    <>
-      <CartAside cart={cart} />
-      <SearchAside />
-      <MobileMenuAside menu={header?.menu} shop={header?.shop} />
-      {children}
-      {header && (
-        <HeaderAquaglide header={header} cart={cart} isLoggedIn={isLoggedIn} />
-      )}
-      {/* <Suspense>
-        <Await resolve={footer}>
-          {(footer) => <Footer menu={footer?.menu} shop={header?.shop} />}
-        </Await>
-      </Suspense> */}
-      <NewFooter />
-    </>
-  );
-}
+export function Layout({cart, children = null, footer, header, isLoggedIn}) {
+  let animateThis1 = useRef(null);
 
-/**
- * @param {{cart: LayoutProps['cart']}}
- */
-function CartAside({cart}) {
-  return (
-    <Aside id="cart-aside" heading="CART">
-      <Suspense fallback={<p>Loading cart ...</p>}>
-        <Await resolve={cart}>
-          {(cart) => {
-            return <CartMain cart={cart} layout="aside" />;
-          }}
-        </Await>
-      </Suspense>
-    </Aside>
-  );
-}
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
 
-function SearchAside() {
+    gsap.to(animateThis1, {
+      scrollTrigger: {
+        trigger: animateThis1,
+        start: 'top+=44px top',
+        //end: 'bottom bottom',
+        toggleClass: 'headerActive',
+      },
+      //duration: 2,
+    });
+  }, []);
+  // loadScript(
+  //   // eslint-disable-next-line no-template-curly-in-string
+  //   '//static.klaviyo.com/onsite/js/klaviyo.js?company_id=${WkytYu}',
+  // ).catch(() => {});
   return (
-    <Aside id="search-aside" heading="SEARCH">
-      <div className="predictive-search">
-        <br />
-        <PredictiveSearchForm>
-          {({fetchResults, inputRef}) => (
-            <div>
-              <input
-                name="q"
-                onChange={fetchResults}
-                onFocus={fetchResults}
-                placeholder="Search"
-                ref={inputRef}
-                type="search"
-              />
-              &nbsp;
-              <button type="submit">Search</button>
-            </div>
-          )}
-        </PredictiveSearchForm>
-        <PredictiveSearchResults />
+    <div
+      ref={(el) => {
+        animateThis1 = el;
+      }}
+    >
+      <div className="flex flex-col min-h-screen">
+        <div className="">
+          <a href="#mainContent" className="sr-only">
+            Skip to content
+          </a>
+        </div>
+        <Suspense>
+          <Header />
+        </Suspense>
+        <main id="mainContent">{children}</main>
       </div>
-    </Aside>
+      <Suspense>
+        <ObrienFooter />
+      </Suspense>
+    </div>
   );
 }
-
-/**
- * @param {{
- *   menu: HeaderQuery['menu'];
- *   shop: HeaderQuery['shop'];
- * }}
- */
-function MobileMenuAside({menu, shop}) {
-  return (
-    menu &&
-    shop?.primaryDomain?.url && (
-      <Aside id="mobile-menu-aside" heading="MENU">
-        <HeaderMenu
-          menu={menu}
-          viewport="mobile"
-          primaryDomainUrl={shop.primaryDomain.url}
-        />
-      </Aside>
-    )
-  );
-}
-
-/**
- * @typedef {{
- *   cart: Promise<CartApiQueryFragment | null>;
- *   children?: React.ReactNode;
- *   footer: Promise<FooterQuery>;
- *   header: HeaderQuery;
- *   isLoggedIn: Promise<boolean>;
- * }} LayoutProps
- */
-
-/** @typedef {import('storefrontapi.generated').CartApiQueryFragment} CartApiQueryFragment */
-/** @typedef {import('storefrontapi.generated').FooterQuery} FooterQuery */
-/** @typedef {import('storefrontapi.generated').HeaderQuery} HeaderQuery */

@@ -29,63 +29,75 @@ $mobile-1: #dcdcdc;
 $mobile-2: #c2c2c2;
 $mobile-3: #acacac;
 
-$navLightest: #efefef;
-$navGray: #515254;
-$navLtGray: #c6c6c5;
-$navBlueGray: #3a4e66;
-$navRed: #d13f3e;
-$navBlue: #27aae1;
 
-
-
-
-
-$open: "Open Sans", sans-serif;
-$passion: "Passion One", sans-serif;
-
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Passion+One:wght@400;700;900&display=swap");
 
 
 $icon-font-family: 'Font Awesome 5 Free';
 $solid-icon-weight: 900;
 $outline-icon-weight: 400;
 
+$font-path: '../../public/webfonts';
 
 @font-face {
-  font-family: $icon-font-family;
-  font-family: 'Font Awesome 5 Free';
-  font-style: normal;
-  font-weight: $outline-icon-weight;
-  font-display: auto;
-  src: url('../../public/webfonts-new/fa-regular-400.woff2') format('woff2'), url('../../public/webfonts-new/fa-regular-400.ttf') format('woff');
+    font-family: $icon-font-family;
+    font-family: 'Font Awesome 5 Free';
+    font-style: normal;
+    font-weight: $outline-icon-weight;
+    font-display: auto;
+    src: url('#{$font-path}/fa-regular-400.woff2') format('woff2'), url('#{$font-path}/fa-regular-400.woff') format('woff');
 }
 
 @font-face {
-  font-family: $icon-font-family;
-  font-family: 'Font Awesome 5 Free';
-  font-style: normal;
-  font-weight: $solid-icon-weight;
-  font-display: auto;
-  src: url('../../public/webfonts-new/fa-solid-900.woff2') format('woff2'), url('../../public/webfonts-new/fa-solid-900.ttf') format('woff');
+    font-family: $icon-font-family;
+    font-family: 'Font Awesome 5 Free';
+    font-style: normal;
+    font-weight: $solid-icon-weight;
+    font-display: auto;
+    src: url('#{$font-path}/fa-solid-900.woff2') format('woff2'), url('#{$font-path}/fa-solid-900.woff') format('woff');
 }
 
-$test: '\f27a';
-$bestFor: '\f005';
-$capacity: '\f496';
-$warranty: '\f559';
-$dimensions: '\f545';
-$slideHeight: '\f7a5';
-$boxDimensions: '\f466';
-$minWaterDepth: '\f773';
-$includes: '\f49e';
-$notIncluded: '\f057';
-$maxPressure: '\f06a';
-$airFlow: '\f72e';
+@mixin msv-icon($icon-weight: $solid-icon-weight) {
+    font-family: $icon-font-family;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: $icon-weight;
+    text-rendering: auto;
+    line-height: 1;
+}
+
+@mixin add-icon($icon, $selector: before, $icon-weight: $solid-icon-weight) {
+    &:#{$selector} {
+        @include msv-icon($icon-weight);
+        content: $icon;
+    }
+}
+
+$font-family: "Roboto", sans-serif;
+$bebas: "bebas_neueregular";
+//$font-path: "../assets/fonts"; 
+$roboto: "Roboto", sans-serif;
+$kaushan: "Kaushan Script", cursive;
+
+@font-face {
+  font-family: $bebas;
+  src: url("#{$font-path}/bebasneue-webfont.woff2") format("woff2"),
+    url("#{$font-path}/bebasneue-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
 
 html,
 body {
-  font-family: $open !important;
-  font-weight: 300;
+  font-family: $roboto !important;
+}
+
+body {
+  font-weight: 300 !important;
 }
 
 main p {
@@ -99,51 +111,24 @@ dl, ol, ul {
 tbody, td, tfoot, th, thead, tr {
   font-weight: 300;
 }
-
-a {
-  transition: color .3s ease;
-}
-a:link, a:active, a:visited {
-  color: $navBlue;
-}
-a:hover {
-  color: $navGray;
-}
-
-a.button  {
-  border-radius: 20px;
-  background-color: $navBlue;
-  color: #fff;
-  transition: background-color .4s ease;
-  padding: 4px 12px;
-  display: inline-block;
-  font-size: .9em;
-  border: 2px solid $navBlue;
-}
-a.button:hover {
-  background-color: $navBlueGray;
-  text-decoration: none;
-}
-
-section {
-  padding: 14px 0;
-}
-
+// body {
+//   font-size: 18px;
+//   line-height: 1.5;
+// }
 h1,
 h2,
 h3,
 h4,
 h5 {
+  font-family: $bebas;
   line-height: 1 !important;
   font-weight: 400;
   margin: 0;
   padding: 20px 0 0;
-  font-family: $passion;
-  text-transform: uppercase;
 }
 
 strong {
-  font-weight: 700;
+  font-weight: 700 !important;
 }
 
 h1,
@@ -178,343 +163,54 @@ p,
   line-height: 1.3;
 }
 
-
-
-// Grid
-
-body {
-  background-color: #efefef;
+.ms-buybox__product-title {
+  line-height: 1.1;
 }
 
-
-img {
-  max-width: 100%;
-  height: auto;
+.msc-product__title {
+  line-height: 1.2;
 }
 
-.noPadding {
-  padding: 0 !important;
+h1.container-heading::after,
+h2.container-heading::after {
+  display: block;
+  content: "";
+  height: 4px;
+  width: 80%;
+  background: $ob-blue;
+  margin-top: 10px;
 }
-.noMargin {
-  margin: 0 !important;
+main {
+  button {
+    border-radius: 6px !important;
+    border: 2px solid $darkGray;
+    background-color: $ob-ltltgray;
+    transition: all .3s ease;
+    font-family: $bebas !important;
+    font-size: 1.2em;
+  }
+  
+  button:hover {
+    background-color: $ob-blue;
+    color: #fff;
+  }
 }
 
-.obrienVideo {
+h1.siteTitle {
   position: relative;
-  padding-top: 56.25%; /* 720 / 1280 = 0.5625 */
-  .youVideo {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+  display: inline-block;
+  &::after {
+    display: block;
+    content: "";
+    height: 4px;
+    width: 80%;
+    background: $ob-blue;
+    margin-top: 10px;
   }
 }
 
-
-.hiddenFooter {
-  visibility: hidden;
-}
-
-
-// Grid
-
-.inside-xxs {
-  max-width: $screen-xxs;
-  padding-left: 20px;
-  padding-right: 20px;
-  box-sizing: border-box;
-  margin: 0 auto;
-}
-
-.inside-xs {
-  max-width: $screen-xs;
-  padding-left: 20px;
-  padding-right: 20px;
-  box-sizing: border-box;
-  margin: 0 auto;
-}
-
-.inside-sm {
-  max-width: $screen-sm;
-  padding-left: 20px;
-  padding-right: 20px;
-  box-sizing: border-box;
-  margin: 0 auto;
-}
-
-.inside-md {
-  max-width: $screen-md;
-  padding-left: 20px;
-  padding-right: 20px;
-  box-sizing: border-box;
-  margin: 0 auto;
-}
-
-.inside-lg {
-  max-width: $screen-lg;
-  padding-left: 20px;
-  padding-right: 20px;
-  box-sizing: border-box;
-  margin: 0 auto;
-}
-
-.inside-xl {
-  max-width: $screen-xl;
-  padding-left: 20px;
-  padding-right: 20px;
-  box-sizing: border-box;
-  margin: 0 auto;
-}
-
-.inside-xxl {
-  max-width: $screen-xxl;
-  padding-left: 20px;
-  padding-right: 20px;
-  box-sizing: border-box;
-  margin: 0 auto;
-}
-
-.inside-xxxl {
-  max-width: $screen-xxxl;
-  box-sizing: border-box;
-  margin: 0 auto;
-}
-
-.padding-10 {
-  padding: 10px;
-}
-.padding-20 {
-  padding: 20px;
-}
-
-.padd-vert-10 {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.padd-vert-20 {
-  padding-top: 20px;
-  padding-bottom: 20px;
-
-}
-
-.text-center {
-  text-align: center;
-}
-
-.always-flex {
-  display: flex;
-}
-.flex-vertical {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.align-vertical {
-  display: flex;
-  align-items: center;
-}
-
-.flex-xxs {
-  display: block;
-  @media screen and (min-width: $screen-xxs) {
-      display: flex;
-      flex-wrap: wrap;
+.basicContent {
+  a {
+    color: $ob-btblue;
   }
-}
-
-.flex-xs {
-  display: block;
-  @media screen and (min-width: $screen-xs) {
-      display: flex;
-      flex-wrap: wrap;
-  }
-}
-
-.flex-sm {
-  display: block;
-  @media screen and (min-width: $screen-sm) {
-      display: flex;
-  }
-}
-
-.flex-md {
-  display: block;
-  @media screen and (min-width: $screen-md) {
-      display: flex;
-  }
-}
-
-.flex-lg {
-  display: block;
-  @media screen and (min-width: $screen-lg) {
-      display: flex;
-  }
-}
-
-.flex-xl {
-  display: block;
-  @media screen and (min-width: $screen-xl) {
-      display: flex;
-  }
-}
-
-.twenty {
-  box-sizing: border-box;
-  flex: 0 0 20%;
-}
-
-.twenty-five {
-  box-sizing: border-box;
-  flex: 0 0 25%;
-}
-
-.thirty {
-  box-sizing: border-box;
-  flex: 0 0 30%;
-}
-.thirty-fix {
-  @media screen and (min-width: $screen-xl) {
-      max-width: 30%;
-  }
-}
-.thirty3 {
-  box-sizing: border-box;
-  flex: 0 0 33.33%;
-}
-.thirty3-fix {
-  @media screen and (min-width: $screen-xl) {
-      max-width: 33.33%;
-  }
-}
-.forty {
-  box-sizing: border-box;
-  flex: 0 0 40%;
-}
-.forty-fix {
-  @media screen and (min-width: $screen-xl) {
-      max-width: 40%;
-  }
-}
-.forty-five {
-  box-sizing: border-box;
-  flex: 0 0 45%;
-}
-.forty-nine {
-  box-sizing: border-box;
-  flex: 0 0 49%;
-}
-.fifty {
-  box-sizing: border-box;
-  flex: 0 0 50%;
-}
-.fifty-fix {
-  @media screen and (min-width: $screen-xl) {
-      max-width: 50%;
-  }
-}
-.sixty {
-  box-sizing: border-box;
-  flex: 0 0 60%;
-}
-.sixty-fix {
-  @media screen and (min-width: $screen-xl) {
-      max-width: 60%;
-  }
-}
-.seventy {
-  box-sizing: border-box;
-  flex: 0 0 70%;
-}
-.seventy-fix {
-  @media screen and (min-width: $screen-xl) {
-      max-width: 70%;
-  }
-}
-
-.half {
-  @media screen and (min-width: $screen-xl) {
-      width: 50%;
-  }
-}
-
-.justify {
-  justify-content: space-between;
-}
-.flex-end {
-  justify-content: flex-end;
-}
-.justify-center {
-  justify-content: center;
-}
-.gap5 {
-  gap: .5rem;
-}
-.gap10 {
-  gap: 10px;
-}
-.gap50 {
-  gap: 50px;
-}
-
-.formFlex {
-  flex: 1;
-}
-
-.auto-grid-home {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  @media screen and (min-width: $screen-sm) {
-      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-  }
-  // @media screen and (min-width: $screen-md) {
-  //     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  // }
-  grid-gap: 14px;
-}
-
-.auto-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-
-  @media screen and (min-width: $screen-md) {
-      grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
-  }
-  grid-gap: 14px;
-}
-
-.auto-grid-sm {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 14px;
-  img {
-      width: 100%;
-  }
-}
-
-.auto-grid-lg {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  
-  @media screen and (min-width: $screen-lg) {
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  }
-  @media screen and (min-width: $screen-xl) {
-      grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
-  }
-  grid-gap: 14px;
-  img {
-      width: 100%;
-  }
-}
-
-.flex1 {
-  flex: 1;
-}
-
-.smol {
-  font-size: .8em;
-  
 }

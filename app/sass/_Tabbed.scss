@@ -1,0 +1,352 @@
+// Tabbed Locations
+
+#tabs {
+    padding-top: 65px;
+    padding-bottom: 0;
+}
+
+.obrien-tabbed {
+    .active {
+        text-decoration: none;
+    }
+    //margin-top: -68px;
+    //box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.1);
+    .nav {
+        text-align: center;
+        font-size: 1.2em;
+        justify-content: center;
+        li.nav-item {
+            margin-bottom: 0;
+        }
+        .nav-link {
+            flex: 0 0 180px;
+            border-radius: 12px 12px 0 0 !important;
+            //opacity: 0.7;
+            background: #a5a5a5;
+            padding: 15px 20px 12px;
+            text-decoration: none;
+            margin-left: 5px;
+            margin-right: 5px;
+            border: 4px solid #a5a5a5;
+            font-family: $bebas;
+            color: #fff;
+        }
+
+        a:nth-child(1) {
+            position: relative;
+            z-index: 10;
+        }
+        a:nth-child(2) {
+            position: relative;
+            z-index: 9;
+        }
+        a:nth-child(3) {
+            position: relative;
+            z-index: 8;
+        }
+        a:nth-child(4) {
+            position: relative;
+            z-index: 7;
+        }
+        a:nth-child(5) {
+            position: relative;
+            z-index: 6;
+        }
+    }
+    .nav-tabs .nav-item.show .nav-link,
+    .nav-tabs .nav-link.active {
+        //border: none;
+        opacity: 1;
+        background: #fff;
+        border: 4px solid #a5a5a5;
+        position: relative;
+        color: #000;
+        z-index: 1;
+    }
+    .nav-tabs .nav-item.show .nav-link::after,
+    .nav-tabs .nav-link.active::after {
+        content: '';
+        position: absolute;
+        height: 4px;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        background: #fff;
+    }
+    .tab-content {
+        text-decoration: none;
+        background: #fff;
+        position: relative;
+        //z-index: 10;
+        ul {
+            padding-left: 2rem;
+            list-style: disc;
+            li {
+                margin-bottom: 0;
+            }
+        }
+        > div {
+            padding: 10px;
+            > div {
+                padding-top: 50px;
+                padding-bottom: 50px;
+                .row {
+                    .col-md-6 {
+                        padding: 0 8px;
+                    
+                    }
+                }
+            }
+        }
+        margin-top: -4px;
+        border-top: 4px solid #a5a5a5;
+    }
+}
+
+.tab-content > .tab-pane {
+    display: none;
+}
+
+.tab-content > .active {
+    display: block;
+}
+
+.fade {
+    transition: opacity 0.15s linear;
+}
+
+.fade:not(.show) {
+    opacity: 0;
+}
+
+.flex-gauge {
+    display: block;
+    /*
+    @media screen and (min-width: $screen-md) {
+        display: flex;
+        flex-wrap: wrap;
+        > div {
+            flex: 0 0 50%;
+        }
+    }
+    */
+    @media screen and (min-width: $screen-md) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        > div {
+            flex: 0 0 33%;
+        }
+    }
+    @media screen and (min-width: $screen-xl) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        > div {
+            flex: 0 0 20%;
+        }
+    }
+}
+
+.graph {
+    text-align: center;
+}
+
+.graph.isvisible {
+    .box1 {
+        //transform: rotate(99deg);
+        animation-name: boxtate1;
+        animation-duration: 500ms;
+        animation-timing-function: ease-in;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
+    }
+
+    .box2 {
+        //transform: rotate(153deg);
+        animation-name: boxtate2;
+        animation-duration: 1s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
+    }
+
+    .box3 {
+        //transform: rotate(207deg);
+        animation-name: boxtate3;
+        animation-duration: 1s;
+        animation-delay: 500ms;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
+    }
+
+    .box4 {
+        //transform: rotate(261deg);
+        animation-name: boxtate4;
+        animation-duration: 1s;
+        animation-delay: 1s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
+    }
+
+    .box5 {
+        //transform: rotate(315deg);
+        animation-name: boxtate5;
+        animation-duration: 1s;
+        animation-delay: 1500ms;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
+    }
+}
+.graphGauge {
+    overflow: hidden;
+    position: relative;
+    width: 350px;
+    height: 319px;
+    left: 50%;
+    margin-left: -175px;
+    @media screen and (min-width: $screen-md) {
+        width: 276px;
+        height: 251px;
+        margin-left: -138px;
+    }
+    .frack {
+        background: #fff;
+        position: absolute;
+        z-index: 11;
+    }
+    .frack.top {
+        width: 100%;
+        height: 2px;
+        top: 0;
+        left: 0;
+    }
+    .frack.right {
+        width: 2px;
+        height: 100%;
+        top: 0;
+        right: 0;
+    }
+    .frack.bottom {
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+    }
+    .frack.left {
+        width: 2px;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    .box-front {
+        background: url(../../public/graph-gauge.svg) center center no-repeat;
+        background-size: 350px 319px;
+        width: 350px;
+        height: 319px;
+        @media screen and (min-width: $screen-md) {
+            background-size: 276px 251px;
+            width: 276px;
+            height: 251px;
+        }
+        position: relative;
+        z-index: 10;
+        .number {
+            font-family: $bebas;
+            font-size: 5em;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    .black-box {
+        width: 350px;
+        height: 350px;
+        @media screen and (min-width: $screen-md) {
+            width: 276px;
+            height: 276px;
+        }
+        background: #000;
+        position: absolute;
+        transform-origin: left top;
+        transform: rotate(45deg);
+        left: 50%;
+        top: 50%;
+    }
+}
+
+.p4 {
+    .p5 {
+        display: none;
+    }
+}
+
+.test-switch {
+    display: flex;
+    flex-wrap: wrap;
+    .ms-content-block__image {
+        width: 100%;
+        order: 2;
+    }
+    .ms-content-block__details {
+        width: 100%;
+        order: 1;
+    }
+}
+
+@keyframes boxtate1 {
+    0% {
+        transform: rotate(45deg);
+    }
+    100% {
+        transform: rotate(99deg);
+    }
+}
+@keyframes boxtate2 {
+    0% {
+        transform: rotate(45deg);
+    }
+    50% {
+        transform: rotate(99deg);
+    }
+    100% {
+        transform: rotate(153deg);
+    }
+}
+@keyframes boxtate3 {
+    0% {
+        transform: rotate(45deg);
+    }
+    50% {
+        transform: rotate(153deg);
+    }
+    100% {
+        transform: rotate(207deg);
+    }
+}
+@keyframes boxtate4 {
+    0% {
+        transform: rotate(45deg);
+    }
+    50% {
+        transform: rotate(207deg);
+    }
+    100% {
+        transform: rotate(261deg);
+    }
+}
+@keyframes boxtate5 {
+    0% {
+        transform: rotate(45deg);
+    }
+    50% {
+        transform: rotate(261deg);
+    }
+    100% {
+        transform: rotate(315deg);
+    }
+}

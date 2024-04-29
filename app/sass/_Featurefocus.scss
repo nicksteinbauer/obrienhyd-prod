@@ -1,0 +1,92 @@
+// Styles for feature focus.
+
+.feature-focus {
+    margin: 50px 0 100px;
+    h2 {
+      position: relative;
+      padding-bottom: 12px;
+      display: inline-block;
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 4px;
+      width: 40%;
+      background: $ob-blue;
+    }
+    .feature-content {
+      h3 {
+        margin-top: 12px;
+      }
+    }
+    .white-background {
+      background: white;
+      border-top: 100px solid $ob-lightest;
+      @media screen and (min-width: $screen-md) {
+        border-top: 100px solid #fff;
+        border-bottom: 100px solid #fff;
+      }
+      @media screen and (min-width: $screen-xl) {
+        border-top: 100px solid $ob-lightest;
+        border-bottom: 100px solid $ob-lightest;
+      }
+    }
+  
+    .forty {
+      padding: 80px 40px 20px;
+      @media screen and (min-width: $screen-md) {
+        padding: 40px 20px 0;
+      }
+    }
+  
+    .inside-xxl {
+      margin-top: -100px;
+      margin-bottom: -100px;
+      > div {
+        margin-bottom: 60px;
+      }
+      > div:nth-child(2n) {
+        .sixty {
+          order: 2;
+        }
+        .forty {
+          order: 1;
+        }
+      }
+      > div:last-child {
+        margin-bottom: 0;
+      }
+    }
+    .animateBackground {
+      padding: 10px;
+      background: $ob-lightest;
+      display: block;
+    }
+    picture {
+      //position: relative;
+      &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: calc(4 / 5) * 100%;
+        position: relative;
+      }
+      img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        object-fit: cover;
+        object-position: center center;
+        padding: 10px;
+      }
+    }
+    
+  
+  }
+  
+  
+  

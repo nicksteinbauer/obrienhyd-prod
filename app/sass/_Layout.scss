@@ -1,0 +1,352 @@
+
+.sr-only {
+    position: absolute;
+    left: -999em;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+
+.pageHeader {
+    padding-top: 108px;
+}
+
+#mainContent {
+    background-color: $ob-lightest;
+    min-height: 700px;
+}
+
+header.notPage {
+    background-color: transparent;
+    text-align: left;
+    position: absolute;
+    top: 0;
+    height: 341px;
+    margin-top: 44px;
+    padding: 58px 40px 40px;
+    @media only screen and (min-width: $screen-md) and (max-width: $screen-xl) {
+        height: 500px;
+        padding: 64px 40px 40px;
+    }
+    @media only screen and (min-width: $screen-xl) {
+        height: 830px;
+    }
+    h1 {
+        color: #fff;
+        text-shadow: 1px 1px 1px #000;
+    }
+}
+
+.collectionPage, .bannerFix {
+    padding-top: 108.56px;
+}
+
+.collectionImage {
+    margin-top: -64.55px;
+}
+
+.singleHeader2024 {
+    width: 100%;
+    height: 341px;
+    overflow: hidden;
+    position: relative;
+    //margin-bottom: -200px;
+    @media only screen and (min-width: $screen-md) and (max-width: $screen-xl) {
+        height: 500px;
+    }
+
+    @media only screen and (min-width: $screen-xl) {
+        height: 830px;
+    }
+    img {
+        display: block;
+        position: absolute;
+        left: 50%;
+        max-width: none;
+        width: 1024px !important;
+        margin-left: -512px;
+        @media only screen and (min-width: $screen-md) and (max-width: $screen-xl) {
+            width: 1500px !important;
+            margin-left: -750px;
+        }
+        @media only screen and (min-width: $screen-xl) {
+            width: 2500px !important;
+            margin-left: -1250px;
+        }
+    }
+}
+
+.singleHeader2024 + .theRest {
+    margin-top: -50px;
+    @media screen and (min-width: $screen-md) {
+        margin-top: -80px;
+    }
+}
+
+.theRest {
+    position: relative;
+    margin-top: 40px;
+    header {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        @media screen and (min-width: $screen-md) {
+            padding: 40px;
+        }
+        //box-shadow: 0 10px 15px 0 rgb(0 0 0 / 5%);
+        text-align: center;
+        h1, h2 {
+            padding-top: 5px;
+            position: relative;
+            padding-bottom: 20px;
+            display: inline-block;
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 8px;
+                height: 4px;
+                background-color: $ob-blue;
+                width: 40%;
+                margin-left: 30%;
+                margin-right: 30%;
+            }
+        }
+        
+    }
+}
+
+.actualPage {
+    .theRest {
+        header {
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.productGrid {
+    list-style: none;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    li {
+        a {
+            display: block;
+            img {
+                background-color: #fff;
+                border-radius: 10px;
+            }
+            text-decoration: none;
+            color: #000;
+        }
+    }
+    h3 {
+        position: relative;
+        padding-bottom: 10px;
+        display: inline-block;
+        font-size: 1.4em;
+        @media screen and (min-width: $screen-md) {
+            font-size: 1.6em;
+        }
+        &::after {
+            content: "";
+            background-color: $ob-blue;
+            height: 3px;
+            left: 0;
+            bottom: 0;
+            width: 40%;
+            position: absolute;
+        }
+    }
+    .price {
+        color: $ob-blue;
+        font-family: $bebas;
+        font-size: 1.3em;
+        line-height: 1.5;
+    }
+    .textArea {
+        padding: 10px 5px 20px;
+    }
+}
+
+#subfooter, footer {
+    background-color: $ob-lightest;
+}
+
+
+.white-back {
+    background: #fff;
+    padding: 40px;
+    box-shadow: 0 10px 15px 0 rgba(0,0,0,0.05);
+    border-radius: 10px;
+}
+.above-footer {
+    padding-top: 40px;
+    h2 {
+        margin: 0;
+        padding: 0;
+        font-size: 2.2em;
+        @media screen and (min-width: $screen-md) {
+            font-size: 2.6em;
+        }
+        padding-bottom: 10px;
+        margin-bottom: 30px;
+        
+        span {
+            position: relative;
+            &::after {
+                content: '';
+                height: 4px;
+                background-color: $ob-blue;
+                width: 60%;
+                margin-left: 20%;
+                margin-right: 20%;
+                position: absolute;
+                bottom: -10px;
+                left: 0;
+                
+            }
+        }
+    }
+    .ob-title {
+        padding: 10px 0 30px;
+    }
+    .top-above {
+        position: relative;
+        margin-bottom: -260px;
+    }
+    .bottom-above {
+        background-color: $ob-dkgray;
+        min-height: 300px;
+    }
+    label {
+        position: absolute;
+        left: -999em;
+    }
+    input[type=text], input[type=email] {
+        display: block;
+        width: 100%;
+        border: 1px solid #ccc;
+        padding: 6px;
+        border-radius: 4px;
+    }
+    button.btn {
+        border: 2px solid $ob-blue;
+        border-radius: 4px;
+        transition: all .3s ease;
+    }
+    button.btn:hover {
+        color: #fff;
+        background-color: $ob-blue;
+    }
+    .social {
+        a {
+            background-color: $ob-lightest;
+            //display: block;
+            transition: background .3s ease;
+            border-radius: 4px;
+        }
+        a:hover {
+            background-color: #ccc;
+        }
+        img {
+            padding: 6px;
+            width: 60px;
+            
+            
+        }
+    }
+}
+#footer {
+    background-color: $ob-dkgray;
+    color: #fff;
+    padding: 20px 0 80px;
+    h4 {
+        font-size: 1.4em;
+        @media screen and (min-width: $screen-md) {
+            font-size: 1.7em;
+        }
+    }
+    a:link, a:active, a:visited {
+        color: #fff;
+        text-decoration: none;
+    }
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0 20px 0 0;
+        li {
+            margin-bottom: 4px;
+        }
+        a {
+            display: block;
+            background-color: $ob-gray;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+    }
+    .fixedWidth {
+        width: 275px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-right: 0;
+    }
+    .footCol {
+        flex: 0 0 20%;
+    }
+    .footCol:first-child {
+        flex: 0 0 40%;
+        
+        svg {
+            width: 275px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid $ob-gray;
+            margin-bottom: 20px;
+            .white {
+                fill: #fff;
+            }
+        }
+    }
+}
+
+ul.cartList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.backToTop {
+    position: fixed;
+    z-index: 100;
+    bottom: 13px;
+    left: 74px;
+    @media screen and (min-width: $screen-md) {
+        left: auto;
+        right: 196px;
+        bottom: 14px;
+    }
+    transform: rotate(90deg);
+    a {
+        padding: 10px;
+        display: inline-block;
+        background-color: $ob-blue;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color .3s ease;
+        height: 45px;
+        width: 45px;
+    }
+    a:hover {
+        background-color: $ob-btblue;
+    }
+    svg {
+        color: #fff;
+        fill: #fff;
+    }
+}
+
+#chat-button {
+    bottom: 6px !important;
+}

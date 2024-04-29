@@ -1,13 +1,15 @@
 
+
+
 .klaviyoBackInStock {
-    background: $navLtGray;
+    background: rgba($color: #efefef, $alpha: .8);
     padding: 15px 10px;
-    border-radius: 20px;
+    border-radius: 6px;
     p {
         margin-top: 0;
     }
     .nope {
-        color: $navRed;
+        color: red;
     }
     .displayBlock {
         input, label {
@@ -28,17 +30,15 @@
         margin-top: 5px;
         button, div.button {
             border: none;
-            background-color: $navBlue;
+            background-color: $ob-blue;
             color: #fff;
             display: inline-block;
             padding: 4px 8px;
-            border-radius: 20px;
+            border-radius: 6px;
             cursor: pointer;
-            min-width: 110px;
-            text-align: center;
         }
         button:hover {
-            background-color: $navLightest;
+            background-color: $ob-btblue;
         }
     }
 }

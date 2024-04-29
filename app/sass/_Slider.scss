@@ -1,0 +1,54 @@
+
+
+.obrienGallery {
+    @media screen and (min-width: $screen-md) {
+        width: 70%;
+        max-width: 940px;
+    }
+}
+
+.slick-slider {
+    padding-bottom: 40px;
+}
+
+.slick-next:before, .slick-prev:before {
+    color: $ob-blue;
+    font-size: 30px;
+    
+}
+
+.slick-prev {
+    left: -35px;
+    z-index: 100;
+    bottom: -10px;
+    top: auto;
+    width: 30px;
+    height: 30px;
+    margin-left: 50%;
+}
+.slick-next {
+    right: -35px;
+    z-index: 100;
+    bottom: -10px;
+    top: auto;
+    width: 30px;
+    height: 30px;
+    margin-right: 50%;
+}
+
+.react-slideshow-container .default-nav {
+    padding: 0 !important;
+}
+
+.react-slideshow-container .nav:last-of-type {
+    right: 10px !important;
+}
+
+.react-slideshow-container .nav:first-of-type {
+    left: 10px !important;
+}
+
+.indicators {
+    //margin: 0;
+    padding: 0;
+}

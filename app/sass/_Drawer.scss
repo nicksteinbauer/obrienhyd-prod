@@ -1,0 +1,318 @@
+#headlessui-portal-root {
+    .onClose {
+        height: 100%;
+        
+    }
+    
+
+}
+
+.cartHeader {
+    z-index: 100;
+    position: relative;
+    background-color: $ob-dkgray;
+}
+
+.stopClosing {
+    position: fixed;
+    z-index: 1001;
+    right: 0;
+    top: 0;
+    background: $ob-dkgray;
+    color: #fff;
+    height: 100%;
+    width: 400px;
+    transform: translateX(100%);
+    
+    box-sizing: border-box;
+    @media screen and (min-width: $screen-md) {
+        width: 600px;
+    }
+    h2 {
+        padding-top: 0;
+        font-size: 1.2em;
+        @media screen and (min-width: $screen-md) {
+            font-size: 1.5em;
+        }
+    }
+    
+}
+
+.moveLeft {
+    transform: translateX(0);
+}
+
+
+button.closeButton {
+    background-color: transparent;
+    width: 44px;
+    border: none;
+    svg {
+        color: #fff;
+    }
+}
+
+
+
+
+
+// // tailwind css styles
+
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+.translate-x-0 {
+    --tw-translate-x: 0px;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.bg-contrast {
+    --tw-bg-opacity: 1;
+    background-color: rgba(250, 250, 249, var(--tw-bg-opacity));
+    background-color: rgb(var(--color-contrast) / var(--tw-bg-opacity));
+}
+
+
+// Cart contents
+
+.cart-grid, .cartList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: #000;
+    a {
+        color: $ob-blue;
+        text-decoration: none;
+    }
+    li {
+        background-color: $ob-ltltgray;
+        box-sizing: border-box;
+        padding: 10px;
+        border-radius: 6px;
+    }
+    h3 {
+        padding-top: 0;
+        font-size: 1.2em;
+        @media screen and (min-width: $screen-md) {
+            font-size: 1.3em;
+        }
+        
+    }
+
+    .cartPrice {
+        font-family: $bebas;
+        color: $ob-blue;
+        margin-top: 5px;
+        font-size: 1em;
+        display: block;
+        @media screen and (min-width: $screen-md) {
+            font-size: 1.1em;
+        }
+    }
+    .cartItemImage {
+        background-color: #fff;
+        border-radius: 5px;
+    }
+    .options {
+        font-size: .9em;
+    }
+    .price {
+        font-family: $bebas;
+        color: $ob-blue;
+        font-size: 1.2em;
+        
+    }
+}
+
+.cartAdjust {
+    width: 100%;
+    border: 2px solid #ccc;
+    padding: 6px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin: 0;
+    width: 170px;
+    button {
+        width: 44px;
+        height: 44px;
+        background-color: #fff;
+        border: 2px solid #ccc;
+        border-radius: 6px;
+        transition: background-color .3s ease;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #ccc;
+    }
+    .flexFullWidth {
+        flex: 1;
+        text-align: center;
+    }
+    button.buttonAdd {
+        font-size: 22px;
+    }
+
+    
+}
+
+.adjustGap {
+    gap: 5px;
+}
+
+.trashIcon {
+    height: 34px;
+    display: block;
+    position: relative;
+    top: 5px;
+    left: 5px;
+}
+
+.trashButton {
+    border: none;
+    cursor: pointer;
+    background: none;
+}
+
+.cart-contents {
+    padding: 0 20px 20px;
+}
+
+.cartChildren {
+    position: relative;
+    height: 100%;
+    top: -74px;
+    padding-top: 74px;
+    box-sizing: border-box;
+    padding-bottom: 176px;
+    overflow: scroll;
+    // display: grid;
+    // grid-template-columns: repeat(1, minmax(0px, 1fr));
+    // grid-template-rows: 1fr auto;
+    // height: calc(var(--screen-height, 100vh) - var(--height-nav));
+}
+
+.summary-heading-container {
+    position: fixed;
+    bottom: 0;
+    width: 400px;
+    @media screen and (min-width: $screen-md) {
+        width: 600px;
+    }
+    box-sizing: border-box;
+    
+    border-top: 1px solid #fff;
+    background: $ob-dkgray;
+    .padding-20-10 {
+        box-sizing: border-box;
+        padding: 15px 20px 10px 20px;
+    }
+    .subPrice {
+        font-family: $bebas;
+        font-size: 1.2em;
+    }
+
+    
+    .shopPayButton {
+        width: 100%;
+        text-align: center;
+    }
+
+    .checkoutLink {
+        background-color: $ob-ltltgray;
+        color: #000;
+        text-decoration: none;
+        padding: 9px 8px 8px;
+        border-radius: 2px;
+        display: block;
+        margin-bottom: 10px;
+        transition: background-color .3s ease;
+        font-family: $bebas;
+        font-size: 1.3em;
+        line-height: 1.3;
+        height: 48px;
+    }
+    .checkoutLink:hover {
+        background-color: #fff;
+    }
+    shop-pay-button {
+        width: 100%;
+        height: 3rem;
+        display: table;
+    }
+}
+
+.emptyCart {
+    padding: 74px 20px 20px;
+    button, a:link, a:active, a:visited {
+        background-color: $ob-ltltgray;
+        color: #000;
+        text-decoration: none;
+        padding: 9px 8px 8px;
+        border-radius: 2px;
+        display: block;
+        margin-bottom: 10px;
+        transition: background-color .3s ease;
+        font-family: $bebas;
+        font-size: 1.3em;
+        line-height: 1.3;
+        //height: 48px;
+        border: none;
+        box-sizing: border-box;
+        width: 100%;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+    button:hover, a:hover {
+        background-color: $ob-blue;
+        background-color: #fff;
+    }
+}
+
+.whiteBack {
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.cartIndividual {
+    margin-bottom: 5px;
+}
+
+.iterationContainer {
+    margin-top: 10px;
+    @media screen and (min-width: $screen-sm) {
+        margin-top: 0;
+    }
+}
+
+.summary-heading {
+    flex: 0 0 275px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    @media screen and (min-width: $screen-md) {
+        margin-left: 10px;
+    }
+}
+
+.checkoutButtonNew {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    font-family: $bebas;
+    background-color: $ob-dkgray;
+    text-decoration: none;
+    color: #fff;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    transition: all .3s ease;
+}
+.checkoutButtonNew:hover {
+    color: #fff;
+    background-color: $ob-blue;
+}
+

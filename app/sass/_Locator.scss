@@ -1,0 +1,96 @@
+
+
+.retailers {
+    position: relative;
+    .locOverlay {
+        /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#f7f7f7+0,f7f7f7+100&0+0,1+100 */
+        background: linear-gradient(to bottom,  rgba(247,247,247,0) 0%,rgba(247,247,247,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        height: 150px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+    a,
+    .lcly-dealer {
+        transition: background 0.4s ease;
+        text-decoration: none;
+    }
+    padding: 80px 0 120px;
+    background: url(../../public/img/obrien-retailers-map.jpg) center center no-repeat;
+    .inside-xl {
+        position: relative;
+        z-index: 100;
+    }
+    h2 {
+        position: relative;
+        text-align: center;
+        padding-bottom: 10px;
+        margin-bottom: 40px;
+        margin-top: 0;
+    }
+    h2::after {
+        content: '';
+        height: 4px;
+        width: 16%;
+        margin: 0 42%;
+        position: absolute;
+        background: $ob-blue;
+        left: 0;
+        bottom: 0;
+    }
+    .upc-contain {
+        background: #fff;
+        box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.05);
+        padding: 10px;
+        margin: 30px 0;
+        border-radius: 10px;
+        > div {
+            padding: 10px;
+        }
+        .upc-button {
+            text-align: center;
+            a {
+                display: inline-block;
+                font-weight: 700;
+                padding: 10px 15px;
+            }
+            a:link,
+            a:active,
+            a:visited {
+                background: #f9f9f9;
+            }
+            a:hover {
+                background: #eee;
+                text-decoration: none;
+            }
+        }
+        .flex-vertical {
+            height: 100%;
+            position: relative;
+            padding-top: 42px;
+            .over-h3 {
+                position: absolute;
+                top: 0;
+                width: 100%;
+                font-size: 18px;
+                //line-height: 1.112 !important;
+                margin-bottom: 10px;
+                h3 {
+                    position: relative;
+                    display: inline-block;
+                    padding-bottom: 10px;
+                }
+                h3::after {
+                    content: '';
+                    position: absolute;
+                    width: 60%;
+                    margin: 0 20%;
+                    background: $ob-blue;
+                    height: 4px;
+                    bottom: 0;
+                    left: 0;
+                }
+            }
+        }
+    }
+}

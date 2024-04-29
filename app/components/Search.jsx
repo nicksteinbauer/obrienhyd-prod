@@ -1,6 +1,7 @@
-import {Link, Form, useParams, useFetcher, useFetchers} from '@remix-run/react';
+import {Link, Form, useParams, useFetcher} from '@remix-run/react';
 import {Image, Money, Pagination} from '@shopify/hydrogen';
 import React, {useRef, useEffect} from 'react';
+import {applyTrackingParams} from '~/lib/search';
 
 export const NO_PREDICTIVE_SEARCH_RESULTS = [
   {type: 'queries', items: []},
@@ -52,9 +53,11 @@ export function SearchForm({searchTerm}) {
 }
 
 /**
- * @param {Pick<FetchSearchResultsReturn['searchResults'], 'results'>}
+ * @param {Pick<FetchSearchResultsReturn['searchResults'], 'results'> & {
+ *   searchTerm: string;
+ * }}
  */
-export function SearchResults({results}) {
+export function SearchResults({results, searchTerm}) {
   if (!results) {
     return null;
   }
@@ -78,6 +81,7 @@ export function SearchResults({results}) {
               <SearchResultsProductsGrid
                 key="products"
                 products={productResults}
+                searchTerm={searchTerm}
               />
             ) : null;
           }
@@ -99,21 +103,43 @@ export function SearchResults({results}) {
 }
 
 /**
- * @param {Pick<SearchQuery, 'products'>}
+ * @param {Pick<SearchQuery, 'products'> & {searchTerm: string}}
  */
-function SearchResultsProductsGrid({products}) {
+function SearchResultsProductsGrid({products, searchTerm}) {
   return (
     <div className="search-result">
       <h2>Products</h2>
       <Pagination connection={products}>
         {({nodes, isLoading, NextLink, PreviousLink}) => {
-          const itemsMarkup = nodes.map((product) => (
-            <div className="search-results-item" key={product.id}>
-              <Link prefetch="intent" to={`/products/${product.handle}`}>
-                <span>{product.title}</span>
-              </Link>
-            </div>
-          ));
+          const ItemsMarkup = nodes.map((product) => {
+            const trackingParams = applyTrackingParams(
+              product,
+              `q=${encodeURIComponent(searchTerm)}`,
+            );
+
+            return (
+              <div className="search-results-item" key={product.id}>
+                <Link
+                  prefetch="intent"
+                  to={`/products/${product.handle}${trackingParams}`}
+                >
+                  {product.variants.nodes[0].image && (
+                    <Image
+                      data={product.variants.nodes[0].image}
+                      alt={product.title}
+                      width={50}
+                    />
+                  )}
+                  <div>
+                    <p>{product.title}</p>
+                    <small>
+                      <Money data={product.variants.nodes[0].price} />
+                    </small>
+                  </div>
+                </Link>
+              </div>
+            );
+          });
           return (
             <div>
               <div>
@@ -122,7 +148,7 @@ function SearchResultsProductsGrid({products}) {
                 </PreviousLink>
               </div>
               <div>
-                {itemsMarkup}
+                {ItemsMarkup}
                 <br />
               </div>
               <div>
@@ -186,29 +212,31 @@ export function NoSearchResults() {
 }
 
 /**
- *  Search form component that posts search requests to the `/search` route
+ *  Search form component that sends search requests to the `/search` route
  * @param {SearchFromProps}
  */
 export function PredictiveSearchForm({
   action,
   children,
   className = 'predictive-search-form',
-  method = 'POST',
   ...props
 }) {
   const params = useParams();
-  const fetcher = useFetcher();
+  const fetcher = useFetcher({
+    key: 'search',
+  });
   const inputRef = useRef(null);
 
   function fetchResults(event) {
     const searchAction = action ?? '/api/predictive-search';
+    const newSearchTerm = event.target.value || '';
     const localizedAction = params.locale
       ? `/${params.locale}${searchAction}`
       : searchAction;
-    const newSearchTerm = event.target.value || '';
+
     fetcher.submit(
       {q: newSearchTerm, limit: '6'},
-      {method, action: localizedAction},
+      {method: 'GET', action: localizedAction},
     );
   }
 
@@ -237,7 +265,7 @@ export function PredictiveSearchForm({
 }
 
 export function PredictiveSearchResults() {
-  const {results, totalResults, searchInputRef, searchTerm} =
+  const {results, totalResults, searchInputRef, searchTerm, state} =
     usePredictiveSearch();
 
   function goToSearchResult(event) {
@@ -248,9 +276,14 @@ export function PredictiveSearchResults() {
     window.location.href = event.currentTarget.href;
   }
 
+  if (state === 'loading') {
+    return <div>Loading...</div>;
+  }
+
   if (!totalResults) {
     return <NoPredictiveSearchResults searchTerm={searchTerm} />;
   }
+
   return (
     <div className="predictive-search-results">
       <div>
@@ -264,7 +297,6 @@ export function PredictiveSearchResults() {
           />
         ))}
       </div>
-      {/* view all results /search?q=term */}
       {searchTerm.current && (
         <Link onClick={goToSearchResult} to={`/search?q=${searchTerm.current}`}>
           <p>
@@ -357,10 +389,9 @@ function SearchResultItem({goToSearchResult, item}) {
 }
 
 function usePredictiveSearch() {
-  const fetchers = useFetchers();
+  const searchFetcher = useFetcher({key: 'search'});
   const searchTerm = useRef('');
   const searchInputRef = useRef(null);
-  const searchFetcher = fetchers.find((fetcher) => fetcher.data?.searchResults);
 
   if (searchFetcher?.state === 'loading') {
     searchTerm.current = searchFetcher.formData?.get('q') || '';
@@ -377,7 +408,7 @@ function usePredictiveSearch() {
     searchInputRef.current = document.querySelector('input[type="search"]');
   }, []);
 
-  return {...search, searchInputRef, searchTerm};
+  return {...search, searchInputRef, searchTerm, state: searchFetcher.state};
 }
 
 /**
@@ -453,7 +484,6 @@ function pluralToSingularSearchType(type) {
 /**
  * @typedef {{
  *   action?: FormProps['action'];
- *   method?: FormProps['method'];
  *   className?: string;
  *   children: (passedProps: ChildrenRenderProps) => React.ReactNode;
  *   [key: string]: unknown;
@@ -472,12 +502,7 @@ function pluralToSingularSearchType(type) {
  *   item: NormalizedPredictiveSearchResultItem;
  * }} SearchResultItemProps
  */
-/**
- * @typedef {NormalizedPredictiveSearch & {
- *   searchInputRef: React.MutableRefObject<HTMLInputElement | null>;
- *   searchTerm: React.MutableRefObject<string>;
- * }} UseSearchReturn
- */
+/** @typedef {Class<useFetcher>['state']>} UseSearchReturn */
 
 /** @typedef {import('@remix-run/react').FormProps} FormProps */
 /** @typedef {import('storefrontapi.generated').PredictiveProductFragment} PredictiveProductFragment */

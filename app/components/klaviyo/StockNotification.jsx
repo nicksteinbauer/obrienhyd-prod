@@ -5,7 +5,7 @@ import {CustomInput} from './CustomInput';
 import generalConfig from '../../../general.config';
 import {ValidateEmail} from './ValidateEmail';
 
-export default function StockNotification({selectedVariant}) {
+function StockNotification({selectedVariant}) {
   const [email, setEmail] = useState('');
 
   const [formSending, setFormSending] = useState(false);
@@ -125,3 +125,4 @@ export default function StockNotification({selectedVariant}) {
     </div>
   );
 }
+export default StockNotification;

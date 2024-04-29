@@ -1,0 +1,25 @@
+.CookieConsent {
+    position: fixed;
+    z-index: 999999 !important;
+    bottom: 80px !important;
+    left: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+    color: $ob-gray;
+    width: 300px;
+    @media screen and (min-width: $screen-md) {
+        width: 500px;
+    }
+    h4 {
+        margin-top: 0;
+        padding-top: 0;
+    }
+    button {
+        border: 1px solid #000;
+        border-radius: 12px !important;
+        padding: 6px 12px !important;
+    }
+}
