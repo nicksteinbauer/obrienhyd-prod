@@ -1,4 +1,4 @@
-function SearchLogo() {
+export default function SearchLogo() {
   return (
     <>
       <svg
@@ -17,5 +17,3 @@ function SearchLogo() {
     </>
   );
 }
-
-export default SearchLogo;
