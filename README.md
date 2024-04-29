@@ -61,3 +61,4 @@ Run [`npx shopify hydrogen link`](https://shopify.dev/docs/custom-storefronts/hy
 Alternatly, the values of the required environment varaibles "PUBLIC_CUSTOMER_ACCOUNT_API_CLIENT_ID" and "PUBLIC_CUSTOMER_ACCOUNT_API_URL" can be found in customer account api settings in the Hydrogen admin channel.
 
 🗒️ Note that mock.shop doesn't supply these variables automatically.
+# obrienhyd-prod
