@@ -35,6 +35,7 @@ export default async function handleRequest(
       'http://maps.gstatic.com/',
       'https://maxcdn.bootstrapcdn.com/',
       'https://assets.gorgias.chat/',
+      'http://maxcdn.bootstrapcdn.com/',
       'data:',
     ],
     connectSrc: [
@@ -85,7 +86,13 @@ export default async function handleRequest(
       'https://www.gstatic.com/',
       'https://cdn.amplitude.com/',
       'https://cdn.storelocatorwidgets.com/',
+      'http://cdn.storelocatorwidgets.com/',
+      'https://ajax.googleapis.com/',
+      'http://maps.googleapis.com/',
+      'http://ajax.googleapis.com/',
+      'http://loc.storelocatorwidgets.com/',
     ],
+    scriptSrcAttr: ["'self'", "'unsafe-inline'"],
     imgSrc: [
       "'self'",
       'data:',
