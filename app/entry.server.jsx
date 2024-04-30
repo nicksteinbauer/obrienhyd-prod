@@ -81,6 +81,7 @@ export default async function handleRequest(
       'https://polyfill.io/',
       'http://localhost:3100/',
       'https://www.google.com/',
+      'https://cdn.shopify.com/',
     ],
     imgSrc: [
       "'self'",
