@@ -39,15 +39,16 @@ export function SearchForm({searchTerm}) {
 
   return (
     <Form method="get">
-      <input
-        defaultValue={searchTerm}
-        name="q"
-        placeholder="Search…"
-        ref={inputRef}
-        type="search"
-      />
-      &nbsp;
-      <button type="submit">Search</button>
+      <div className="always-flex">
+        <input
+          defaultValue={searchTerm}
+          name="q"
+          placeholder="Search…"
+          ref={inputRef}
+          type="search"
+        />
+        <button type="submit">Search</button>
+      </div>
     </Form>
   );
 }
@@ -63,7 +64,7 @@ export function SearchResults({results, searchTerm}) {
   }
   const keys = Object.keys(results);
   return (
-    <div>
+    <div className="flex-md space-around">
       {results &&
         keys.map((type) => {
           const resourceResults = results[type];
@@ -122,6 +123,7 @@ function SearchResultsProductsGrid({products, searchTerm}) {
                 <Link
                   prefetch="intent"
                   to={`/products/${product.handle}${trackingParams}`}
+                  reloadDocument
                 >
                   {product.variants.nodes[0].image && (
                     <Image
@@ -143,7 +145,7 @@ function SearchResultsProductsGrid({products, searchTerm}) {
           return (
             <div>
               <div>
-                <PreviousLink>
+                <PreviousLink className="nextPrev">
                   {isLoading ? 'Loading...' : <span>↑ Load previous</span>}
                 </PreviousLink>
               </div>
@@ -152,7 +154,7 @@ function SearchResultsProductsGrid({products, searchTerm}) {
                 <br />
               </div>
               <div>
-                <NextLink>
+                <NextLink className="nextPrev">
                   {isLoading ? 'Loading...' : <span>Load more ↓</span>}
                 </NextLink>
               </div>

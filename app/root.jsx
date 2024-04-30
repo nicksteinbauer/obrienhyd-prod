@@ -126,12 +126,15 @@ export default function App() {
         <ScrollRestoration nonce={nonce} />
         <Scripts nonce={nonce} />
         <LiveReload nonce={nonce} />
-        <script
+        <Scripts
           id="gorgias-chat-widget-install-v3"
           src="https://config.gorgias.chat/bundle-loader/01HKTCXXVCJSJGNZNH55W29XD4"
-        >
-          {' '}
-        </script>
+        />
+        <Scripts
+          src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+          async
+          defer
+        />
       </body>
     </html>
   );

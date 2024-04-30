@@ -1,5 +1,8 @@
 import {useState} from 'react';
 import Facebook from '../logos/Facebook';
+import Instagram from '../logos/Instagram';
+import YouTube from '../logos/YouTube';
+import Vimeo from '../logos/Vimeo';
 import jsonp from 'jsonp';
 
 function AboveFooter() {
@@ -28,16 +31,16 @@ function AboveFooter() {
                     <Facebook />
                   </a>
                   <a href="https://www.instagram.com/obrienwatersports/">
-                    <Facebook />
+                    <Instagram />
                   </a>
                   <a
                     className="flex-vertical"
                     href="https://www.youtube.com/user/obrienh2osports"
                   >
-                    <Facebook />
+                    <YouTube />
                   </a>
                   <a href="https://vimeo.com/obrienwatersports">
-                    <Facebook />
+                    <Vimeo />
                   </a>
                 </div>
               </div>
@@ -78,6 +81,7 @@ function MailchimpForm() {
           type="email"
           name="EMAIL"
           className="required email"
+          placeholder="Email"
           required=""
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -90,6 +94,7 @@ function MailchimpForm() {
           name="FNAME"
           className="text"
           id="mce-FNAME"
+          placeholder="First Name"
           value={fname}
           onChange={(e) => setFname(e.target.value)}
         />
@@ -101,6 +106,7 @@ function MailchimpForm() {
           name="LNAME"
           className="text"
           id="mce-LNAME"
+          placeholder="Last Name"
           value={lname}
           onChange={(e) => setLname(e.target.value)}
         />
@@ -112,7 +118,9 @@ function MailchimpForm() {
           id="mc-embedded-subscribe"
           className="button"
           value="Subscribe"
-        />
+        >
+          Submit
+        </button>
       </div>
     </form>
   );

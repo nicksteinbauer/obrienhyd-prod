@@ -58,17 +58,23 @@ export default function SearchPage() {
   const {searchTerm, searchResults} = useLoaderData();
 
   return (
-    <div className="search">
-      <h1>Search</h1>
-      <SearchForm searchTerm={searchTerm} />
-      {!searchTerm || !searchResults.totalResults ? (
-        <NoSearchResults />
-      ) : (
-        <SearchResults
-          results={searchResults.results}
-          searchTerm={searchTerm}
-        />
-      )}
+    <div className="collectionPage actualPage">
+      <div className="theRest">
+        <div className="inside-lg">
+          <header className="searchForm">
+            <h1>Search</h1>
+            <SearchForm searchTerm={searchTerm} />
+          </header>
+          {!searchTerm || !searchResults.totalResults ? (
+            <NoSearchResults />
+          ) : (
+            <SearchResults
+              results={searchResults.results}
+              searchTerm={searchTerm}
+            />
+          )}
+        </div>
+      </div>
     </div>
   );
 }

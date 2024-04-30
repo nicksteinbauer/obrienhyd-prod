@@ -1,4 +1,4 @@
-// import AboveFooter from './AboveFooter';
+import AboveFooter from './AboveFooter';
 import WhiteStackedLogo from '../logos/WhiteStackedLogo.jsx';
 
 import {NavLink} from '@remix-run/react';
@@ -6,9 +6,9 @@ import {NavLink} from '@remix-run/react';
 export default function ObrienFooter() {
   return (
     <>
-      {/* <div id="subfooter">
+      <div id="subfooter">
         <AboveFooter />
-      </div> */}
+      </div>
       <footer id="footer">
         <div className="flex-md inside-xl">
           <div className="footCol flex-vertical">

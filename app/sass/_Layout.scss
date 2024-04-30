@@ -16,6 +16,7 @@
 #mainContent {
     background-color: $ob-lightest;
     min-height: 700px;
+    padding-bottom: 20px;
 }
 
 header.notPage {
@@ -232,14 +233,19 @@ header.notPage {
         padding: 6px;
         border-radius: 4px;
     }
-    button.btn {
+    button {
         border: 2px solid $ob-blue;
         border-radius: 4px;
         transition: all .3s ease;
-    }
-    button.btn:hover {
-        color: #fff;
         background-color: $ob-blue;
+        color: #fff;
+    }
+    button:hover {
+        
+        background-color: $ob-btblue;
+    }
+    form {
+        max-width: none;
     }
     .social {
         a {
@@ -251,11 +257,9 @@ header.notPage {
         a:hover {
             background-color: #ccc;
         }
-        img {
+        img, svg {
             padding: 6px;
             width: 60px;
-            
-            
         }
     }
 }
@@ -350,3 +354,4 @@ ul.cartList {
 #chat-button {
     bottom: 6px !important;
 }
+

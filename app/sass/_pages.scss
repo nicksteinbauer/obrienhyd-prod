@@ -263,3 +263,43 @@ table.sizing.product-chart {
         }
     }
 }
+
+.search-result {
+    h2 {
+        margin-bottom: 20px;
+    }
+    margin-bottom: 0;
+    .search-results-item {
+        margin-bottom: 20px;
+    }
+    p {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.searchForm {
+    form {
+        margin-left: auto;
+        margin-right: auto;
+        .always-flex {
+            gap: 5px;
+            input {
+                flex: 1;
+                margin: 0;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+            }
+            button {
+                flex: 0 0 100px;
+                border: 1px solid #ccc;
+            }
+        }
+    }
+}
+
+#contact-form {
+    form {
+        max-width: none;
+    }
+}
