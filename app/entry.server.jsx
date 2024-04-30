@@ -34,6 +34,7 @@ export default async function handleRequest(
       'http://maps.gstatic.com/',
       'http://maps.gstatic.com/',
       'https://maxcdn.bootstrapcdn.com/',
+      'https://assets.gorgias.chat/',
       'data:',
     ],
     connectSrc: [
@@ -53,6 +54,7 @@ export default async function handleRequest(
     ],
     scriptSrc: [
       "'self'",
+      "'unsafe-inline'",
       'https://config.gorgias.chat/bundle-loader/01HKTCXXVCJSJGNZNH55W29XD4',
       'http://maps.googleapis.com/',
       'http://cdn.storelocatorwidgets.com/',
@@ -69,6 +71,15 @@ export default async function handleRequest(
       'https://www.google.com/',
       'https://www.gstatic.com/',
       'https://f.vimeocdn.com/',
+      'https://www.google.com/',
+    ],
+    scriptSrcElem: [
+      "'self'",
+      "'unsafe-inline'",
+      'https://config.gorgias.chat/',
+      'https://assets.gorgias.chat/',
+      'https://polyfill.io/',
+      'http://localhost:3100/',
       'https://www.google.com/',
     ],
     imgSrc: [
