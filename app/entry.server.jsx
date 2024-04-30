@@ -82,6 +82,8 @@ export default async function handleRequest(
       'http://localhost:3100/',
       'https://www.google.com/',
       'https://cdn.shopify.com/',
+      'https://www.gstatic.com/',
+      'https://cdn.amplitude.com/',
     ],
     imgSrc: [
       "'self'",
