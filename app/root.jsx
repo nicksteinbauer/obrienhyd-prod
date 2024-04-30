@@ -130,11 +130,6 @@ export default function App() {
           id="gorgias-chat-widget-install-v3"
           src="https://config.gorgias.chat/bundle-loader/01HKTCXXVCJSJGNZNH55W29XD4"
         />
-        <Scripts
-          src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-          async
-          defer
-        />
       </body>
     </html>
   );
