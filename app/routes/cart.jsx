@@ -4,7 +4,6 @@ import {CartForm} from '@shopify/hydrogen';
 import {json} from '@shopify/remix-oxygen';
 import {CartMain} from '~/components/Cart';
 import {useRootLoaderData} from '~/root';
-import MetaPixelPageView from '~/components/metaPixel/MetaPixelPageView';
 
 /**
  * @type {MetaFunction}
@@ -107,7 +106,6 @@ export default function Cart() {
           </Await>
         </Suspense>
       </section>
-      <MetaPixelPageView />
     </div>
   );
 }

@@ -3,7 +3,6 @@ import {useLoaderData} from '@remix-run/react';
 import {getPaginationVariables} from '@shopify/hydrogen';
 
 import {SearchForm, SearchResults, NoSearchResults} from '~/components/Search';
-import MetaPixelSearch from '~/components/metaPixel/MetaPixelSearch';
 
 /**
  * @type {MetaFunction}
@@ -70,7 +69,6 @@ export default function SearchPage() {
           searchTerm={searchTerm}
         />
       )}
-      <MetaPixelSearch />
     </div>
   );
 }

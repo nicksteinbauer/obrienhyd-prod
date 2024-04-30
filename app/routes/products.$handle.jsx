@@ -22,7 +22,6 @@ import VideoContainer from '~/components/video/VideoContainer.jsx';
 import Locator from '~/components/locator/Locator';
 import StockNotification from '~/components/klaviyo/StockNotification';
 import {Link as ScrollLink} from 'react-scroll';
-import MetaPixelProduct from '~/components/metaPixel/MetaPixelProduct';
 
 /**
  * @type {MetaFunction<typeof loader>}
@@ -286,7 +285,6 @@ export default function Product() {
       <Suspense>
         <Locator />
       </Suspense>
-      <MetaPixelProduct />
     </>
   );
 }

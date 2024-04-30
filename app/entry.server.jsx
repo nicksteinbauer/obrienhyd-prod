@@ -33,6 +33,7 @@ export default async function handleRequest(
       'http://maps.gstatic.com/',
       'http://maps.gstatic.com/',
       'https://maxcdn.bootstrapcdn.com/',
+      'data:',
     ],
     connectSrc: [
       "'self'",
@@ -45,6 +46,7 @@ export default async function handleRequest(
       'https://www.youtube.com/',
       'https://player.vimeo.com',
     ],
+    //imgSrc: ["'self'", 'data:'],
     styleSrc: [
       "'self'",
       "'unsafe-inline'",

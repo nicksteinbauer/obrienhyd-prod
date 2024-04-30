@@ -13,9 +13,11 @@
  *   id?: string;
  * }}
  */
+
+import SmallX from './obrien/navigation/SmallX';
 export function Aside({children, heading, id = 'aside'}) {
   return (
-    <div aria-modal className="overlay" id={id} role="dialog">
+    <div aria-modal className={`overlay ${id}`} id={id} role="dialog">
       <button
         className="close-outside"
         onClick={() => {
@@ -38,7 +40,7 @@ function CloseAside() {
   return (
     /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
     <a className="close" href="#" onChange={() => history.go(-1)}>
-      &times;
+      <SmallX />
     </a>
   );
 }

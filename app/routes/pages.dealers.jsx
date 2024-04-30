@@ -1,6 +1,5 @@
 import {json} from '@shopify/remix-oxygen';
 import {useLoaderData} from '@remix-run/react';
-import MetaPixelPageView from '~/components/metaPixel/MetaPixelPageView';
 import DealerList from '../components/obrien/DealerList';
 
 /**
@@ -50,7 +49,6 @@ export default function Page() {
           <DealerList />
         </div>
       </div>
-      <MetaPixelPageView />
     </div>
   );
 }

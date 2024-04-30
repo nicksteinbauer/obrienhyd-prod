@@ -1,9 +1,11 @@
-import {NavLink} from '@remix-run/react';
+import {Await, NavLink} from '@remix-run/react';
+import {Suspense} from 'react';
 
 import Logo from './obrien/Logo';
 
 import DesktopNav from './obrien/navigation/DesktopNav';
 import SearchLogo from './logos/SearchLogo.jsx';
+import BagLogo from './Logos/BagLogo';
 
 import HamNew from './obrien/navigation/HamNew';
 
@@ -24,14 +26,7 @@ export function Header({header, isLoggedIn, cart}) {
             Direct Web Sales Available for US Residents in the lower 48 States
           </span>
         </div>
-        <NavLink
-          prefetch="intent"
-          to="/cart"
-          end
-          className="cartIcon flex-vertical"
-        >
-          <CartBadge />
-        </NavLink>
+        <CartToggle cart={cart} />
       </div>
       <div className="navigate lowerHeader justify always-flex">
         <Logo />
@@ -56,36 +51,34 @@ export function Header({header, isLoggedIn, cart}) {
   );
 }
 
-function IconBag() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 20 20"
-      fill="currentColor"
-      className="iconBag"
-    >
-      <title>Bag</title>
-      <path
-        fillRule="evenodd"
-        d="M8.125 5a1.875 1.875 0 0 1 3.75 0v.375h-3.75V5Zm-1.25.375V5a3.125 3.125 0 1 1 6.25 0v.375h3.5V15A2.625 2.625 0 0 1 14 17.625H6A2.625 2.625 0 0 1 3.375 15V5.375h3.5ZM4.625 15V6.625h10.75V15c0 .76-.616 1.375-1.375 1.375H6c-.76 0-1.375-.616-1.375-1.375Z"
-      />
-    </svg>
-  );
-}
+// function IconBag() {
+//   return (
+//     <svg
+//       xmlns="http://www.w3.org/2000/svg"
+//       viewBox="0 0 20 20"
+//       fill="currentColor"
+//       className="iconBag"
+//     >
+//       <title>Bag</title>
+//       <path
+//         fillRule="evenodd"
+//         d="M8.125 5a1.875 1.875 0 0 1 3.75 0v.375h-3.75V5Zm-1.25.375V5a3.125 3.125 0 1 1 6.25 0v.375h3.5V15A2.625 2.625 0 0 1 14 17.625H6A2.625 2.625 0 0 1 3.375 15V5.375h3.5ZM4.625 15V6.625h10.75V15c0 .76-.616 1.375-1.375 1.375H6c-.76 0-1.375-.616-1.375-1.375Z"
+//       />
+//     </svg>
+//   );
+// }
+// function CartBadge() {
+//   const {totalQuantity} = useCart();
 
-/**
- * @param {{count: number}}
- */
-function CartBadge({count}) {
-  return (
-    <div className="cartIcon flex-vertical">
-      <IconBag />
-      <span className="count flex-vertical">
-        <span>{count}</span>
-      </span>
-    </div>
-  );
-}
+//   if (totalQuantity < 1) {
+//     return null;
+//   }
+//   return (
+//     <div className={`tbd flex-vertical`}>
+//       <span>{totalQuantity}</span>
+//     </div>
+//   );
+// }
 
 // function SearchAside() {
 //   return (
@@ -121,3 +114,35 @@ function CartBadge({count}) {
 //     </aside>
 //   );
 // }
+
+/**
+ * @param {{count: number}}
+ */
+function CartBadge({count}) {
+  return (
+    <div className="cartIcon flex-vertical">
+      <NavLink to="/cart" className="always-flex">
+        <BagLogo />
+        {/* <span className="count flex-vertical">
+          <span>{count}</span>
+        </span> */}
+      </NavLink>
+    </div>
+  );
+}
+
+/**
+ * @param {Pick<HeaderProps, 'cart'>}
+ */
+function CartToggle({cart}) {
+  return (
+    <Suspense fallback={<CartBadge count={0} />}>
+      <Await resolve={cart}>
+        {(cart) => {
+          if (!cart) return <CartBadge count={0} />;
+          return <CartBadge count={cart.totalQuantity || 0} />;
+        }}
+      </Await>
+    </Suspense>
+  );
+}

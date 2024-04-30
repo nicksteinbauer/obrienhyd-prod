@@ -8,7 +8,6 @@ import {
 } from '@shopify/hydrogen';
 import {useVariantUrl} from '~/lib/variants';
 import {BannerImageCollection} from '~/components/obrien/meta/BannerImageCollection';
-import MetaPixelPageView from '~/components/metaPixel/MetaPixelPageView';
 
 /**
  * @type {MetaFunction<typeof loader>}
@@ -81,7 +80,6 @@ export default function Collection() {
           )}
         </Pagination>
       </div>
-      <MetaPixelPageView />
     </div>
   );
 }

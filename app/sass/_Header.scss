@@ -221,3 +221,37 @@ button.cartIcon, a.cartIcon {
 .marginBottom {
     margin-bottom: 10px;
 }
+
+.cartIcon {
+    position: relative;
+    a {
+        position: relative;
+        color: #fff;
+        padding: 4px;
+        top: 2px;
+        .count {
+            background-color: $ob-orange;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: .8em;
+            position: relative;
+            left: -13px;
+            top: -4px;
+        }
+        
+    }
+    svg {
+        width: 32px;
+        height: 32px;
+        fill: #fff;
+        transition: fill .3s ease-in-out;
+    }
+    
+    
+}
+
+.overlay {
+    z-index: 10000000000;
+}

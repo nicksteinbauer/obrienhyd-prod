@@ -5,7 +5,7 @@ import SmallX from './SmallX';
 
 import {NavLink} from '@remix-run/react';
 
-import PinLogo from '~/components/logos/PinLogo.jsx';
+import PinLogo from '~/components/logos/Pinlogo.jsx';
 import NavWakesurfing from './NavWakesurfing';
 import NavWakeboarding from './NavWakeboarding';
 import NavMargaritaville from './NavMargaritaville';
