@@ -84,6 +84,7 @@ export default async function handleRequest(
       'https://cdn.shopify.com/',
       'https://www.gstatic.com/',
       'https://cdn.amplitude.com/',
+      'https://cdn.storelocatorwidgets.com/',
     ],
     imgSrc: [
       "'self'",
