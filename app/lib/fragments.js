@@ -102,3 +102,44 @@ export const CART_QUERY_FRAGMENT = `#graphql
     }
   }
 `;
+export const MEDIA_FRAGMENT = `#graphql
+  fragment Media on Media {
+    mediaContentType
+    alt
+    previewImage {
+      url
+    }
+    ... on MediaImage {
+      __typename
+      id
+      image {
+        url
+        width
+        height
+        altText
+      }
+    }
+    ... on Video {
+      __typename
+      id
+      sources {
+        mimeType
+        url
+      }
+    }
+    ... on Model3d {
+      __typename
+      id
+      sources {
+        mimeType
+        url
+      }
+    }
+    ... on ExternalVideo {
+      __typename
+      id
+      embedUrl
+      host
+    }
+  }
+`;

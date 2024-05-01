@@ -45,6 +45,7 @@ export default async function handleRequest(
       'https://log.storelocatorwidgets.com',
       'https://us-east1-898b.gorgias.chat/',
       'wss://us-east1-898b.gorgias.chat/',
+      'https://api2.amplitude.com/',
     ],
     frameSrc: [
       "'self'",
@@ -91,6 +92,7 @@ export default async function handleRequest(
       'http://maps.googleapis.com/',
       'http://ajax.googleapis.com/',
       'http://loc.storelocatorwidgets.com/',
+      'https://obrien.us6.list-manage.com/',
     ],
     scriptSrcAttr: ["'self'", "'unsafe-inline'"],
     imgSrc: [

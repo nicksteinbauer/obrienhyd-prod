@@ -1,19 +1,13 @@
 import {Component} from 'react';
-
 import * as emailjs from 'emailjs-com';
 import {Button, Form, Label, Input, FormGroup, FormFeedback} from 'reactstrap';
-
-//import { isEmail } from "validator";
-
-import Recaptcha from 'react-recaptcha';
+import {isEmail} from 'validator';
+import ReCAPTCHA from 'react-google-recaptcha';
 import Swal from 'sweetalert2';
 
 export default class RegistrationForm extends Component {
-  //@ts-ignore
   constructor(props) {
     super(props);
-    this.recaptchaLoaded = this.recaptchaLoaded.bind(this);
-    this.verifyCallback = this.verifyCallback.bind(this);
     this.state = this.getInitialState();
   }
 
@@ -36,21 +30,6 @@ export default class RegistrationForm extends Component {
     errors: {},
   });
 
-  recaptchaLoaded() {
-    console.log('Captcha successfully Loaded');
-  }
-
-  //@ts-ignore
-  verifyCallback(response) {
-    if (response) {
-      this.setState({
-        isVerified: true,
-      });
-      console.log(this.getInitialState);
-    }
-  }
-
-  //@ts-ignore
   handleChange = (e) => {
     this.setState({
       data: {
@@ -68,8 +47,8 @@ export default class RegistrationForm extends Component {
     const {data} = this.state;
     let errors = {};
 
-    //@ts-ignore
     if (data.name === '') errors.name = 'Name required';
+    if (!isEmail(data.email)) errors.email = 'Email must be valid';
     if (data.email === '') errors.email = 'Email required';
     if (data.phone === '') errors.phone = 'Phone required';
     if (data.product === '') errors.product = 'Product required';
@@ -80,21 +59,17 @@ export default class RegistrationForm extends Component {
   //@ts-ignore
   handleSubmit = (e) => {
     e.preventDefault();
-
     const {data} = this.state;
-
     const errors = this.validate();
 
     if (Object.keys(errors).length === 0 && this.state.isVerified) {
-      console.log(data);
-      //Call an api here
       emailjs.sendForm(
         'obrien_365',
         'obrien_product_registrat',
         e.target,
         'user_vOc0ylPHeC2nCdyLQJAiW',
       );
-      //Resetting the form
+
       this.setState(this.getInitialState());
       this.setState({
         isVerified: true,
@@ -106,8 +81,20 @@ export default class RegistrationForm extends Component {
       });
     } else {
       this.setState({errors});
-      //alert('Please verify that you are a human');
     }
+  };
+
+  handleRecaptchaChange = (response) => {
+    if (response) {
+      this.setState({
+        isVerified: true,
+      });
+    }
+  };
+
+  handleAsyncScriptOnLoad = () => {
+    console.log('reCAPTCHA script loaded successfully');
+    // You can perform additional actions here if needed
   };
 
   render() {
@@ -356,11 +343,10 @@ export default class RegistrationForm extends Component {
           </FormGroup>
 
           <FormGroup className="padding">
-            <Recaptcha
+            <ReCAPTCHA // Changed component name
               sitekey="6LcClc0ZAAAAAKoN2AsxwRRd4GMtD_yUG5AwXEhl"
-              render="explicit"
-              onloadCallback={this.recaptchaLoaded}
-              verifyCallback={this.verifyCallback}
+              onChange={this.handleRecaptchaChange}
+              asyncScriptOnLoad={this.handleAsyncScriptOnLoad} // Add asyncScriptOnLoad prop
             />
             <FormFeedback
               className={

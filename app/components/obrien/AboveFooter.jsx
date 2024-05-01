@@ -68,6 +68,9 @@ function MailchimpForm() {
       {param: 'c'},
       (_, {msg}) => {
         alert(msg);
+        setEmail('');
+        setFname('');
+        setLname('');
       },
     );
   };

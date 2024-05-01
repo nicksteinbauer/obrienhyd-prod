@@ -1,5 +1,6 @@
 import {json} from '@shopify/remix-oxygen';
 import {useLoaderData} from '@remix-run/react';
+import RegistrationForm from '~/components/forms/RegistrationForm';
 
 /**
  * @type {MetaFunction<typeof loader>}
@@ -36,16 +37,7 @@ export default function Page() {
             className="basicContent"
             dangerouslySetInnerHTML={{__html: page.body}}
           />
-          <iframe
-            title="O'Brien Catalog"
-            //style="width:100%; min-height: 900px;"
-            className="catalogIframe"
-            type="text/html"
-            scrolling="no"
-            frameBorder="0"
-            src="https://user-92916592834.cld.bz/2024-OB-AG-catalog-9-12"
-            allowFullScreen="allowFullScreen"
-          ></iframe>
+          <RegistrationForm />
         </div>
       </div>
     </div>
@@ -53,32 +45,18 @@ export default function Page() {
 }
 
 const PAGE_QUERY = `#graphql
-  query PageCatalog(
+  query PageRegistration(
     $language: LanguageCode,
     $country: CountryCode,
   )
   @inContext(language: $language, country: $country) {
-    page(handle: "catalog") {
+    page(handle: "registration") {
       id
       title
       body
       seo {
         description
         title
-      }
-      metafieldbanner: metafield(namespace: "custom", key: "banner") {
-        value
-        reference {
-          ... on MediaImage {
-            image {
-              url
-              width
-              height
-              id
-              altText
-            }
-          }
-        }
       }
     }
   }
