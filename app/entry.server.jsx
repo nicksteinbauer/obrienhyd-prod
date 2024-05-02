@@ -108,6 +108,7 @@ export default async function handleRequest(
       'https://cdn.shopify.com/',
       'http://maps.gstatic.com/',
       'https://www.google.com/',
+      'https://config.gorgias.io/',
     ],
     styleSrc: [
       "'self'",
