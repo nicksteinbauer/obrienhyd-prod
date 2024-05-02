@@ -46,6 +46,8 @@ export default async function handleRequest(
       'https://us-east1-898b.gorgias.chat/',
       'wss://us-east1-898b.gorgias.chat/',
       'https://api2.amplitude.com/',
+      'https://analytics.google.com/',
+      'https://stats.g.doubleclick.net/',
     ],
     frameSrc: [
       "'self'",
@@ -53,6 +55,7 @@ export default async function handleRequest(
       'https://player.vimeo.com',
       'https://www.google.com/',
       'https://user-92916592834.cld.bz',
+      'https://td.doubleclick.net/',
     ],
     scriptSrc: [
       "'self'",
@@ -94,6 +97,7 @@ export default async function handleRequest(
       'http://loc.storelocatorwidgets.com/',
       'https://obrien.us6.list-manage.com/',
       'https://www.googletagmanager.com/',
+      'https://googleads.g.doubleclick.net/',
     ],
     scriptSrcAttr: ["'self'", "'unsafe-inline'"],
     imgSrc: [
@@ -103,6 +107,7 @@ export default async function handleRequest(
       'http://localhost:3100/',
       'https://cdn.shopify.com/',
       'http://maps.gstatic.com/',
+      'https://www.google.com/',
     ],
     styleSrc: [
       "'self'",

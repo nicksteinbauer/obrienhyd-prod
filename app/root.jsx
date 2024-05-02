@@ -19,6 +19,16 @@ import appStyles from './styles/app.css?url';
 import {Layout} from '~/components/Layout';
 import CookieModule from './components/obrien/CookieModule';
 
+import ReactGA from 'react-ga4';
+ReactGA.initialize([
+  {
+    trackingId: 'G-LX25VH4JXM',
+  },
+  {
+    trackingId: 'AW-11157580141',
+  },
+]);
+
 /**
  * This is important to avoid re-fetching root queries on sub-navigations
  * @type {ShouldRevalidateFunction}
@@ -119,33 +129,10 @@ export default function App() {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
-        {/* Add Google Analytics Script */}
         <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=G-LX25VH4JXM`}
-        ></script>
-        <script nonce={nonce}>
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-LX25VH4JXM');
-          `}
-        </script>
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=AW-11157580141`}
-        ></script>
-        <script nonce={nonce}>
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'AW-11157580141');
-          `}
-        </script>
+          id="gorgias-chat-widget-install-v3"
+          src="https://config.gorgias.chat/bundle-loader/01HKTCXXVCJSJGNZNH55W29XD4"
+        />
         {/* ACSB Script */}
         <script nonce={nonce}>
           {`
@@ -194,10 +181,6 @@ export default function App() {
         <ScrollRestoration nonce={nonce} />
         <Scripts nonce={nonce} />
         <LiveReload nonce={nonce} />
-        <Scripts
-          id="gorgias-chat-widget-install-v3"
-          src="https://config.gorgias.chat/bundle-loader/01HKTCXXVCJSJGNZNH55W29XD4"
-        />
         <CookieModule />
       </body>
     </html>

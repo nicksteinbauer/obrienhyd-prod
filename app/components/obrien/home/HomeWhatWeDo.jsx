@@ -60,7 +60,6 @@ export default function HomeWhatWeDo({bestBanner}) {
           className="test"
           controls={false}
           autoPlay
-          muted
           loop
           playsInline
           sizes="(max-width: 1024px) 100vw, 2500px"
