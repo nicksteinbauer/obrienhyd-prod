@@ -18,8 +18,14 @@
         padding-top: 0;
     }
     button {
-        border: 1px solid #000;
+        border: 1px solid $ob-btblue;
         border-radius: 12px !important;
         padding: 6px 12px !important;
+        transition: background .3s ease;
+        background: $ob-blue;
+        color: #fff;
+    }
+    button:hover {
+        background: $ob-btblue;
     }
 }

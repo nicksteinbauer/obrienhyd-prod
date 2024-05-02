@@ -17,6 +17,7 @@ import favicon from '../public/favicon.svg';
 import resetStyles from './styles/reset.css?url';
 import appStyles from './styles/app.css?url';
 import {Layout} from '~/components/Layout';
+import CookieModule from './components/obrien/CookieModule';
 
 /**
  * This is important to avoid re-fetching root queries on sub-navigations
@@ -118,6 +119,73 @@ export default function App() {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
+        {/* Add Google Analytics Script */}
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=G-LX25VH4JXM`}
+        ></script>
+        <script nonce={nonce}>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-LX25VH4JXM');
+          `}
+        </script>
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=AW-11157580141`}
+        ></script>
+        <script nonce={nonce}>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'AW-11157580141');
+          `}
+        </script>
+        {/* ACSB Script */}
+        <script nonce={nonce}>
+          {`
+            (function(){
+              var s = document.createElement('script');
+              var h = document.querySelector('head') || document.body;
+              s.src = 'https://acsbapp.com/apps/app/dist/js/app.js';
+              s.async = true;
+              s.onload = function(){
+                acsbJS.init({
+                  statementLink : '',
+                  footerHtml : '',
+                  hideMobile : false,
+                  hideTrigger : false,
+                  disableBgProcess : false,
+                  language : 'en',
+                  position : 'left',
+                  leadColor : '#0276b2',
+                  triggerColor : '#0276b2',
+                  triggerRadius : '50%',
+                  triggerPositionX : 'left',
+                  triggerPositionY : 'bottom',
+                  triggerIcon : 'people',
+                  triggerSize : 'medium',
+                  triggerOffsetX : 20,
+                  triggerOffsetY : 13,
+                  mobile : {
+                    triggerSize : 'medium',
+                    triggerPositionX : 'left',
+                    triggerPositionY : 'bottom',
+                    triggerOffsetX : 20,
+                    triggerOffsetY : 13,
+                    triggerRadius : '50%'
+                  }
+                });
+              };
+              h.appendChild(s);
+            })();
+          `}
+        </script>
       </head>
       <body>
         <Layout {...data}>
@@ -130,6 +198,7 @@ export default function App() {
           id="gorgias-chat-widget-install-v3"
           src="https://config.gorgias.chat/bundle-loader/01HKTCXXVCJSJGNZNH55W29XD4"
         />
+        <CookieModule />
       </body>
     </html>
   );

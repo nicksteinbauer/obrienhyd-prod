@@ -5,7 +5,13 @@ import {useLoaderData} from '@remix-run/react';
  * @type {MetaFunction<typeof loader>}
  */
 export const meta = ({data}) => {
-  return [{title: `O'Brien Watersports | ${data?.page.title ?? ''}`}];
+  return [
+    {
+      title: `${
+        data?.page.seo.title ? data?.page.seo.title : data?.page.title
+      } | O'Brien Watersports`,
+    },
+  ];
 };
 
 /**

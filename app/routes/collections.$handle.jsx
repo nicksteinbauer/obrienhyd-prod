@@ -14,7 +14,13 @@ import {BannerImageCollection} from '~/components/obrien/meta/BannerImageCollect
  */
 export const meta = ({data}) => {
   return [
-    {title: `O'Brien Watersports | ${data?.collection.title ?? ''} Collection`},
+    {
+      title: `${
+        data?.collection.seo.title
+          ? data?.collection.seo.title
+          : data?.collection.title
+      } Collection | O'Brien Watersports`,
+    },
   ];
 };
 
@@ -199,6 +205,10 @@ const COLLECTION_QUERY = `#graphql
       handle
       title
       description
+      seo {
+        description
+        title
+      }
       image {
         id
         url

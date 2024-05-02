@@ -93,6 +93,7 @@ export default async function handleRequest(
       'http://ajax.googleapis.com/',
       'http://loc.storelocatorwidgets.com/',
       'https://obrien.us6.list-manage.com/',
+      'https://www.googletagmanager.com/',
     ],
     scriptSrcAttr: ["'self'", "'unsafe-inline'"],
     imgSrc: [

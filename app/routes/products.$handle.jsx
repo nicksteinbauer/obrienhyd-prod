@@ -27,7 +27,13 @@ import {Link as ScrollLink} from 'react-scroll';
  * @type {MetaFunction<typeof loader>}
  */
 export const meta = ({data, location}) => {
-  return [{title: `O'Brien Watersports | ${data?.product.title ?? ''}`}];
+  return [
+    {
+      title: `${
+        data?.product.seo.title ? data?.product.seo.title : data?.product.title
+      } | O'Brien Watersports`,
+    },
+  ];
 };
 
 /**

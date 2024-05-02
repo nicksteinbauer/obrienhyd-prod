@@ -45,8 +45,8 @@ const responsiveSettings = [
 /**
  * @type {MetaFunction<typeof loader>}
  */
-export const meta = ({data}) => {
-  return [{title: `O'Brien Watersports | ${data?.page.title ?? ''}`}];
+export const meta = () => {
+  return [{title: `Wakeboards, Waterskis, SUP, Tubes | O'Brien Watersports`}];
 };
 
 /**

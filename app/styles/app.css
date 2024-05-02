@@ -3238,4 +3238,32 @@ aside .iterationContainer {
 .noPaddTop {
   padding-top: 0 !important; }
 
+.CookieConsent {
+  position: fixed;
+  z-index: 999999 !important;
+  bottom: 80px !important;
+  left: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  color: #374858;
+  width: 300px; }
+  @media screen and (min-width: 992px) {
+    .CookieConsent {
+      width: 500px; } }
+  .CookieConsent h4 {
+    margin-top: 0;
+    padding-top: 0; }
+  .CookieConsent button {
+    border: 1px solid #16a4fa;
+    border-radius: 12px !important;
+    padding: 6px 12px !important;
+    transition: background .3s ease;
+    background: #0276b2;
+    color: #fff; }
+  .CookieConsent button:hover {
+    background: #16a4fa; }
+
 /*# sourceMappingURL=app.css.map */

@@ -20,17 +20,23 @@ export default function Policies() {
   const {policies} = useLoaderData();
 
   return (
-    <div className="policies">
-      <h1>Policies</h1>
-      <div>
-        {policies.map((policy) => {
-          if (!policy) return null;
-          return (
-            <fieldset key={policy.id}>
-              <Link to={`/policies/${policy.handle}`}>{policy.title}</Link>
-            </fieldset>
-          );
-        })}
+    <div className="collectionPage actualPage policies">
+      <div className="theRest">
+        <div className="inside-lg">
+          <header>
+            <h1>Policies</h1>
+          </header>
+          <div>
+            {policies.map((policy) => {
+              if (!policy) return null;
+              return (
+                <fieldset key={policy.id}>
+                  <Link to={`/policies/${policy.handle}`}>{policy.title}</Link>
+                </fieldset>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );

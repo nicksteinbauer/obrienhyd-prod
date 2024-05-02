@@ -45,16 +45,24 @@ export default function Policy() {
   const {policy} = useLoaderData();
 
   return (
-    <div className="policy">
-      <br />
-      <br />
-      <div>
-        <Link to="/policies">← Back to Policies</Link>
+    <>
+      <div className="collectionPage actualPage policy">
+        <div className="theRest">
+          <div className="inside-lg">
+            <header>
+              <h1>{policy.title}</h1>
+              <div>
+                <Link to="/policies">← Back to Policies</Link>
+              </div>
+            </header>
+            <main
+              className="basicContent"
+              dangerouslySetInnerHTML={{__html: policy.body}}
+            />
+          </div>
+        </div>
       </div>
-      <br />
-      <h1>{policy.title}</h1>
-      <div dangerouslySetInnerHTML={{__html: policy.body}} />
-    </div>
+    </>
   );
 }
 
