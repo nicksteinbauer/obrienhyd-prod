@@ -48,6 +48,7 @@ export default async function handleRequest(
       'https://api2.amplitude.com/',
       'https://analytics.google.com/',
       'https://stats.g.doubleclick.net/',
+      'https://cdn.acsbapp.com/',
     ],
     frameSrc: [
       "'self'",
@@ -98,6 +99,7 @@ export default async function handleRequest(
       'https://obrien.us6.list-manage.com/',
       'https://www.googletagmanager.com/',
       'https://googleads.g.doubleclick.net/',
+      'https://acsbapp.com/',
     ],
     scriptSrcAttr: ["'self'", "'unsafe-inline'"],
     imgSrc: [

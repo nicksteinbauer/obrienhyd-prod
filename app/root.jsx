@@ -134,45 +134,45 @@ export default function App() {
           src="https://config.gorgias.chat/bundle-loader/01HKTCXXVCJSJGNZNH55W29XD4"
         />
         {/* ACSB Script */}
-        <script nonce={nonce}>
-          {`
-            (function(){
-              var s = document.createElement("script");
-              var h = document.querySelector("head") || document.body;
-              s.src = "https://acsbapp.com/apps/app/dist/js/app.js";
-              s.async = true;
-              s.onload = function(){
-                acsbJS.init({
-                  statementLink : "",
-                  footerHtml : "",
-                  hideMobile : false,
-                  hideTrigger : false,
-                  disableBgProcess : false,
-                  language : "en",
-                  position : "left",
-                  leadColor : "#0276b2",
-                  triggerColor : "#0276b2",
-                  triggerRadius : "50%",
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+          (function(){
+            var s = document.createElement("script");
+            var h = document.querySelector("head") || document.body;
+            s.src = "https://acsbapp.com/apps/app/dist/js/app.js";
+            s.async = true;
+            s.onload = function(){
+              acsbJS.init({
+                statementLink : "",
+                footerHtml : "",
+                hideMobile : false,
+                hideTrigger : false,
+                disableBgProcess : false,
+                language : "en",
+                position : "left",
+                leadColor : "#0276b2",
+                triggerColor : "#0276b2",
+                triggerRadius : "50%",
+                triggerPositionX : "left",
+                triggerPositionY : "bottom",
+                triggerIcon : "people",
+                triggerSize : "medium",
+                triggerOffsetX : 20,
+                triggerOffsetY : 13,
+                mobile : {
+                  triggerSize : "medium",
                   triggerPositionX : "left",
                   triggerPositionY : "bottom",
-                  triggerIcon : "people",
-                  triggerSize : "medium",
                   triggerOffsetX : 20,
                   triggerOffsetY : 13,
-                  mobile : {
-                    triggerSize : "medium",
-                    triggerPositionX : "left",
-                    triggerPositionY : "bottom",
-                    triggerOffsetX : 20,
-                    triggerOffsetY : 13,
-                    triggerRadius : "50%"
-                  }
-                });
-              };
-              h.appendChild(s);
-            })();
-          `}
-        </script>
+                  triggerRadius : "50%"
+                }
+              });
+            };
+            h.appendChild(s);
+          })();
+        `}} />
       </head>
       <body>
         <Layout {...data}>
