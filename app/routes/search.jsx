@@ -3,12 +3,17 @@ import {useLoaderData} from '@remix-run/react';
 import {getPaginationVariables} from '@shopify/hydrogen';
 
 import {SearchForm, SearchResults, NoSearchResults} from '~/components/Search';
+import PageViewViewContentSearchPixel from '~/components/metaPixel/PageViewViewContentSearchPixel';
 
 /**
  * @type {MetaFunction}
  */
-export const meta = () => {
-  return [{title: `O'Brien Watersports | Search`}];
+export const meta = ({data}) => {
+  return [
+    {
+      title: "Search | O'Brien Watersports",
+    },
+  ];
 };
 
 /**
@@ -58,24 +63,27 @@ export default function SearchPage() {
   const {searchTerm, searchResults} = useLoaderData();
 
   return (
-    <div className="collectionPage actualPage">
-      <div className="theRest">
-        <div className="inside-lg">
-          <header className="searchForm">
-            <h1>Search</h1>
-            <SearchForm searchTerm={searchTerm} />
-          </header>
-          {!searchTerm || !searchResults.totalResults ? (
-            <NoSearchResults />
-          ) : (
-            <SearchResults
-              results={searchResults.results}
-              searchTerm={searchTerm}
-            />
-          )}
+    <>
+      <PageViewViewContentSearchPixel />
+      <div className="collectionPage actualPage">
+        <div className="theRest">
+          <div className="inside-lg">
+            <header className="searchForm">
+              <h1>Search</h1>
+              <SearchForm searchTerm={searchTerm} />
+            </header>
+            {!searchTerm || !searchResults.totalResults ? (
+              <NoSearchResults />
+            ) : (
+              <SearchResults
+                results={searchResults.results}
+                searchTerm={searchTerm}
+              />
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

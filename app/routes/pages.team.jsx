@@ -3,6 +3,8 @@ import {useLoaderData} from '@remix-run/react';
 
 import {BannerImageCollection} from '~/components/obrien/meta/BannerImageCollection';
 import TeamList from '~/components/obrien/TeamList';
+
+import PageViewViewContentPixel from '~/components/metaPixel/PageViewViewContentPixel';
 /**
  * @type {MetaFunction<typeof loader>}
  */
@@ -37,21 +39,26 @@ export default function Page() {
     : null;
 
   return (
-    <div className="collectionPage">
-      {bannerImage !== null && <BannerImageCollection myImage={bannerImage} />}
-      <header className="notPage flex-vertical">
-        <h1>{page.title}</h1>
-      </header>
-      <div className="theRest">
-        <TeamList />
-        <div className="inside-xl">
-          <main
-            className="basicContent padd-vert-20"
-            dangerouslySetInnerHTML={{__html: page.body}}
-          />
+    <>
+      <PageViewViewContentPixel />
+      <div className="collectionPage">
+        {bannerImage !== null && (
+          <BannerImageCollection myImage={bannerImage} />
+        )}
+        <header className="notPage flex-vertical">
+          <h1>{page.title}</h1>
+        </header>
+        <div className="theRest">
+          <TeamList />
+          <div className="inside-xl">
+            <main
+              className="basicContent padd-vert-20"
+              dangerouslySetInnerHTML={{__html: page.body}}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

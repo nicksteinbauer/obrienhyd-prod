@@ -17,6 +17,7 @@ import 'react-slideshow-image/dist/styles.css';
 import HomeWhatWeDo from '~/components/obrien/home/HomeWhatWeDo';
 import HomeBestSellers from '~/components/obrien/home/HomeBestSellers';
 import HomeActivities from '~/components/obrien/home/HomeActivities';
+import PageViewViewContentPixel from '~/components/metaPixel/PageViewViewContentPixel';
 
 const responsiveSettings = [
   {
@@ -45,8 +46,14 @@ const responsiveSettings = [
 /**
  * @type {MetaFunction<typeof loader>}
  */
-export const meta = () => {
-  return [{title: `Wakeboards, Waterskis, SUP, Tubes | O'Brien Watersports`}];
+export const meta = ({data}) => {
+  return [
+    {
+      title: `${
+        data?.page.seo.title ? data?.page.seo.title : data?.page.title
+      } | O'Brien Watersports`,
+    },
+  ];
 };
 
 /**
@@ -149,74 +156,80 @@ function RecommendedProducts({products}) {
   });
 
   return (
-    <section id="new2024" className="grayBack">
-      <div className="inside-xxxl homeSlidePadd">
-        <header
-          className="fadeIn"
-          ref={(el1) => {
-            animateThis1 = el1;
-          }}
-        >
-          <div className="notWhite">
-            <PinLogoOnly />
-          </div>
-          <h2>
-            Some of Our <span>Newest</span> Gear
-          </h2>
-        </header>
-        <Await resolve={products}>
-          {({products}) => (
-            <div
-              className="productGrid homeSlider fadeIn"
-              ref={(el2) => {
-                animateThis2 = el2;
-              }}
-            >
-              <Slide
-                slidesToScroll={1}
-                slidesToShow={1}
-                indicators={true}
-                responsive={responsiveSettings}
-                autoplay={false}
-                easing="ease"
+    <>
+      <PageViewViewContentPixel />
+
+      <section id="new2024" className="grayBack">
+        <div className="inside-xxxl homeSlidePadd">
+          <header
+            className="fadeIn"
+            ref={(el1) => {
+              animateThis1 = el1;
+            }}
+          >
+            <div className="notWhite">
+              <PinLogoOnly />
+            </div>
+            <h2>
+              Some of Our <span>Newest</span> Gear
+            </h2>
+          </header>
+          <Await resolve={products}>
+            {({products}) => (
+              <div
+                className="productGrid homeSlider fadeIn"
+                ref={(el2) => {
+                  animateThis2 = el2;
+                }}
               >
-                {products.nodes.map((product) => (
-                  <div className="homeGrid" key={product.id}>
-                    <Link
-                      className="recommended-product"
-                      to={`/products/${product.handle}`}
-                      reloadDocument
-                    >
-                      <div>
-                        <div className="card-image">
-                          {product.totalInventory < 1 && (
-                            <div className="text-right text-notice">
-                              <span className="outOfStock">Out of Stock</span>
+                <Slide
+                  slidesToScroll={1}
+                  slidesToShow={1}
+                  indicators={true}
+                  responsive={responsiveSettings}
+                  autoplay={false}
+                  easing="ease"
+                >
+                  {products.nodes.map((product) => (
+                    <div className="homeGrid" key={product.id}>
+                      <Link
+                        className="recommended-product"
+                        to={`/products/${product.handle}`}
+                        reloadDocument
+                      >
+                        <div>
+                          <div className="card-image">
+                            {product.totalInventory < 1 && (
+                              <div className="text-right text-notice">
+                                <span className="outOfStock">Out of Stock</span>
+                              </div>
+                            )}
+                            <Image
+                              data={product.images.nodes[0]}
+                              aspectRatio="1/1"
+                              sizes="(min-width: 45em) 20vw, 50vw"
+                            />
+                          </div>
+                          <div className="textArea justify">
+                            <h3>{product.title}</h3>
+                            <div className="price">
+                              <Money
+                                data={product.priceRange.minVariantPrice}
+                              />
                             </div>
-                          )}
-                          <Image
-                            data={product.images.nodes[0]}
-                            aspectRatio="1/1"
-                            sizes="(min-width: 45em) 20vw, 50vw"
-                          />
-                        </div>
-                        <div className="textArea justify">
-                          <h3>{product.title}</h3>
-                          <div className="price">
-                            <Money data={product.priceRange.minVariantPrice} />
                           </div>
                         </div>
-                      </div>
-                    </Link>
-                  </div>
-                ))}
-              </Slide>
-            </div>
-          )}
-        </Await>
-        <br />
-      </div>
-    </section>
+                      </Link>
+                    </div>
+                  ))}
+                </Slide>
+              </div>
+            )}
+          </Await>
+          <br />
+        </div>
+      </section>
+    </>
   );
 }
 

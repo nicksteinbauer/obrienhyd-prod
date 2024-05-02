@@ -2948,6 +2948,8 @@ ul.noPadd {
   font-size: 1.1em;
   color: #0276b2; }
 
+aside main {
+  margin: 10px; }
 aside dl {
   margin: 0;
   padding: 0; }

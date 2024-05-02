@@ -1,7 +1,7 @@
 import {json} from '@shopify/remix-oxygen';
 import {useLoaderData} from '@remix-run/react';
 import RegistrationForm from '~/components/forms/RegistrationForm';
-
+import PageViewViewContentContactPixel from '~/components/metaPixel/PageViewViewContentContactPixel';
 /**
  * @type {MetaFunction<typeof loader>}
  */
@@ -33,20 +33,23 @@ export default function Page() {
   const {page} = useLoaderData();
 
   return (
-    <div className="collectionPage actualPage">
-      <div className="theRest">
-        <div className="inside-lg">
-          <header>
-            <h1>{page.title}</h1>
-          </header>
-          <main
-            className="basicContent"
-            dangerouslySetInnerHTML={{__html: page.body}}
-          />
-          <RegistrationForm />
+    <>
+      <PageViewViewContentContactPixel />
+      <div className="collectionPage actualPage">
+        <div className="theRest">
+          <div className="inside-lg">
+            <header>
+              <h1>{page.title}</h1>
+            </header>
+            <main
+              className="basicContent"
+              dangerouslySetInnerHTML={{__html: page.body}}
+            />
+            <RegistrationForm />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

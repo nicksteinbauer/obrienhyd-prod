@@ -3,11 +3,21 @@ import {json} from '@shopify/remix-oxygen';
 import {Pagination, getPaginationVariables, Image} from '@shopify/hydrogen';
 
 /**
+ * @type {MetaFunction<typeof loader>}
+ */
+export const meta = () => {
+  return [
+    {
+      title: "Collections | O'Brien Watersports",
+    },
+  ];
+};
+/**
  * @param {LoaderFunctionArgs}
  */
 export async function loader({context, request}) {
   const paginationVariables = getPaginationVariables(request, {
-    pageBy: 4,
+    pageBy: 15,
   });
 
   const {collections} = await context.storefront.query(COLLECTIONS_QUERY, {
@@ -22,21 +32,31 @@ export default function Collections() {
   const {collections} = useLoaderData();
 
   return (
-    <div className="collections">
-      <h1>Collections</h1>
-      <Pagination connection={collections}>
-        {({nodes, isLoading, PreviousLink, NextLink}) => (
-          <div>
-            <PreviousLink>
-              {isLoading ? 'Loading...' : <span>↑ Load previous</span>}
-            </PreviousLink>
-            <CollectionsGrid collections={nodes} />
-            <NextLink>
-              {isLoading ? 'Loading...' : <span>Load more ↓</span>}
-            </NextLink>
-          </div>
-        )}
-      </Pagination>
+    <div className="collectionPage">
+      <div className="theRest">
+        <div className="inside-xl">
+          <header>
+            <h1>Collections</h1>
+          </header>
+        </div>
+        <Pagination connection={collections}>
+          {({nodes, isLoading, PreviousLink, NextLink}) => (
+            <>
+              <div className="inside-xxl">
+                <PreviousLink className="nextPrev">
+                  {isLoading ? 'Loading...' : <span>↑ Load previous</span>}
+                </PreviousLink>
+              </div>
+              <CollectionsGrid collections={nodes} />
+              <div className="inside-xxl">
+                <NextLink className="nextPrev">
+                  {isLoading ? 'Loading...' : <span>Load more ↓</span>}
+                </NextLink>
+              </div>
+            </>
+          )}
+        </Pagination>
+      </div>
     </div>
   );
 }
@@ -46,15 +66,13 @@ export default function Collections() {
  */
 function CollectionsGrid({collections}) {
   return (
-    <div className="collections-grid">
+    <ul className="auto-grid-lg productGrid inside-xxl">
       {collections.map((collection, index) => (
-        <CollectionItem
-          key={collection.id}
-          collection={collection}
-          index={index}
-        />
+        <li key={collection.id}>
+          <CollectionItem collection={collection} index={index} />
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
 
@@ -75,12 +93,12 @@ function CollectionItem({collection, index}) {
       {collection?.image && (
         <Image
           alt={collection.image.altText || collection.title}
-          aspectRatio="1/1"
+          aspectRatio="3/1"
           data={collection.image}
           loading={index < 3 ? 'eager' : undefined}
         />
       )}
-      <h5>{collection.title}</h5>
+      <h4>{collection.title}</h4>
     </Link>
   );
 }

@@ -49,6 +49,7 @@ export default async function handleRequest(
       'https://analytics.google.com/',
       'https://stats.g.doubleclick.net/',
       'https://cdn.acsbapp.com/',
+      'https://google.com/',
     ],
     frameSrc: [
       "'self'",
@@ -100,6 +101,7 @@ export default async function handleRequest(
       'https://www.googletagmanager.com/',
       'https://googleads.g.doubleclick.net/',
       'https://acsbapp.com/',
+      'https://connect.facebook.net/',
     ],
     scriptSrcAttr: ["'self'", "'unsafe-inline'"],
     imgSrc: [
@@ -111,6 +113,11 @@ export default async function handleRequest(
       'http://maps.gstatic.com/',
       'https://www.google.com/',
       'https://config.gorgias.io/',
+      'http://maps.googleapis.com/',
+      'http://markers.storelocatorwidgets.com/',
+      'https://www.googletagmanager.com/',
+      'https://www.facebook.com/',
+      'https://connect.facebook.net/',
     ],
     styleSrc: [
       "'self'",

@@ -121,6 +121,10 @@ export default function App() {
   const nonce = useNonce();
   /** @type {LoaderReturnData} */
   const data = useLoaderData();
+  const matches = useMatches();
+  const isProductRoute = matches.some((m) =>
+    /^\/products\/\w+/.test(m.pathname),
+  );
 
   return (
     <html lang="en">
@@ -172,7 +176,24 @@ export default function App() {
             };
             h.appendChild(s);
           })();
-        `}} />
+        `,
+          }}
+        />
+        {isProductRoute && (
+          <>
+            <script
+              type="text/javascript"
+              src="//maps.googleapis.com/maps/api/js?key=AIzaSyBmuZ4dB6S3kpFgkUviSfAoP5h9QoH8Pbg&libraries=places"
+            ></script>
+            <script
+              type="text/javascript"
+              id="storelocatorscript"
+              data-uid="MKPAHXoXV568tSmJYOG1dMsHyOYmxF5t"
+              data-settings="store_list_layout=Left"
+              src="//cdn.storelocatorwidgets.com/widget/widget.js"
+            ></script>
+          </>
+        )}
       </head>
       <body>
         <Layout {...data}>

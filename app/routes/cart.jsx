@@ -4,6 +4,7 @@ import {CartForm} from '@shopify/hydrogen';
 import {json} from '@shopify/remix-oxygen';
 import {CartMain} from '~/components/Cart';
 import {useRootLoaderData} from '~/root';
+import PageViewViewContentPixel from '~/components/metaPixel/PageViewViewContentPixel';
 
 /**
  * @type {MetaFunction}
@@ -90,23 +91,26 @@ export default function Cart() {
   const cartPromise = rootData.cart;
 
   return (
-    <div className="cart">
-      <header className="pageHeader inside-xl">
-        <h1 className="siteTitle">Cart</h1>
-      </header>
-      <section className="inside-xl">
-        <Suspense fallback={<p>Loading cart ...</p>}>
-          <Await
-            resolve={cartPromise}
-            errorElement={<div>An error occurred</div>}
-          >
-            {(cart) => {
-              return <CartMain layout="page" cart={cart} />;
-            }}
-          </Await>
-        </Suspense>
-      </section>
-    </div>
+    <>
+      <PageViewViewContentPixel />
+      <div className="cart">
+        <header className="pageHeader inside-xl">
+          <h1 className="siteTitle">Cart</h1>
+        </header>
+        <section className="inside-xl">
+          <Suspense fallback={<p>Loading cart ...</p>}>
+            <Await
+              resolve={cartPromise}
+              errorElement={<div>An error occurred</div>}
+            >
+              {(cart) => {
+                return <CartMain layout="page" cart={cart} />;
+              }}
+            </Await>
+          </Suspense>
+        </section>
+      </div>
+    </>
   );
 }
 

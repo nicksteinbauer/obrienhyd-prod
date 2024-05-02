@@ -1,4 +1,4 @@
-import {Suspense} from 'react';
+import {Suspense, useState} from 'react';
 import {defer, redirect} from '@shopify/remix-oxygen';
 import {Await, Link, useLoaderData} from '@remix-run/react';
 import {
@@ -19,14 +19,18 @@ import 'react-slideshow-image/dist/styles.css';
 import Dinp from '~/components/prop65/Dinp';
 import Dnhp from '~/components/prop65/Dnhp';
 import VideoContainer from '~/components/video/VideoContainer.jsx';
-import Locator from '~/components/locator/Locator';
+//import Locator from '~/components/locator/Locator';
 import StockNotification from '~/components/klaviyo/StockNotification';
 import {Link as ScrollLink} from 'react-scroll';
+
+import {Button} from 'react-bootstrap';
+import PageViewViewContentPixel from '~/components/metaPixel/PageViewViewContentPixel';
 
 /**
  * @type {MetaFunction<typeof loader>}
  */
-export const meta = ({data, location}) => {
+
+export const meta = ({data}) => {
   return [
     {
       title: `${
@@ -218,6 +222,7 @@ export default function Product() {
   const dnhpMod = dnhp?.value ? dnhp.value : null;
   return (
     <>
+      <PageViewViewContentPixel />
       {bannerImage !== null && (
         <div className="bannerFix">
           <BannerImage myImage={bannerImage} />
@@ -534,6 +539,60 @@ function AddToCartButton({analytics, children, disabled, lines, onClick}) {
         </>
       )}
     </CartForm>
+  );
+}
+
+function Locator() {
+  const [isActive, setActive] = useState(false);
+
+  const toggleClass = () => {
+    setActive(!isActive);
+  };
+
+  const iframe =
+    '<div id="storelocatorwidget" class="dealers-page" style="width:100%;"><p>Loading <a href="https://www.storelocatorwidgets.com">Locator Software</a>...</p></div>';
+  return (
+    <div className="locally">
+      <div id="retailers" className="retailers">
+        <h2>Check Out Our Retailers</h2>
+        <div className="inside-xl">
+          <div className="upc-contain flex-md">
+            <div className="sixty">
+              <div className="text-center">
+                <Button
+                  className="button-book"
+                  color="warning"
+                  size="md"
+                  onClick={toggleClass}
+                >
+                  View Map
+                </Button>
+              </div>
+              <div className={isActive ? 'clicky active' : 'clicky notactive'}>
+                <div className="clicky-container">
+                  <Button className="clicky-close" onClick={toggleClass}>
+                    <span>Close Window</span>
+                    {/* <Button close /> */}
+                  </Button>
+                  <div dangerouslySetInnerHTML={{__html: iframe}} />
+                </div>
+              </div>
+            </div>
+            <div className="forty">
+              <div className="flex-vertical text-center">
+                <h3>Find It Online</h3>
+                <div className="upc-button">
+                  <a href="https://www.obrien.com/dealers">
+                    View Online Retailers
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="locOverlay"></div>
+      </div>
+    </div>
   );
 }
 

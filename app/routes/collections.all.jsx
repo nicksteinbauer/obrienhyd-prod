@@ -11,8 +11,12 @@ import {useVariantUrl} from '~/lib/variants';
 /**
  * @type {MetaFunction<typeof loader>}
  */
-export const meta = () => {
-  return [{title: `O'Brien Watersports | Products`}];
+export const meta = ({data}) => {
+  return [
+    {
+      title: "All Products | O'Brien Watersports",
+    },
+  ];
 };
 
 /**
@@ -21,7 +25,7 @@ export const meta = () => {
 export async function loader({request, context}) {
   const {storefront} = context;
   const paginationVariables = getPaginationVariables(request, {
-    pageBy: 8,
+    pageBy: 24,
   });
 
   const {products} = await storefront.query(CATALOG_QUERY, {
@@ -36,22 +40,31 @@ export default function Collection() {
   const {products} = useLoaderData();
 
   return (
-    <div className="collection">
-      <h1>Products</h1>
-      <Pagination connection={products}>
-        {({nodes, isLoading, PreviousLink, NextLink}) => (
-          <>
-            <PreviousLink>
-              {isLoading ? 'Loading...' : <span>↑ Load previous</span>}
-            </PreviousLink>
-            <ProductsGrid products={nodes} />
-            <br />
-            <NextLink>
-              {isLoading ? 'Loading...' : <span>Load more ↓</span>}
-            </NextLink>
-          </>
-        )}
-      </Pagination>
+    <div className="collectionPage">
+      <div className="theRest">
+        <div className="inside-xl">
+          <header>
+            <h1>All Products</h1>
+          </header>
+        </div>
+        <Pagination connection={products}>
+          {({nodes, isLoading, PreviousLink, NextLink}) => (
+            <>
+              <div className="inside-xxl">
+                <PreviousLink className="nextPrev">
+                  {isLoading ? 'Loading...' : <span>↑ Load previous</span>}
+                </PreviousLink>
+              </div>
+              <ProductsGrid products={nodes} />
+              <div className="inside-xxl">
+                <NextLink className="nextPrev">
+                  {isLoading ? 'Loading...' : <span>Load more ↓</span>}
+                </NextLink>
+              </div>
+            </>
+          )}
+        </Pagination>
+      </div>
     </div>
   );
 }
@@ -61,17 +74,18 @@ export default function Collection() {
  */
 function ProductsGrid({products}) {
   return (
-    <div className="products-grid">
+    <ul className="auto-grid-lg productGrid inside-xxl">
       {products.map((product, index) => {
         return (
-          <ProductItem
-            key={product.id}
-            product={product}
-            loading={index < 8 ? 'eager' : undefined}
-          />
+          <li key={product.id}>
+            <ProductItem
+              product={product}
+              loading={index < 24 ? 'eager' : undefined}
+            />
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 }
 

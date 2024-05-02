@@ -1,11 +1,16 @@
 import {json} from '@shopify/remix-oxygen';
 import {Link, useLoaderData} from '@remix-run/react';
+import PageViewViewContentPixel from '~/components/metaPixel/PageViewViewContentPixel';
 
 /**
  * @type {MetaFunction<typeof loader>}
  */
 export const meta = ({data}) => {
-  return [{title: `O'Brien Watersports | ${data?.policy.title ?? ''}`}];
+  return [
+    {
+      title: `${data?.policy.title} | O'Brien Watersports`,
+    },
+  ];
 };
 
 /**
@@ -46,6 +51,8 @@ export default function Policy() {
 
   return (
     <>
+      <PageViewViewContentPixel />
+
       <div className="collectionPage actualPage policy">
         <div className="theRest">
           <div className="inside-lg">

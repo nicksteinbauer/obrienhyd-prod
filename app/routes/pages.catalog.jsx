@@ -1,5 +1,6 @@
 import {json} from '@shopify/remix-oxygen';
 import {useLoaderData} from '@remix-run/react';
+import PageViewViewContentPixel from '~/components/metaPixel/PageViewViewContentPixel';
 
 /**
  * @type {MetaFunction<typeof loader>}
@@ -32,29 +33,32 @@ export default function Page() {
   const {page} = useLoaderData();
 
   return (
-    <div className="collectionPage actualPage">
-      <div className="theRest">
-        <div className="inside-lg">
-          <header>
-            <h1>{page.title}</h1>
-          </header>
-          <main
-            className="basicContent"
-            dangerouslySetInnerHTML={{__html: page.body}}
-          />
-          <iframe
-            title="O'Brien Catalog"
-            //style="width:100%; min-height: 900px;"
-            className="catalogIframe"
-            type="text/html"
-            scrolling="no"
-            frameBorder="0"
-            src="https://user-92916592834.cld.bz/2024-OB-AG-catalog-9-12"
-            allowFullScreen="allowFullScreen"
-          ></iframe>
+    <>
+      <PageViewViewContentPixel />
+      <div className="collectionPage actualPage">
+        <div className="theRest">
+          <div className="inside-lg">
+            <header>
+              <h1>{page.title}</h1>
+            </header>
+            <main
+              className="basicContent"
+              dangerouslySetInnerHTML={{__html: page.body}}
+            />
+            <iframe
+              title="O'Brien Catalog"
+              //style="width:100%; min-height: 900px;"
+              className="catalogIframe"
+              type="text/html"
+              scrolling="no"
+              frameBorder="0"
+              src="https://user-92916592834.cld.bz/2024-OB-AG-catalog-9-12"
+              allowFullScreen="allowFullScreen"
+            ></iframe>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
