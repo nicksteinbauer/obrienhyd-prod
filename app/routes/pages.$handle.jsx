@@ -2,7 +2,6 @@ import {json} from '@shopify/remix-oxygen';
 import {useLoaderData} from '@remix-run/react';
 import PageViewViewContentPixel from '~/components/metaPixel/PageViewViewContentPixel';
 
-
 /**
  * @type {MetaFunction<typeof loader>}
  */

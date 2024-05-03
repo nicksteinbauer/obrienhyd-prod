@@ -8,6 +8,7 @@ import {
 } from '@shopify/hydrogen';
 import {useVariantUrl} from '~/lib/variants';
 import {BannerImageCollection} from '~/components/obrien/meta/BannerImageCollection';
+import PageViewViewContentPixel from '~/components/metaPixel/PageViewViewContentPixel';
 
 /**
  * @type {MetaFunction<typeof loader>}
@@ -55,38 +56,41 @@ export default function Collection() {
   const {collection} = useLoaderData();
 
   return (
-    <div className="collectionPage">
-      <BannerImageCollection myImage={collection.image} />
-      <div className="theRest">
-        <div className="inside-xl">
-          <header>
-            <h1>{collection.title}</h1>
-            {collection?.description && (
-              <div className="">
-                <div>{collection.description}</div>
-              </div>
+    <>
+      <PageViewViewContentPixel />
+      <div className="collectionPage">
+        <BannerImageCollection myImage={collection.image} />
+        <div className="theRest">
+          <div className="inside-xl">
+            <header>
+              <h1>{collection.title}</h1>
+              {collection?.description && (
+                <div className="">
+                  <div>{collection.description}</div>
+                </div>
+              )}
+            </header>
+          </div>
+          <Pagination connection={collection.products}>
+            {({nodes, isLoading, PreviousLink, NextLink}) => (
+              <>
+                <div className="inside-xxl">
+                  <PreviousLink className="nextPrev">
+                    {isLoading ? 'Loading...' : <span>↑ Load previous</span>}
+                  </PreviousLink>
+                </div>
+                <ProductsGrid products={nodes} />
+                <div className="inside-xxl">
+                  <NextLink className="nextPrev">
+                    {isLoading ? 'Loading...' : <span>Load more ↓</span>}
+                  </NextLink>
+                </div>
+              </>
             )}
-          </header>
+          </Pagination>
         </div>
-        <Pagination connection={collection.products}>
-          {({nodes, isLoading, PreviousLink, NextLink}) => (
-            <>
-              <div className="inside-xxl">
-                <PreviousLink className="nextPrev">
-                  {isLoading ? 'Loading...' : <span>↑ Load previous</span>}
-                </PreviousLink>
-              </div>
-              <ProductsGrid products={nodes} />
-              <div className="inside-xxl">
-                <NextLink className="nextPrev">
-                  {isLoading ? 'Loading...' : <span>Load more ↓</span>}
-                </NextLink>
-              </div>
-            </>
-          )}
-        </Pagination>
       </div>
-    </div>
+    </>
   );
 }
 
