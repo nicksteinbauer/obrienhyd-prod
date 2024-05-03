@@ -194,6 +194,10 @@ export default function App() {
             ></script>
           </>
         )}
+        <meta
+          name="google-site-verification"
+          content="U81j3usvQnYPTdy01rIMsGnoiCctOQBfnwPOX1S1OEg"
+        />
       </head>
       <body>
         <Layout {...data}>

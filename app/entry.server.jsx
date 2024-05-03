@@ -52,6 +52,7 @@ export default async function handleRequest(
       'https://google.com/',
       'https://acsbapp.com/',
       'https://accesswidget-log-receiver.acsbapp.com/',
+      'https://www.facebook.com/',
     ],
     frameSrc: [
       "'self'",
