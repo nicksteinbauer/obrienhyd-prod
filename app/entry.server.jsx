@@ -50,6 +50,7 @@ export default async function handleRequest(
       'https://stats.g.doubleclick.net/',
       'https://cdn.acsbapp.com/',
       'https://google.com/',
+      'https://acsbapp.com/',
     ],
     frameSrc: [
       "'self'",
