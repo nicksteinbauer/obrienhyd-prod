@@ -58,6 +58,7 @@ export default async function handleRequest(
       'https://www.google.com/',
       'https://user-92916592834.cld.bz',
       'https://td.doubleclick.net/',
+      'https://www.facebook.com/',
     ],
     scriptSrc: [
       "'self'",
