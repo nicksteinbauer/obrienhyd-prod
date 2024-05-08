@@ -105,17 +105,11 @@ export default function ObrienFooter() {
                 <h4 className="hiddenFooter">Support</h4>
               </li>
               <li>
-                <NavLink to="/pages/privacy-policy">Privacy Policy</NavLink>
+                <NavLink to="/policies/privacy-policy">Privacy Policy</NavLink>
               </li>
               <li>
-                <NavLink to="/pages/ccpa-notice">CCPA Notice</NavLink>
-              </li>
-              <li>
-                <NavLink to="/pages/terms-of-service">Terms of Service</NavLink>
-              </li>
-              <li>
-                <NavLink to="/pages/accessibility-policy">
-                  Accessibility Policy
+                <NavLink to="/policies/terms-of-service">
+                  Terms of Service
                 </NavLink>
               </li>
             </ul>
