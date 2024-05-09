@@ -53,6 +53,9 @@ export default async function handleRequest(
       'https://acsbapp.com/',
       'https://accesswidget-log-receiver.acsbapp.com/',
       'https://www.facebook.com/',
+      'https://cdn.cookielaw.org/',
+      'https://geolocation.onetrust.com/',
+      'https://privacyportal.onetrust.com/',
     ],
     frameSrc: [
       "'self'",
@@ -106,6 +109,7 @@ export default async function handleRequest(
       'https://googleads.g.doubleclick.net/',
       'https://acsbapp.com/',
       'https://connect.facebook.net/',
+      'https://cdn.cookielaw.org/',
     ],
     scriptSrcAttr: ["'self'", "'unsafe-inline'"],
     imgSrc: [
@@ -122,6 +126,7 @@ export default async function handleRequest(
       'https://www.googletagmanager.com/',
       'https://www.facebook.com/',
       'https://connect.facebook.net/',
+      'https://cdn.cookielaw.org/',
     ],
     styleSrc: [
       "'self'",

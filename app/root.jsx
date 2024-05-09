@@ -17,9 +17,9 @@ import favicon from '../public/favicon.svg';
 import resetStyles from './styles/reset.css?url';
 import appStyles from './styles/app.css?url';
 import {Layout} from '~/components/Layout';
-import CookieModule from './components/obrien/CookieModule';
 
 import ReactGA from 'react-ga4';
+import {Suspense} from 'react';
 ReactGA.initialize([
   {
     trackingId: 'G-LX25VH4JXM',
@@ -198,6 +198,24 @@ export default function App() {
           name="google-site-verification"
           content="U81j3usvQnYPTdy01rIMsGnoiCctOQBfnwPOX1S1OEg"
         />
+
+        {/* Cookie Consent */}
+        <script
+          type="text/javascript"
+          src="https://cdn.cookielaw.org/consent/018f4e81-6455-7a7c-ae48-763d81c2e93b-test/OtAutoBlock.js"
+        ></script>
+        <script
+          src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+          type="text/javascript"
+          data-domain-script="018f4e81-6455-7a7c-ae48-763d81c2e93b-test"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `function OptanonWrapper() {} 
+            `,
+          }}
+        />
+        {/* End Cookie Consent */}
       </head>
       <body>
         <Layout {...data}>
@@ -206,7 +224,6 @@ export default function App() {
         <ScrollRestoration nonce={nonce} />
         <Scripts nonce={nonce} />
         <LiveReload nonce={nonce} />
-        <CookieModule />
       </body>
     </html>
   );
