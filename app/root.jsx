@@ -17,6 +17,7 @@ import favicon from '../public/favicon.svg';
 import resetStyles from './styles/reset.css?url';
 import appStyles from './styles/app.css?url';
 import {Layout} from '~/components/Layout';
+import {SearchForm} from './components/Search';
 
 import ReactGA from 'react-ga4';
 // import {Suspense} from 'react';
@@ -253,14 +254,30 @@ export function ErrorBoundary() {
       </head>
       <body>
         <Layout {...rootData}>
-          <div className="route-error">
-            <h1>Oops</h1>
-            <h2>{errorStatus}</h2>
-            {errorMessage && (
-              <fieldset>
-                <pre>{errorMessage}</pre>
-              </fieldset>
-            )}
+          <div className="collectionPage actualPage">
+            <div className="theRest">
+              <div className="inside-lg">
+                <header>
+                  <div>
+                    <h1>Oops</h1>
+                  </div>
+                  <h3>
+                    {errorStatus}
+                    {errorMessage && <span> - {errorMessage}</span>}
+                  </h3>
+                </header>
+                <div className="text-center inside-sm">
+                  <p>
+                    The page you were looking for could not be found. It might
+                    have been removed, renamed, or did not exist in the first
+                    place. Perhaps searching can help.
+                  </p>
+                  <div className="searchForm">
+                    <SearchForm />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </Layout>
         <ScrollRestoration nonce={nonce} />
