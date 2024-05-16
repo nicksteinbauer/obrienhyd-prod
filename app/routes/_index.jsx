@@ -158,7 +158,47 @@ function RecommendedProducts({products}) {
   return (
     <>
       <PageViewViewContentPixel />
-
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+          (function(){
+            var s = document.createElement("script");
+            var h = document.querySelector("head") || document.body;
+            s.src = "https://acsbapp.com/apps/app/dist/js/app.js";
+            s.async = true;
+            s.onload = function(){
+              acsbJS.init({
+                statementLink : "",
+                footerHtml : "",
+                hideMobile : false,
+                hideTrigger : false,
+                disableBgProcess : false,
+                language : "en",
+                position : "left",
+                leadColor : "#0276b2",
+                triggerColor : "#0276b2",
+                triggerRadius : "50%",
+                triggerPositionX : "left",
+                triggerPositionY : "bottom",
+                triggerIcon : "people",
+                triggerSize : "medium",
+                triggerOffsetX : 20,
+                triggerOffsetY : 13,
+                mobile : {
+                  triggerSize : "medium",
+                  triggerPositionX : "left",
+                  triggerPositionY : "bottom",
+                  triggerOffsetX : 20,
+                  triggerOffsetY : 13,
+                  triggerRadius : "50%"
+                }
+              });
+            };
+            h.appendChild(s);
+          })();
+        `,
+        }}
+      />
       <section id="new2024" className="grayBack">
         <div className="inside-xxxl homeSlidePadd">
           <header
