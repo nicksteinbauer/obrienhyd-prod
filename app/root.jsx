@@ -19,7 +19,7 @@ import appStyles from './styles/app.css?url';
 import {Layout} from '~/components/Layout';
 
 import ReactGA from 'react-ga4';
-import {Suspense} from 'react';
+// import {Suspense} from 'react';
 ReactGA.initialize([
   {
     trackingId: 'G-LX25VH4JXM',
