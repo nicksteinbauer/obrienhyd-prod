@@ -303,3 +303,24 @@ table.sizing.product-chart {
         max-width: none;
     }
 }
+
+
+.shopify-policy__container {
+    max-width: 100ch;
+    margin: 0 auto;
+}
+
+.collectionPage.actualPage.policy {
+    max-width: 100ch;
+    margin: 0 auto;
+}
+
+.collectionPage.actualPage.policy td {
+    border: 1px solid #000;
+    vertical-align: top;
+}
+
+.collectionPage.actualPage.policy ul li {
+    list-style-type: disc;
+    margin-left: 1em;
+}

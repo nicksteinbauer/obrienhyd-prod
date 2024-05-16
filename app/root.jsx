@@ -138,7 +138,7 @@ export default function App() {
           src="https://config.gorgias.chat/bundle-loader/01HKTCXXVCJSJGNZNH55W29XD4"
         />
         {/* ACSB Script */}
-        <script
+        {/* <script
           dangerouslySetInnerHTML={{
             __html: `
           (function(){
@@ -178,7 +178,7 @@ export default function App() {
           })();
         `,
           }}
-        />
+        /> */}
         {isProductRoute && (
           <>
             <script

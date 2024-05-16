@@ -65,6 +65,8 @@ export default async function handleRequest(
       'https://user-92916592834.cld.bz',
       'https://td.doubleclick.net/',
       'https://www.facebook.com/',
+      'https://form.jotform.com',
+      'https://boards.greenhouse.io/',
     ],
     scriptSrc: [
       "'self'",
@@ -110,6 +112,8 @@ export default async function handleRequest(
       'https://acsbapp.com/',
       'https://connect.facebook.net/',
       'https://cdn.cookielaw.org/',
+      'https://form.jotform.com/',
+      'https://boards.greenhouse.io/',
     ],
     scriptSrcAttr: ["'self'", "'unsafe-inline'"],
     imgSrc: [
