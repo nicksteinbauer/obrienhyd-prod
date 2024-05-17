@@ -5,8 +5,6 @@ import {BannerImageCollection} from '~/components/obrien/meta/BannerImageCollect
 import TeamList from '~/components/obrien/TeamList';
 
 import PageViewViewContentPixel from '~/components/metaPixel/PageViewViewContentPixel';
-
-import GoogleAnalytics from '~/components/Analytics/GoogleAnalytics';
 /**
  * @type {MetaFunction<typeof loader>}
  */
@@ -43,13 +41,12 @@ export default function Page() {
   return (
     <>
       <PageViewViewContentPixel />
-      <GoogleAnalytics />
       <div className="collectionPage">
         {bannerImage !== null && (
           <BannerImageCollection myImage={bannerImage} />
         )}
         <header className="notPage flex-vertical">
-          <h1>{page.title} test</h1>
+          <h1>{page.title}</h1>
         </header>
         <div className="theRest">
           <TeamList />

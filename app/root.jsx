@@ -1,4 +1,3 @@
-
 import {cssBundleHref} from '@remix-run/css-bundle';
 import {useNonce} from '@shopify/hydrogen';
 import {defer} from '@shopify/remix-oxygen';
@@ -19,6 +18,17 @@ import resetStyles from './styles/reset.css?url';
 import appStyles from './styles/app.css?url';
 import {Layout} from '~/components/Layout';
 import {SearchForm} from './components/Search';
+
+import ReactGA from 'react-ga4';
+// import {Suspense} from 'react';
+ReactGA.initialize([
+  {
+    trackingId: 'G-LX25VH4JXM',
+  },
+  {
+    trackingId: 'AW-11157580141',
+  },
+]);
 
 /**
  * This is important to avoid re-fetching root queries on sub-navigations
