@@ -184,10 +184,6 @@ export default function App() {
           <>
             <script
               type="text/javascript"
-              src="//maps.googleapis.com/maps/api/js?key=AIzaSyBmuZ4dB6S3kpFgkUviSfAoP5h9QoH8Pbg&libraries=places"
-            ></script>
-            <script
-              type="text/javascript"
               id="storelocatorscript"
               data-uid="MKPAHXoXV568tSmJYOG1dMsHyOYmxF5t"
               data-settings="store_list_layout=Left"
@@ -199,6 +195,11 @@ export default function App() {
           name="google-site-verification"
           content="U81j3usvQnYPTdy01rIMsGnoiCctOQBfnwPOX1S1OEg"
         />
+        {/* Google Analytics */}
+        <script
+          type="text/javascript"
+          src="//maps.googleapis.com/maps/api/js?key=AIzaSyBmuZ4dB6S3kpFgkUviSfAoP5h9QoH8Pbg&libraries=places"
+        ></script>
 
         {/* Cookie Consent */}
         <script
