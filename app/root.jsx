@@ -190,47 +190,23 @@ export default function App() {
           content="U81j3usvQnYPTdy01rIMsGnoiCctOQBfnwPOX1S1OEg"
         />
 
-        {/* Google Analytics */}
+        {/* Cookie Consent */}
         <script
-          defer
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-LX25VH4JXM"
+          type="text/javascript"
+          src="https://cdn.cookielaw.org/consent/018f4e81-6455-7a7c-ae48-763d81c2e93b/OtAutoBlock.js"
         ></script>
         <script
-          async
-          id="gtag-init"
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-LX25VH4JXM', {
-              page_path: window.location.pathname,
-            });
-          `,
-          }}
-        />
-        {/* Google Something... i think it's shopping */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-11157580141"
+          src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+          type="text/javascript"
+          data-domain-script="018f4e81-6455-7a7c-ae48-763d81c2e93b"
         ></script>
         <script
-          async
-          id="gtag-init"
           dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'AW-11157580141', {
-              page_path: window.location.pathname,
-            });
-          `,
+            __html: `function OptanonWrapper() {} 
+            `,
           }}
         />
+        {/* End Cookie Consent */}
       </head>
       <body>
         <Layout {...data}>
