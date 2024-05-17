@@ -44,12 +44,12 @@ export default function DesktopNav() {
           </div>
         </li>
         <li className="navbar-item">
-          <NavLink to="/collections/hydroslide">
+          <NavLink to="/collections/hydroslide" reloadDocument>
             <span>Hydroslide</span>
           </NavLink>
         </li>
         <li className="navbar-item">
-          <NavLink to="/collections/sale">
+          <NavLink to="/collections/sale" reloadDocument>
             <span>Sale</span>
           </NavLink>
         </li>
@@ -68,7 +68,7 @@ export default function DesktopNav() {
           </div>
         </li>
         <li className="navbar-item">
-          <NavLink to="/pages/team">
+          <NavLink to="/pages/team" reloadDocument>
             <span>Team</span>
           </NavLink>
         </li>

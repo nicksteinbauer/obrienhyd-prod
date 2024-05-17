@@ -1,6 +1,6 @@
 import {NavLink} from '@remix-run/react';
 
-export default function NavGear({onClick}) {
+export default function NavGear(onClick) {
   return (
     <ul className="obrien-nav-container__list">
       <li className="obrien-nav-container__list-item">

@@ -19,7 +19,7 @@ import NavLifeJackets from './NavLifeJackets';
 import NavGear from './NavGear';
 import NavSupport from './NavSupport';
 
-function MobileNav({onClick}) {
+function MobileNav(onClick) {
   const [isClient, setIsClient] = useState(false);
   const [Accordion, setAccordion] = useState(null);
 

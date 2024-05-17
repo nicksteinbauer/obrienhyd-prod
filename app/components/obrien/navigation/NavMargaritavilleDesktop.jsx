@@ -1,6 +1,6 @@
 import {NavLink} from '@remix-run/react';
 
-export default function NavMargaritavilleDesktop({onClick}) {
+export default function NavMargaritavilleDesktop(onClick) {
   return (
     <>
       <ul className="obrien-nav-container__list">

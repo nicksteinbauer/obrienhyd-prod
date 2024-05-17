@@ -1,6 +1,6 @@
 import {NavLink} from '@remix-run/react';
 
-export default function NavRopes({onClick}) {
+export default function NavRopes(onClick) {
   return (
     <ul className="obrien-nav-container__list">
       <li className="obrien-nav-container__list-item">
