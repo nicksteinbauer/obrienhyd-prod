@@ -1,3 +1,4 @@
+
 import {cssBundleHref} from '@remix-run/css-bundle';
 import {useNonce} from '@shopify/hydrogen';
 import {defer} from '@shopify/remix-oxygen';
@@ -18,17 +19,6 @@ import resetStyles from './styles/reset.css?url';
 import appStyles from './styles/app.css?url';
 import {Layout} from '~/components/Layout';
 import {SearchForm} from './components/Search';
-
-import ReactGA from 'react-ga4';
-// import {Suspense} from 'react';
-ReactGA.initialize([
-  {
-    trackingId: 'G-LX25VH4JXM',
-  },
-  {
-    trackingId: 'AW-11157580141',
-  },
-]);
 
 /**
  * This is important to avoid re-fetching root queries on sub-navigations
@@ -184,6 +174,10 @@ export default function App() {
           <>
             <script
               type="text/javascript"
+              src="//maps.googleapis.com/maps/api/js?key=AIzaSyBmuZ4dB6S3kpFgkUviSfAoP5h9QoH8Pbg&libraries=places"
+            ></script>
+            <script
+              type="text/javascript"
               id="storelocatorscript"
               data-uid="MKPAHXoXV568tSmJYOG1dMsHyOYmxF5t"
               data-settings="store_list_layout=Left"
@@ -195,11 +189,6 @@ export default function App() {
           name="google-site-verification"
           content="U81j3usvQnYPTdy01rIMsGnoiCctOQBfnwPOX1S1OEg"
         />
-        {/* Google Analytics */}
-        <script
-          type="text/javascript"
-          src="//maps.googleapis.com/maps/api/js?key=AIzaSyBmuZ4dB6S3kpFgkUviSfAoP5h9QoH8Pbg&libraries=places"
-        ></script>
 
         {/* Cookie Consent */}
         <script
@@ -218,6 +207,48 @@ export default function App() {
           }}
         />
         {/* End Cookie Consent */}
+
+        {/* Google Analytics */}
+        <script
+          defer
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-LX25VH4JXM"
+        ></script>
+        <script
+          async
+          id="gtag-init"
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-LX25VH4JXM', {
+              page_path: window.location.pathname,
+            });
+          `,
+          }}
+        />
+        {/* Google Something... i think it's shopping */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-11157580141"
+        ></script>
+        <script
+          async
+          id="gtag-init"
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'AW-11157580141', {
+              page_path: window.location.pathname,
+            });
+          `,
+          }}
+        />
       </head>
       <body>
         <Layout {...data}>
