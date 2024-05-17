@@ -18,6 +18,7 @@ import HomeWhatWeDo from '~/components/obrien/home/HomeWhatWeDo';
 import HomeBestSellers from '~/components/obrien/home/HomeBestSellers';
 import HomeActivities from '~/components/obrien/home/HomeActivities';
 import PageViewViewContentPixel from '~/components/metaPixel/PageViewViewContentPixel';
+// import GoogleAnalytics from '~/components/Analytics/GoogleAnalytics';
 
 const responsiveSettings = [
   {
@@ -98,29 +99,32 @@ export default function Page() {
   const act6Image = page.act6?.reference ? page.act6?.reference : null;
 
   return (
-    <main className="home">
-      {heroVideo !== null && <ObrienHero heroVideo={heroVideo} />}
-      <RecommendedProducts products={data.recommendedProducts} />
-      <HomeWhatWeDo bestBanner={bestBanner} />
-      <HomeBestSellers
-        image1={best1Image}
-        image2={best2Image}
-        image3={best3Image}
-        image4={best4Image}
-        image5={best5Image}
-        image6={best6Image}
-        image7={best7Image}
-        image8={best8Image}
-      />
-      <HomeActivities
-        act1Image={act1Image}
-        act2Image={act2Image}
-        act3Image={act3Image}
-        act4Image={act4Image}
-        act5Image={act5Image}
-        act6Image={act6Image}
-      />
-    </main>
+    <>
+      {/* <GoogleAnalytics /> */}
+      <main className="home">
+        {heroVideo !== null && <ObrienHero heroVideo={heroVideo} />}
+        <RecommendedProducts products={data.recommendedProducts} />
+        <HomeWhatWeDo bestBanner={bestBanner} />
+        <HomeBestSellers
+          image1={best1Image}
+          image2={best2Image}
+          image3={best3Image}
+          image4={best4Image}
+          image5={best5Image}
+          image6={best6Image}
+          image7={best7Image}
+          image8={best8Image}
+        />
+        <HomeActivities
+          act1Image={act1Image}
+          act2Image={act2Image}
+          act3Image={act3Image}
+          act4Image={act4Image}
+          act5Image={act5Image}
+          act6Image={act6Image}
+        />
+      </main>
+    </>
   );
 }
 

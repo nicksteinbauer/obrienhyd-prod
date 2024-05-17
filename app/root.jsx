@@ -190,24 +190,6 @@ export default function App() {
           content="U81j3usvQnYPTdy01rIMsGnoiCctOQBfnwPOX1S1OEg"
         />
 
-        {/* Cookie Consent */}
-        <script
-          type="text/javascript"
-          src="https://cdn.cookielaw.org/consent/018f4e81-6455-7a7c-ae48-763d81c2e93b/OtAutoBlock.js"
-        ></script>
-        <script
-          src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
-          type="text/javascript"
-          data-domain-script="018f4e81-6455-7a7c-ae48-763d81c2e93b"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `function OptanonWrapper() {} 
-            `,
-          }}
-        />
-        {/* End Cookie Consent */}
-
         {/* Google Analytics */}
         <script
           defer
