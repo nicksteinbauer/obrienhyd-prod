@@ -49,7 +49,7 @@ export default function Page() {
           <BannerImageCollection myImage={bannerImage} />
         )}
         <header className="notPage flex-vertical">
-          <h1>{page.title}</h1>
+          <h1>{page.title} test</h1>
         </header>
         <div className="theRest">
           <TeamList />
