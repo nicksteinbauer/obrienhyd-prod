@@ -1,34 +1,34 @@
-import {cssBundleHref} from '@remix-run/css-bundle';
 import {useNonce} from '@shopify/hydrogen';
+import {cssBundleHref} from '@remix-run/css-bundle';
 import {defer} from '@shopify/remix-oxygen';
 import {
   Links,
   Meta,
   Outlet,
   Scripts,
-  LiveReload,
-  useMatches,
   useRouteError,
   useLoaderData,
   ScrollRestoration,
   isRouteErrorResponse,
+  LiveReload,
+  useMatches,
 } from '@remix-run/react';
 import favicon from '../public/favicon.svg';
 import resetStyles from './styles/reset.css?url';
 import appStyles from './styles/app.css?url';
 import {Layout} from '~/components/Layout';
-import {SearchForm} from './components/Search';
 
 import ReactGA from 'react-ga4';
-// import {Suspense} from 'react';
-ReactGA.initialize([
-  {
-    trackingId: 'G-LX25VH4JXM',
-  },
-  {
-    trackingId: 'AW-11157580141',
-  },
-]);
+import {useEffect} from 'react';
+
+/**
+ * Access the result of the root loader from a React component.
+ * @return {LoaderReturnData}
+ */
+export const useRootLoaderData = () => {
+  const [root] = useMatches();
+  return root?.data;
+};
 
 /**
  * This is important to avoid re-fetching root queries on sub-navigations
@@ -66,15 +66,6 @@ export function links() {
 }
 
 /**
- * Access the result of the root loader from a React component.
- * @return {LoaderReturnData}
- */
-export const useRootLoaderData = () => {
-  const [root] = useMatches();
-  return root?.data;
-};
-
-/**
  * @param {LoaderFunctionArgs}
  */
 export async function loader({context}) {
@@ -82,8 +73,6 @@ export async function loader({context}) {
   const publicStoreDomain = context.env.PUBLIC_STORE_DOMAIN;
 
   const isLoggedInPromise = customerAccount.isLoggedIn();
-
-  // defer the cart query by not awaiting it
   const cartPromise = cart.get();
 
   // defer the footer query (below the fold)
@@ -127,6 +116,55 @@ export default function App() {
     /^\/products\/\w+/.test(m.pathname),
   );
 
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://acsbapp.com/apps/app/dist/js/app.js';
+    script.async = true;
+    script.onload = () => {
+      window.acsbJS.init({
+        statementLink: '',
+        footerHtml: '',
+        hideMobile: false,
+        hideTrigger: false,
+        disableBgProcess: false,
+        language: 'en',
+        position: 'left',
+        leadColor: '#0276b2',
+        triggerColor: '#0276b2',
+        triggerRadius: '50%',
+        triggerPositionX: 'left',
+        triggerPositionY: 'bottom',
+        triggerIcon: 'people',
+        triggerSize: 'medium',
+        triggerOffsetX: 20,
+        triggerOffsetY: 13,
+        mobile: {
+          triggerSize: 'medium',
+          triggerPositionX: 'left',
+          triggerPositionY: 'bottom',
+          triggerOffsetX: 20,
+          triggerOffsetY: 13,
+          triggerRadius: '50%',
+        },
+      });
+    };
+    document.head.appendChild(script);
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
+  useEffect(() => {
+    ReactGA.initialize([
+      {
+        trackingId: 'G-LX25VH4JXM',
+      },
+      {
+        trackingId: 'AW-11157580141',
+      },
+    ]);
+  }, []);
+
   return (
     <html lang="en">
       <head>
@@ -134,52 +172,7 @@ export default function App() {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
-        <script
-          id="gorgias-chat-widget-install-v3"
-          src="https://config.gorgias.chat/bundle-loader/01HKTCXXVCJSJGNZNH55W29XD4"
-        />
-        {/* ACSB Script */}
-        {/* <script
-          dangerouslySetInnerHTML={{
-            __html: `
-          (function(){
-            var s = document.createElement("script");
-            var h = document.querySelector("head") || document.body;
-            s.src = "https://acsbapp.com/apps/app/dist/js/app.js";
-            s.async = true;
-            s.onload = function(){
-              acsbJS.init({
-                statementLink : "",
-                footerHtml : "",
-                hideMobile : false,
-                hideTrigger : false,
-                disableBgProcess : false,
-                language : "en",
-                position : "left",
-                leadColor : "#0276b2",
-                triggerColor : "#0276b2",
-                triggerRadius : "50%",
-                triggerPositionX : "left",
-                triggerPositionY : "bottom",
-                triggerIcon : "people",
-                triggerSize : "medium",
-                triggerOffsetX : 20,
-                triggerOffsetY : 13,
-                mobile : {
-                  triggerSize : "medium",
-                  triggerPositionX : "left",
-                  triggerPositionY : "bottom",
-                  triggerOffsetX : 20,
-                  triggerOffsetY : 13,
-                  triggerRadius : "50%"
-                }
-              });
-            };
-            h.appendChild(s);
-          })();
-        `,
-          }}
-        /> */}
+
         {isProductRoute && (
           <>
             <script
@@ -195,11 +188,11 @@ export default function App() {
             ></script>
           </>
         )}
+
         <meta
           name="google-site-verification"
           content="U81j3usvQnYPTdy01rIMsGnoiCctOQBfnwPOX1S1OEg"
         />
-
         {/* Cookie Consent */}
         <script
           type="text/javascript"
@@ -232,7 +225,8 @@ export default function App() {
 
 export function ErrorBoundary() {
   const error = useRouteError();
-  const rootData = useRootLoaderData();
+  /** @type {LoaderReturnData} */
+  const rootData = useLoaderData();
   const nonce = useNonce();
   let errorMessage = 'Unknown error';
   let errorStatus = 500;
@@ -254,30 +248,14 @@ export function ErrorBoundary() {
       </head>
       <body>
         <Layout {...rootData}>
-          <div className="collectionPage actualPage">
-            <div className="theRest">
-              <div className="inside-lg">
-                <header>
-                  <div>
-                    <h1>Oops</h1>
-                  </div>
-                  <h3>
-                    {errorStatus}
-                    {errorMessage && <span> - {errorMessage}</span>}
-                  </h3>
-                </header>
-                <div className="text-center inside-sm">
-                  <p>
-                    The page you were looking for could not be found. It might
-                    have been removed, renamed, or did not exist in the first
-                    place. Perhaps searching can help.
-                  </p>
-                  <div className="searchForm">
-                    <SearchForm />
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="route-error">
+            <h1>Oops</h1>
+            <h2>{errorStatus}</h2>
+            {errorMessage && (
+              <fieldset>
+                <pre>{errorMessage}</pre>
+              </fieldset>
+            )}
           </div>
         </Layout>
         <ScrollRestoration nonce={nonce} />
@@ -360,5 +338,4 @@ const FOOTER_QUERY = `#graphql
 
 /** @typedef {import('@shopify/remix-oxygen').LoaderFunctionArgs} LoaderFunctionArgs */
 /** @typedef {import('@remix-run/react').ShouldRevalidateFunction} ShouldRevalidateFunction */
-/** @typedef {import('@shopify/hydrogen/storefront-api-types').CustomerAccessToken} CustomerAccessToken */
 /** @typedef {import('@shopify/remix-oxygen').SerializeFrom<typeof loader>} LoaderReturnData */

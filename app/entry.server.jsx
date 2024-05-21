@@ -67,6 +67,7 @@ export default async function handleRequest(
       'https://www.facebook.com/',
       'https://form.jotform.com',
       'https://boards.greenhouse.io/',
+      'https://submit.jotform.com/',
     ],
     scriptSrc: [
       "'self'",
