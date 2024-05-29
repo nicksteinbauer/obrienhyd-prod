@@ -210,6 +210,12 @@ export default function App() {
           }}
         />
         {/* End Cookie Consent */}
+        <script
+          id="gorgias-chat-widget-install-v3"
+          src="https://config.gorgias.chat/bundle-loader/01HKTCXXVCJSJGNZNH55W29XD4"
+        >
+          {' '}
+        </script>
       </head>
       <body>
         <Layout {...data}>
