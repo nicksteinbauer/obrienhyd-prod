@@ -23,8 +23,8 @@ export function Header({header, isLoggedIn, cart}) {
       <div role="banner" className={`always-flex justify topHeader`}>
         <div className="flex-vertical promo-banner">
           <span>
-            {/* Direct Web Sales Available for US Residents in the lower 48 States */}
-            Now through Memorial Day, Free shipping on all products site wide.
+            Direct Web Sales Available for US Residents in the lower 48 States.
+            Free shipping on orders over $100.
           </span>
         </div>
         <CartToggle cart={cart} />
