@@ -56,6 +56,7 @@ export default async function handleRequest(
       'https://cdn.cookielaw.org/',
       'https://geolocation.onetrust.com/',
       'https://privacyportal.onetrust.com/',
+      'https://api.emailjs.com/',
     ],
     frameSrc: [
       "'self'",
