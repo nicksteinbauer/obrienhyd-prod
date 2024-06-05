@@ -69,6 +69,7 @@ export default async function handleRequest(
       'https://form.jotform.com',
       'https://boards.greenhouse.io/',
       'https://submit.jotform.com/',
+      'https://contact.gorgias.help/',
     ],
     scriptSrc: [
       "'self'",
@@ -116,6 +117,7 @@ export default async function handleRequest(
       'https://cdn.cookielaw.org/',
       'https://form.jotform.com/',
       'https://boards.greenhouse.io/',
+      'https://contact.gorgias.help/',
     ],
     scriptSrcAttr: ["'self'", "'unsafe-inline'"],
     imgSrc: [

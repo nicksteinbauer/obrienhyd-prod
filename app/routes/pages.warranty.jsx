@@ -1,6 +1,6 @@
 import {json} from '@shopify/remix-oxygen';
 import {useLoaderData} from '@remix-run/react';
-//import RegistrationForm from '~/components/forms/RegistrationForm';
+
 import PageViewViewContentContactPixel from '~/components/metaPixel/PageViewViewContentContactPixel';
 import GorgiasContact from '~/components/forms/GorgiasContact';
 
@@ -56,12 +56,12 @@ export default function Page() {
 }
 
 const PAGE_QUERY = `#graphql
-  query PageRegistration(
+  query PageWarranty(
     $language: LanguageCode,
     $country: CountryCode,
   )
   @inContext(language: $language, country: $country) {
-    page(handle: "registration") {
+    page(handle: "warranty") {
       id
       title
       body
