@@ -118,6 +118,7 @@ export default async function handleRequest(
       'https://form.jotform.com/',
       'https://boards.greenhouse.io/',
       'https://contact.gorgias.help/',
+      'http://www.storelocatorwidgets.com/',
     ],
     scriptSrcAttr: ["'self'", "'unsafe-inline'"],
     imgSrc: [

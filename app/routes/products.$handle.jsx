@@ -1,4 +1,4 @@
-import {Suspense, useState} from 'react';
+import {Suspense, useState, useEffect} from 'react';
 import {defer, redirect} from '@shopify/remix-oxygen';
 import {Await, Link, useLoaderData} from '@remix-run/react';
 import {
@@ -548,6 +548,30 @@ function Locator() {
   const toggleClass = () => {
     setActive(!isActive);
   };
+
+  useEffect(() => {
+    // Load Google Maps API script
+    const googleMapsScript = document.createElement('script');
+    googleMapsScript.type = 'text/javascript';
+    googleMapsScript.src =
+      '//maps.googleapis.com/maps/api/js?key=AIzaSyBmuZ4dB6S3kpFgkUviSfAoP5h9QoH8Pbg&libraries=places';
+    document.body.appendChild(googleMapsScript);
+
+    // Load Store Locator script
+    const storeLocatorScript = document.createElement('script');
+    storeLocatorScript.type = 'text/javascript';
+    storeLocatorScript.id = 'storelocatorscript';
+    storeLocatorScript.dataset.uid = 'MKPAHXoXV568tSmJYOG1dMsHyOYmxF5t';
+    storeLocatorScript.dataset.settings = 'store_list_layout=Left';
+    storeLocatorScript.src = '//cdn.storelocatorwidgets.com/widget/widget.js';
+    document.body.appendChild(storeLocatorScript);
+
+    return () => {
+      // Cleanup scripts if the component unmounts
+      document.body.removeChild(googleMapsScript);
+      document.body.removeChild(storeLocatorScript);
+    };
+  }, []); // Empty dependency array ensures this runs only once
 
   const iframe =
     '<div id="storelocatorwidget" class="dealers-page" style="width:100%;"><p>Loading <a href="https://www.storelocatorwidgets.com">Locator Software</a>...</p></div>';

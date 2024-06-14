@@ -1,13 +1,26 @@
 import VideoImage from '~/components/obrien/meta/VideoImage';
 
+import {useEffect, useState} from 'react';
+
 function VideoContainer({productVideo, productVideo2, videoImage}) {
+  // Hydration fix: Ensure the same initial render on server and client
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
+
   return (
     <div
       className={`${
         productVideo2 || videoImage ? 'inside-xl flex-md flexFix' : 'inside-xl'
       }`}
     >
-      {productVideo !== null && (
+      {productVideo && (
         <div
           className={`${
             videoImage
@@ -18,9 +31,7 @@ function VideoContainer({productVideo, productVideo2, videoImage}) {
           <div className="obrien-vimeo">
             <iframe
               src={productVideo}
-              title="vide"
-              //@ts-ignore
-              //controls="true"
+              title="video"
               className="product-player"
               width="100%"
               height="100%"
@@ -28,14 +39,12 @@ function VideoContainer({productVideo, productVideo2, videoImage}) {
           </div>
         </div>
       )}
-      {productVideo2 !== null && (
+      {productVideo2 && (
         <div className="padding-10 possibleFix">
           <div className="obrien-vimeo">
             <iframe
               src={productVideo2}
-              title="vide"
-              //@ts-ignore
-              //controls="true"
+              title="video"
               className="product-player"
               width="100%"
               height="100%"
@@ -43,7 +52,7 @@ function VideoContainer({productVideo, productVideo2, videoImage}) {
           </div>
         </div>
       )}
-      {videoImage !== null && (
+      {videoImage && (
         <div className="padding-10">
           <VideoImage myImage={videoImage} />
         </div>

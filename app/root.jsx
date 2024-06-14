@@ -111,10 +111,10 @@ export default function App() {
   const nonce = useNonce();
   /** @type {LoaderReturnData} */
   const data = useLoaderData();
-  const matches = useMatches();
-  const isProductRoute = matches.some((m) =>
-    /^\/products\/\w+/.test(m.pathname),
-  );
+  // const matches = useMatches();
+  // const isProductRoute = matches.some((m) =>
+  //   /^\/products\/\w+/.test(m.pathname),
+  // );
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -173,7 +173,7 @@ export default function App() {
         <Meta />
         <Links />
 
-        {isProductRoute && (
+        {/* {isProductRoute && (
           <>
             <script
               type="text/javascript"
@@ -187,7 +187,7 @@ export default function App() {
               src="//cdn.storelocatorwidgets.com/widget/widget.js"
             ></script>
           </>
-        )}
+        )} */}
 
         <meta
           name="google-site-verification"
