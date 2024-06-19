@@ -57,6 +57,9 @@ export default async function handleRequest(
       'https://geolocation.onetrust.com/',
       'https://privacyportal.onetrust.com/',
       'https://api.emailjs.com/',
+      'https://fast.a.klaviyo.com/',
+      'https://static-forms.klaviyo.com/',
+      'https://a.klaviyo.com/',
     ],
     frameSrc: [
       "'self'",
@@ -119,6 +122,8 @@ export default async function handleRequest(
       'https://boards.greenhouse.io/',
       'https://contact.gorgias.help/',
       'http://www.storelocatorwidgets.com/',
+      'https://static.klaviyo.com/',
+      'https://static-tracking.klaviyo.com/',
     ],
     scriptSrcAttr: ["'self'", "'unsafe-inline'"],
     imgSrc: [
@@ -136,6 +141,7 @@ export default async function handleRequest(
       'https://www.facebook.com/',
       'https://connect.facebook.net/',
       'https://cdn.cookielaw.org/',
+      'https://d3k81ch9hvuctc.cloudfront.net/',
     ],
     styleSrc: [
       "'self'",
@@ -145,6 +151,7 @@ export default async function handleRequest(
       'http://maxcdn.bootstrapcdn.com/',
       'http://cdn.storelocatorwidgets.com/',
       'http://fonts.googleapis.com/',
+      'https://static.klaviyo.com/',
     ],
   });
 
