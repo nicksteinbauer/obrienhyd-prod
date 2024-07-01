@@ -1,4 +1,4 @@
-import {useRef, useEffect} from 'react';
+import {useRef, useEffect, useState} from 'react';
 
 import {defer} from '@shopify/remix-oxygen';
 import ObrienHero from '~/components/obrien/home/Hero';
@@ -20,29 +20,9 @@ import HomeActivities from '~/components/obrien/home/HomeActivities';
 import PageViewViewContentPixel from '~/components/metaPixel/PageViewViewContentPixel';
 // import GoogleAnalytics from '~/components/Analytics/GoogleAnalytics';
 
-const responsiveSettings = [
-  {
-    breakpoint: 1200,
-    settings: {
-      slidesToShow: 4,
-      slidesToScroll: 4,
-    },
-  },
-  {
-    breakpoint: 900,
-    settings: {
-      slidesToShow: 3,
-      slidesToScroll: 3,
-    },
-  },
-  {
-    breakpoint: 600,
-    settings: {
-      slidesToShow: 2,
-      slidesToScroll: 2,
-    },
-  },
-];
+// import Slider from 'react-slick';
+// import 'slick-carousel/slick/slick.css';
+// import 'slick-carousel/slick/slick-theme.css';
 
 /**
  * @type {MetaFunction<typeof loader>}
@@ -100,6 +80,8 @@ export default function Page() {
 
   return (
     <>
+      <PageViewViewContentPixel />
+
       {/* <GoogleAnalytics /> */}
       <main className="home">
         {heroVideo !== null && <ObrienHero heroVideo={heroVideo} />}
@@ -128,12 +110,185 @@ export default function Page() {
   );
 }
 
+// function RecommendedProducts({products}) {
+//   // Gsap Controls
+//   let animateThis1 = useRef(null);
+//   let animateThis2 = useRef(null);
+//   useEffect(() => {
+//     gsap.registerPlugin(ScrollTrigger);
+//     gsap.to(animateThis1, {
+//       scrollTrigger: {
+//         trigger: animateThis1,
+//         //markers: true,
+//         start: '100 bottom',
+//         toggleClass: 'enable',
+//       },
+//       duration: 2,
+//     });
+//     gsap.to(animateThis2, {
+//       scrollTrigger: {
+//         trigger: animateThis2,
+//         //markers: true,
+//         start: '100 bottom',
+//         toggleClass: 'enable',
+//       },
+//       duration: 2,
+//     });
+//   });
+
+//   // Slider Controls
+//   const [nav1, setNav1] = useState(null);
+//   const [nav2, setNav2] = useState(null);
+//   let sliderRef1 = useRef(null);
+//   let sliderRef2 = useRef(null);
+
+//   useEffect(() => {
+//     setNav1(sliderRef1);
+//     setNav2(sliderRef2);
+//   }, []);
+
+//   return (
+//     <>
+//       <section id="new2024" className="grayBack">
+//         <div className="inside-xxxl">
+//           <header
+//             className="fadeIn"
+//             ref={(el1) => {
+//               animateThis1 = el1;
+//             }}
+//           >
+//             <div className="notWhite">
+//               <PinLogoOnly />
+//             </div>
+//             <h2>
+//               Some of Our <span>Newest</span> Gear
+//             </h2>
+//           </header>
+//           <Await resolve={products}>
+//             {({products}) => (
+//               <div className="productGrid homeSlider">
+//                 <div
+//                   className="fadeIn"
+//                   ref={(el1) => {
+//                     animateThis1 = el1;
+//                   }}
+//                 >
+//                   <Slider
+//                     asNavFor={nav2}
+//                     ref={(slider) => (sliderRef1 = slider)}
+//                     infinite={false}
+//                     arrows={false}
+//                     fade={true}
+//                   >
+//                     {products.nodes.map((product) => (
+//                       <div className="homeGrid newSlick" key={product.id}>
+//                         <div>
+//                           <div className="card-image">
+//                             {product.totalInventory < 1 && (
+//                               <div className="text-right text-notice">
+//                                 <span className="outOfStock">Out of Stock</span>
+//                               </div>
+//                             )}
+//                             <Image
+//                               data={product.upgradeImage.reference.image}
+//                               sizes="(min-width: 768px) 800px, 2500px"
+//                             />
+//                             <Link
+//                               className="recommended-product button"
+//                               to={`/products/${product.handle}`}
+//                               reloadDocument
+//                             >
+//                               <span>View {product.title}</span>
+//                             </Link>
+//                           </div>
+//                         </div>
+//                       </div>
+//                     ))}
+//                   </Slider>
+//                 </div>
+//                 <div
+//                   className="inside-sm fadeIn secondSlider"
+//                   ref={(el2) => {
+//                     animateThis2 = el2;
+//                   }}
+//                 >
+//                   <Slider
+//                     asNavFor={nav1}
+//                     ref={(slider) => (sliderRef2 = slider)}
+//                     slidesToShow={1}
+//                     swipeToSlide={true}
+//                     focusOnSelect={true}
+//                     infinite={false}
+//                     className="slickSecond"
+//                     centerMode={true}
+//                   >
+//                     {products.nodes.map((product) => (
+//                       <div className="homeGridSm" key={product.id}>
+//                         <div>
+//                           <div className="card-image">
+//                             {product.totalInventory < 1 && (
+//                               <div className="text-right text-notice">
+//                                 <span className="outOfStock">Out of Stock</span>
+//                               </div>
+//                             )}
+//                             <Image
+//                               data={product.images.nodes[0]}
+//                               aspectRatio="1/1"
+//                               sizes="(min-width: 45em) 20vw, 50vw"
+//                             />
+//                           </div>
+//                           {/* <div className="textArea justify">
+//                             <h3>{product.title}</h3>
+//                             <div className="price">
+//                               <Money
+//                                 data={product.priceRange.minVariantPrice}
+//                               />
+//                             </div>
+//                           </div> */}
+//                         </div>
+//                       </div>
+//                     ))}
+//                   </Slider>
+//                 </div>
+//               </div>
+//             )}
+//           </Await>
+//           <br />
+//         </div>
+//       </section>
+//     </>
+//   );
+// }
+
 /**
  * @param {{
  *   products: Promise<RecommendedProductsQuery>;
  * }}
  */
 function RecommendedProducts({products}) {
+  const responsiveSettings = [
+    {
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 4,
+      },
+    },
+    {
+      breakpoint: 900,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+      },
+    },
+  ];
   let animateThis1 = useRef(null);
   let animateThis2 = useRef(null);
   useEffect(() => {
@@ -358,6 +513,18 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
     title
     handle
     totalInventory
+    upgradeImage: metafield(namespace: "custom", key: "upgrade_image") {
+      value
+      reference {
+        ... on MediaImage {
+          image {
+            url
+            width
+            height
+          }
+        }
+      }
+    }
     priceRange {
       minVariantPrice {
         amount
@@ -376,7 +543,7 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
   }
   query RecommendedProducts ($country: CountryCode, $language: LanguageCode)
     @inContext(country: $country, language: $language) {
-    products(query: "tag:Featured", first: 10, sortKey: UPDATED_AT) {
+    products(query: "tag:Upgrade", first: 10, sortKey: UPDATED_AT) {
       nodes {
         ...RecommendedProduct
       }

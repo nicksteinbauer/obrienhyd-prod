@@ -1694,29 +1694,28 @@ ul.ulSwim {
     max-width: 940px; } }
 
 .slick-slider {
-  padding-bottom: 40px; }
+  padding-bottom: 0; }
+
+.slick-slider.slickSecond {
+  padding-bottom: 0; }
+
+.secondSlider {
+  margin-top: -40px; }
+  @media screen and (min-width: 992px) {
+    .secondSlider {
+      margin-top: -100px; } }
 
 .slick-next:before, .slick-prev:before {
   color: #0276b2;
   font-size: 30px; }
 
 .slick-prev {
-  left: -35px;
-  z-index: 100;
-  bottom: -10px;
-  top: auto;
-  width: 30px;
-  height: 30px;
-  margin-left: 50%; }
+  left: 45px;
+  z-index: 10; }
 
 .slick-next {
-  right: -35px;
-  z-index: 100;
-  bottom: -10px;
-  top: auto;
-  width: 30px;
-  height: 30px;
-  margin-right: 50%; }
+  right: 50px;
+  z-index: 10; }
 
 .react-slideshow-container .default-nav {
   padding: 0 !important; }
@@ -3050,18 +3049,21 @@ aside .iterationContainer {
   background-color: #16a4fa;
   text-decoration: none; }
 
-.homeGrid {
+.homeGrid, .homeGridSm {
   padding: 10px; }
-  .homeGrid a {
+  .homeGrid a, .homeGridSm a {
     text-decoration: none; }
-  .homeGrid a:link, .homeGrid a:active, .homeGrid a:visited {
+  .homeGrid a:link, .homeGrid a:active, .homeGrid a:visited, .homeGridSm a:link, .homeGridSm a:active, .homeGridSm a:visited {
     color: #212529; }
-  .homeGrid img {
+  .homeGrid img, .homeGridSm img {
     width: 100%;
     border-radius: 10px; }
-  .homeGrid .card-image {
+  .homeGrid .card-image, .homeGridSm .card-image {
     background-color: #fff;
     border-radius: 10px; }
+
+.homeGridSm {
+  padding: 10px 50px; }
 
 .homeSlidePadd {
   padding-left: 40px;
@@ -3071,6 +3073,14 @@ aside .iterationContainer {
   margin-left: -40px; }
 .homeSlidePadd .react-slideshow-container .default-nav:last-of-type {
   margin-right: -40px; }
+
+.newSlick img {
+  border-radius: 0; }
+.newSlick .card-image a {
+  position: absolute;
+  z-index: 2;
+  top: 40px;
+  right: 40px; }
 
 .grayBack {
   background-color: #f7f7f7;

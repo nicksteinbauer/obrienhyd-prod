@@ -807,6 +807,15 @@ export type RecommendedProductFragment = Pick<
   StorefrontAPI.Product,
   'id' | 'title' | 'handle' | 'totalInventory'
 > & {
+  upgradeImage?: StorefrontAPI.Maybe<
+    Pick<StorefrontAPI.Metafield, 'value'> & {
+      reference?: StorefrontAPI.Maybe<{
+        image?: StorefrontAPI.Maybe<
+          Pick<StorefrontAPI.Image, 'url' | 'width' | 'height'>
+        >;
+      }>;
+    }
+  >;
   priceRange: {
     minVariantPrice: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>;
   };
@@ -829,6 +838,15 @@ export type RecommendedProductsQuery = {
         StorefrontAPI.Product,
         'id' | 'title' | 'handle' | 'totalInventory'
       > & {
+        upgradeImage?: StorefrontAPI.Maybe<
+          Pick<StorefrontAPI.Metafield, 'value'> & {
+            reference?: StorefrontAPI.Maybe<{
+              image?: StorefrontAPI.Maybe<
+                Pick<StorefrontAPI.Image, 'url' | 'width' | 'height'>
+              >;
+            }>;
+          }
+        >;
         priceRange: {
           minVariantPrice: Pick<
             StorefrontAPI.MoneyV2,
@@ -2109,7 +2127,7 @@ interface GeneratedQueryTypes {
     return: PageHomeQuery;
     variables: PageHomeQueryVariables;
   };
-  '#graphql\n  fragment RecommendedProduct on Product {\n    id\n    title\n    handle\n    totalInventory\n    priceRange {\n      minVariantPrice {\n        amount\n        currencyCode\n      }\n    }\n    images(first: 1) {\n      nodes {\n        id\n        url\n        altText\n        width\n        height\n      }\n    }\n  }\n  query RecommendedProducts ($country: CountryCode, $language: LanguageCode)\n    @inContext(country: $country, language: $language) {\n    products(query: "tag:Featured", first: 10, sortKey: UPDATED_AT) {\n      nodes {\n        ...RecommendedProduct\n      }\n    }\n  }\n': {
+  '#graphql\n  fragment RecommendedProduct on Product {\n    id\n    title\n    handle\n    totalInventory\n    upgradeImage: metafield(namespace: "custom", key: "upgrade_image") {\n      value\n      reference {\n        ... on MediaImage {\n          image {\n            url\n            width\n            height\n          }\n        }\n      }\n    }\n    priceRange {\n      minVariantPrice {\n        amount\n        currencyCode\n      }\n    }\n    images(first: 1) {\n      nodes {\n        id\n        url\n        altText\n        width\n        height\n      }\n    }\n  }\n  query RecommendedProducts ($country: CountryCode, $language: LanguageCode)\n    @inContext(country: $country, language: $language) {\n    products(query: "tag:Upgrade", first: 10, sortKey: UPDATED_AT) {\n      nodes {\n        ...RecommendedProduct\n      }\n    }\n  }\n': {
     return: RecommendedProductsQuery;
     variables: RecommendedProductsQueryVariables;
   };

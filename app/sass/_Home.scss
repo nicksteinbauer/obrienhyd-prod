@@ -1,4 +1,4 @@
-.homeGrid {
+.homeGrid, .homeGridSm {
     padding: 10px;
     a {
         text-decoration: none;
@@ -15,6 +15,9 @@
         border-radius: 10px;
     }
 }
+.homeGridSm {
+    padding: 10px 50px;
+}
 
 .homeSlidePadd {
     padding-left: 40px;
@@ -27,6 +30,21 @@
     }
     .react-slideshow-container .default-nav:last-of-type {
         margin-right: -40px;
+    }
+}
+
+.newSlick {
+    img {
+        border-radius: 0;
+    }
+    .card-image {
+        a {
+            position: absolute;
+            //background-color: transparent;
+            z-index: 2;
+            top: 40px;
+            right: 40px;
+        }
     }
 }
 

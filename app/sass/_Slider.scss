@@ -8,33 +8,55 @@
 }
 
 .slick-slider {
-    padding-bottom: 40px;
+    padding-bottom: 0;
 }
+.slick-slider.slickSecond {
+    padding-bottom: 0;
+}
+.secondSlider {
+    margin-top: -40px;
+    @media screen and (min-width: $screen-md) {
+        margin-top: -100px;
+    }
+}
+
+// old slick prev and next buttons.
 
 .slick-next:before, .slick-prev:before {
     color: $ob-blue;
     font-size: 30px;
     
-}
+ }
+
+// .slick-prev {
+//     left: -35px;
+//     z-index: 100;
+//     bottom: -10px;
+//     top: auto;
+//     width: 30px;
+//     height: 30px;
+//     margin-left: 50%;
+// }
+// .slick-next {
+//     right: -35px;
+//     z-index: 100;
+//     bottom: -10px;
+//     top: auto;
+//     width: 30px;
+//     height: 30px;
+//     margin-right: 50%;
+// }
 
 .slick-prev {
-    left: -35px;
-    z-index: 100;
-    bottom: -10px;
-    top: auto;
-    width: 30px;
-    height: 30px;
-    margin-left: 50%;
+    left: 45px;
+    z-index: 10;
 }
+
 .slick-next {
-    right: -35px;
-    z-index: 100;
-    bottom: -10px;
-    top: auto;
-    width: 30px;
-    height: 30px;
-    margin-right: 50%;
+    right: 50px;
+    z-index: 10;
 }
+
 
 .react-slideshow-container .default-nav {
     padding: 0 !important;

@@ -22,9 +22,14 @@ export function Header({header, isLoggedIn, cart}) {
     <header className={`wholeHeader`}>
       <div role="banner" className={`always-flex justify topHeader`}>
         <div className="flex-vertical promo-banner">
-          <span>
+          {/* <span>
             Direct Web Sales Available for US Residents in the lower 48 States.
             Free shipping on orders over $100.
+          </span> */}
+          <span>
+            Our warehouse will be closed July 4-5 in observance of Indepence
+            Day. Any orders placed July 4-8 will be processed the following
+            week.
           </span>
         </div>
         <CartToggle cart={cart} />
