@@ -60,6 +60,7 @@ export default async function handleRequest(
       'https://fast.a.klaviyo.com/',
       'https://static-forms.klaviyo.com/',
       'https://a.klaviyo.com/',
+      'https://www.google.com/',
     ],
     frameSrc: [
       "'self'",

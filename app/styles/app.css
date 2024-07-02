@@ -2702,6 +2702,9 @@ table.sizing.product-chart {
   list-style-type: disc;
   margin-left: 1em; }
 
+.manualsSafety {
+  margin-top: 20px; }
+
 #headlessui-portal-root .onClose {
   height: 100%; }
 
