@@ -42,14 +42,26 @@
         border-radius: 0;
     }
     .card-image {
+        .transparent1 {
+            padding: 20px;
+            background: rgba($color: #fff, $alpha: .7);
+            border-radius: 10px;
+        }
         .abs {
             position: absolute;
             //background-color: rgba($color: #fff, $alpha: .8);
             z-index: 2;
-            top: 40px;
-            right: 40px;
+            top: 0;
+            right: 0;
             border-radius: 6px;
-            padding: 20px;
+            padding: 40px 40px;
+            @media screen and (min-width: $screen-md) {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 0 40px;
+                bottom: 0;
+            }
             h3 {
                 margin-top: 0;
                 padding-top: 0;
@@ -60,7 +72,7 @@
                 border-radius: 6px;
                 color: #fff;
                 padding: 4px 8px;
-                margin: 10px 5px 10px 0;
+                margin: 10px 5px 0 0;
                 transition: background .3s ease;
             }
             .button:hover {
@@ -109,12 +121,12 @@
     fill: $ob-blue;
 }
 
-.white {
-    h3 {
-        color: #fff;
-        text-shadow: 1px 1px 5px #000000;
-    }
-}
+// .white {
+//     h3 {
+//         color: #fff;
+//         text-shadow: 1px 1px 5px #000000;
+//     }
+// }
 
 .grayBack {
     background-color: $ob-lightest;

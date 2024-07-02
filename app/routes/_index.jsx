@@ -6,9 +6,9 @@ import ObrienHero from '~/components/obrien/home/Hero';
 import {MEDIA_FRAGMENT} from '~/lib/fragments';
 
 import {Await, useLoaderData, Link} from '@remix-run/react';
-import {Image, Money} from '@shopify/hydrogen';
+import {Image} from '@shopify/hydrogen';
 
-import UpgradeHalftone from '../../public/UpgradeHalftone1.png';
+import UpgradeHalftone from '../../public/UpgradeHalftoneNew2.png';
 //import PinLogoOnly from '~/components/logos/PinLogoOnly';
 import UpgradeLogo from '~/components/logos/UpgradeLogo';
 import {gsap} from 'gsap';
@@ -217,22 +217,24 @@ function RecommendedProducts({products}) {
                             />
 
                             <div className="abs">
-                              <h3>{product.title}</h3>
-                              <div className="always-flex">
-                                <Link
-                                  className="recommended-product button"
-                                  to={`/products/${product.handle}`}
-                                  reloadDocument
-                                >
-                                  <span>{product?.upgradeTitle?.value}</span>
-                                </Link>
-                                <Link
-                                  className="recommended-product button"
-                                  to={`/${product?.upgradeLink2?.value}`}
-                                  reloadDocument
-                                >
-                                  <span>{product?.upgradeTitle2?.value}</span>
-                                </Link>
+                              <div className="transparent1">
+                                <h3>{product.title}</h3>
+                                <div className="always-flex">
+                                  <Link
+                                    className="recommended-product button"
+                                    to={`/products/${product.handle}`}
+                                    reloadDocument
+                                  >
+                                    <span>{product?.upgradeTitle?.value}</span>
+                                  </Link>
+                                  <Link
+                                    className="recommended-product button"
+                                    to={`/${product?.upgradeLink2?.value}`}
+                                    reloadDocument
+                                  >
+                                    <span>{product?.upgradeTitle2?.value}</span>
+                                  </Link>
+                                </div>
                               </div>
                             </div>
                           </div>

@@ -1700,10 +1700,15 @@ ul.ulSwim {
   padding-bottom: 0; }
 
 .secondSlider {
-  margin-top: -40px; }
+  margin-top: -60px;
+  max-width: 600px; }
   @media screen and (min-width: 992px) {
     .secondSlider {
       margin-top: -100px; } }
+  @media screen and (min-width: 1440px) {
+    .secondSlider {
+      margin-top: -200px;
+      max-width: 760px; } }
 
 .slick-next:before, .slick-prev:before {
   color: #0276b2;
@@ -3076,13 +3081,24 @@ aside .iterationContainer {
 
 .newSlick img {
   border-radius: 0; }
+.newSlick .card-image .transparent1 {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px; }
 .newSlick .card-image .abs {
   position: absolute;
   z-index: 2;
-  top: 40px;
-  right: 40px;
+  top: 0;
+  right: 0;
   border-radius: 6px;
-  padding: 20px; }
+  padding: 40px 40px; }
+  @media screen and (min-width: 992px) {
+    .newSlick .card-image .abs {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 40px;
+      bottom: 0; } }
   .newSlick .card-image .abs h3 {
     margin-top: 0;
     padding-top: 0; }
@@ -3092,7 +3108,7 @@ aside .iterationContainer {
     border-radius: 6px;
     color: #fff;
     padding: 4px 8px;
-    margin: 10px 5px 10px 0;
+    margin: 10px 5px 0 0;
     transition: background .3s ease; }
   .newSlick .card-image .abs .button:hover {
     background: #de6e4b; }
@@ -3122,10 +3138,6 @@ aside .iterationContainer {
 
 .obblue {
   fill: #0276b2; }
-
-.white h3 {
-  color: #fff;
-  text-shadow: 1px 1px 5px #000000; }
 
 .grayBack {
   background-color: #f7f7f7;
