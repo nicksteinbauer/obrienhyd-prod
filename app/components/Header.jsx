@@ -27,7 +27,7 @@ export function Header({header, isLoggedIn, cart}) {
             Free shipping on orders over $100.
           </span> */}
           <span>
-            Our warehouse will be closed July 4-5 in observance of Indepence
+            Our warehouse will be closed July 4-5 in observance of Independence
             Day. Any orders placed July 4-8 will be processed the following
             week.
           </span>
