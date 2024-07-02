@@ -21,6 +21,10 @@ import Dnhp from '~/components/prop65/Dnhp';
 import VideoContainer from '~/components/video/VideoContainer.jsx';
 //import Locator from '~/components/locator/Locator';
 import StockNotification from '~/components/klaviyo/StockNotification';
+import {
+  trackViewedProduct,
+  trackAddedToCart,
+} from '~/components/klaviyo/Onsite';
 import {Link as ScrollLink} from 'react-scroll';
 
 import {Button} from 'react-bootstrap';
@@ -220,6 +224,12 @@ export default function Product() {
     : null;
   const dinpMod = dinp?.value ? dinp?.value : null;
   const dnhpMod = dnhp?.value ? dnhp.value : null;
+
+  // Klaviyo trackedViewedProduct
+  useEffect(() => {
+    trackViewedProduct(product);
+  });
+
   return (
     <>
       <PageViewViewContentPixel />
@@ -438,6 +448,9 @@ function ProductPrice({selectedVariant}) {
  * }}
  */
 function ProductForm({product, selectedVariant, variants}) {
+  const handleAtc = function () {
+    trackAddedToCart(product);
+  };
   return (
     <div className="buyBoxForm">
       <ProductPrice selectedVariant={selectedVariant} />
@@ -455,6 +468,7 @@ function ProductForm({product, selectedVariant, variants}) {
           <AddToCartButton
             disabled={!selectedVariant || !selectedVariant.availableForSale}
             onClick={() => {
+              handleAtc();
               window.location.href = window.location.href + '#cart-aside';
             }}
             lines={

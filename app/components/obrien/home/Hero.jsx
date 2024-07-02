@@ -1,8 +1,10 @@
 import {useRef, useEffect} from 'react';
 import {gsap} from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import WhiteStackedLogo from '~/components/logos/WhiteStackedLogo';
+//import WhiteStackedLogo from '~/components/logos/WhiteStackedLogo';
 import Scroller from './Scroller';
+
+import UpgradeLogo from '../../logos/UpgradeLogo';
 
 import {MediaFile} from '@shopify/hydrogen';
 
@@ -43,12 +45,12 @@ function ObrienHero({heroVideo}) {
         playsInline
       />
       <div className="heroOverlay flex-vertical text-center">
-        <div className="inside-xs">
-          <WhiteStackedLogo />
+        <div className="inside-md">
+          <UpgradeLogo />
         </div>
-        <h2>
+        {/* <h2>
           The <span>2024</span> Product Line is Here
-        </h2>
+        </h2> */}
         <Scroller />
       </div>
     </div>

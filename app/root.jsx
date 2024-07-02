@@ -1,4 +1,4 @@
-import {useNonce} from '@shopify/hydrogen';
+import {useNonce, Script} from '@shopify/hydrogen';
 import {cssBundleHref} from '@remix-run/css-bundle';
 import {defer} from '@shopify/remix-oxygen';
 import {
@@ -172,26 +172,11 @@ export default function App() {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
-        <script
+        <Script
           async
           type="text/javascript"
           src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WkytYu"
-        ></script>
-        {/* {isProductRoute && (
-          <>
-            <script
-              type="text/javascript"
-              src="//maps.googleapis.com/maps/api/js?key=AIzaSyBmuZ4dB6S3kpFgkUviSfAoP5h9QoH8Pbg&libraries=places"
-            ></script>
-            <script
-              type="text/javascript"
-              id="storelocatorscript"
-              data-uid="MKPAHXoXV568tSmJYOG1dMsHyOYmxF5t"
-              data-settings="store_list_layout=Left"
-              src="//cdn.storelocatorwidgets.com/widget/widget.js"
-            ></script>
-          </>
-        )} */}
+        />
 
         <meta
           name="google-site-verification"

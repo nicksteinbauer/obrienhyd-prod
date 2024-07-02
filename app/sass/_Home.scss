@@ -33,18 +33,86 @@
     }
 }
 
+// .homeGrid.white {
+//     background-color: #fff;
+// }
+
 .newSlick {
     img {
         border-radius: 0;
     }
     .card-image {
-        a {
+        .abs {
             position: absolute;
-            //background-color: transparent;
+            //background-color: rgba($color: #fff, $alpha: .8);
             z-index: 2;
             top: 40px;
             right: 40px;
+            border-radius: 6px;
+            padding: 20px;
+            h3 {
+                margin-top: 0;
+                padding-top: 0;
+            }
+            .button {
+                display: inline-block;
+                background: $ob-blue;
+                border-radius: 6px;
+                color: #fff;
+                padding: 4px 8px;
+                margin: 10px 5px 10px 0;
+                transition: background .3s ease;
+            }
+            .button:hover {
+                background: $ob-orange;
+            }
         }
+    }
+}
+.upgradeHalftone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    //aspect-ratio: 3 / 1.25;
+}
+// .upgradeImageProduct {
+//     -webkit-box-shadow: 0 5px 10px 0 rgba(0,0,0,.4);
+// box-shadow: 0 5px 10px 0 rgba(0,0,0,.4);
+// }
+
+.heroOverlay {
+    .inside-md {
+        min-width: 300px;
+        @media screen and (min-width: $screen-xs) {
+            min-width: 450px;
+        }
+        @media screen and (min-width: $screen-md) {
+            min-width: 600px;
+        }
+    }
+    .upgradeLogo.inside-xs {
+        width: 100%;
+        max-width: none;
+        padding-left: 0;
+        padding-right: 0;
+        svg {
+            width: 100%;
+
+        }
+        .obblack {
+            fill: #fff;
+        }
+    }
+}
+
+.obblue {
+    fill: $ob-blue;
+}
+
+.white {
+    h3 {
+        color: #fff;
+        text-shadow: 1px 1px 5px #000000;
     }
 }
 

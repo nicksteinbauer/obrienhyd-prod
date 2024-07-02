@@ -8,10 +8,12 @@ import {MEDIA_FRAGMENT} from '~/lib/fragments';
 import {Await, useLoaderData, Link} from '@remix-run/react';
 import {Image, Money} from '@shopify/hydrogen';
 
-import PinLogoOnly from '~/components/logos/PinLogoOnly';
+import UpgradeHalftone from '../../public/UpgradeHalftone1.png';
+//import PinLogoOnly from '~/components/logos/PinLogoOnly';
+import UpgradeLogo from '~/components/logos/UpgradeLogo';
 import {gsap} from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import {Slide} from 'react-slideshow-image';
+//import {Slide} from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 
 import HomeWhatWeDo from '~/components/obrien/home/HomeWhatWeDo';
@@ -20,9 +22,9 @@ import HomeActivities from '~/components/obrien/home/HomeActivities';
 import PageViewViewContentPixel from '~/components/metaPixel/PageViewViewContentPixel';
 // import GoogleAnalytics from '~/components/Analytics/GoogleAnalytics';
 
-// import Slider from 'react-slick';
-// import 'slick-carousel/slick/slick.css';
-// import 'slick-carousel/slick/slick-theme.css';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 /**
  * @type {MetaFunction<typeof loader>}
@@ -110,190 +112,22 @@ export default function Page() {
   );
 }
 
-// function RecommendedProducts({products}) {
-//   // Gsap Controls
-//   let animateThis1 = useRef(null);
-//   let animateThis2 = useRef(null);
-//   useEffect(() => {
-//     gsap.registerPlugin(ScrollTrigger);
-//     gsap.to(animateThis1, {
-//       scrollTrigger: {
-//         trigger: animateThis1,
-//         //markers: true,
-//         start: '100 bottom',
-//         toggleClass: 'enable',
-//       },
-//       duration: 2,
-//     });
-//     gsap.to(animateThis2, {
-//       scrollTrigger: {
-//         trigger: animateThis2,
-//         //markers: true,
-//         start: '100 bottom',
-//         toggleClass: 'enable',
-//       },
-//       duration: 2,
-//     });
-//   });
-
-//   // Slider Controls
-//   const [nav1, setNav1] = useState(null);
-//   const [nav2, setNav2] = useState(null);
-//   let sliderRef1 = useRef(null);
-//   let sliderRef2 = useRef(null);
-
-//   useEffect(() => {
-//     setNav1(sliderRef1);
-//     setNav2(sliderRef2);
-//   }, []);
-
-//   return (
-//     <>
-//       <section id="new2024" className="grayBack">
-//         <div className="inside-xxxl">
-//           <header
-//             className="fadeIn"
-//             ref={(el1) => {
-//               animateThis1 = el1;
-//             }}
-//           >
-//             <div className="notWhite">
-//               <PinLogoOnly />
-//             </div>
-//             <h2>
-//               Some of Our <span>Newest</span> Gear
-//             </h2>
-//           </header>
-//           <Await resolve={products}>
-//             {({products}) => (
-//               <div className="productGrid homeSlider">
-//                 <div
-//                   className="fadeIn"
-//                   ref={(el1) => {
-//                     animateThis1 = el1;
-//                   }}
-//                 >
-//                   <Slider
-//                     asNavFor={nav2}
-//                     ref={(slider) => (sliderRef1 = slider)}
-//                     infinite={false}
-//                     arrows={false}
-//                     fade={true}
-//                   >
-//                     {products.nodes.map((product) => (
-//                       <div className="homeGrid newSlick" key={product.id}>
-//                         <div>
-//                           <div className="card-image">
-//                             {product.totalInventory < 1 && (
-//                               <div className="text-right text-notice">
-//                                 <span className="outOfStock">Out of Stock</span>
-//                               </div>
-//                             )}
-//                             <Image
-//                               data={product.upgradeImage.reference.image}
-//                               sizes="(min-width: 768px) 800px, 2500px"
-//                             />
-//                             <Link
-//                               className="recommended-product button"
-//                               to={`/products/${product.handle}`}
-//                               reloadDocument
-//                             >
-//                               <span>View {product.title}</span>
-//                             </Link>
-//                           </div>
-//                         </div>
-//                       </div>
-//                     ))}
-//                   </Slider>
-//                 </div>
-//                 <div
-//                   className="inside-sm fadeIn secondSlider"
-//                   ref={(el2) => {
-//                     animateThis2 = el2;
-//                   }}
-//                 >
-//                   <Slider
-//                     asNavFor={nav1}
-//                     ref={(slider) => (sliderRef2 = slider)}
-//                     slidesToShow={1}
-//                     swipeToSlide={true}
-//                     focusOnSelect={true}
-//                     infinite={false}
-//                     className="slickSecond"
-//                     centerMode={true}
-//                   >
-//                     {products.nodes.map((product) => (
-//                       <div className="homeGridSm" key={product.id}>
-//                         <div>
-//                           <div className="card-image">
-//                             {product.totalInventory < 1 && (
-//                               <div className="text-right text-notice">
-//                                 <span className="outOfStock">Out of Stock</span>
-//                               </div>
-//                             )}
-//                             <Image
-//                               data={product.images.nodes[0]}
-//                               aspectRatio="1/1"
-//                               sizes="(min-width: 45em) 20vw, 50vw"
-//                             />
-//                           </div>
-//                           {/* <div className="textArea justify">
-//                             <h3>{product.title}</h3>
-//                             <div className="price">
-//                               <Money
-//                                 data={product.priceRange.minVariantPrice}
-//                               />
-//                             </div>
-//                           </div> */}
-//                         </div>
-//                       </div>
-//                     ))}
-//                   </Slider>
-//                 </div>
-//               </div>
-//             )}
-//           </Await>
-//           <br />
-//         </div>
-//       </section>
-//     </>
-//   );
-// }
-
-/**
- * @param {{
- *   products: Promise<RecommendedProductsQuery>;
- * }}
- */
 function RecommendedProducts({products}) {
-  const responsiveSettings = [
-    {
-      breakpoint: 1200,
-      settings: {
-        slidesToShow: 4,
-        slidesToScroll: 4,
-      },
-    },
-    {
-      breakpoint: 900,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-      },
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-      },
-    },
-  ];
+  // Gsap Controls
+  let animateThis0 = useRef(null);
   let animateThis1 = useRef(null);
   let animateThis2 = useRef(null);
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-
+    gsap.to(animateThis0, {
+      scrollTrigger: {
+        trigger: animateThis0,
+        //markers: true,
+        start: '100 bottom',
+        toggleClass: 'enable',
+      },
+      duration: 2,
+    });
     gsap.to(animateThis1, {
       scrollTrigger: {
         trigger: animateThis1,
@@ -314,48 +148,117 @@ function RecommendedProducts({products}) {
     });
   });
 
+  // Slider Controls
+  const [nav1, setNav1] = useState(null);
+  const [nav2, setNav2] = useState(null);
+  let sliderRef1 = useRef(null);
+  let sliderRef2 = useRef(null);
+
+  useEffect(() => {
+    setNav1(sliderRef1);
+    setNav2(sliderRef2);
+  }, []);
+
   return (
     <>
-      <PageViewViewContentPixel />
-
       <section id="new2024" className="grayBack">
-        <div className="inside-xxxl homeSlidePadd">
+        <div className="inside-xxxl">
           <header
             className="fadeIn"
-            ref={(el1) => {
-              animateThis1 = el1;
+            ref={(el0) => {
+              animateThis0 = el0;
             }}
           >
             <div className="notWhite">
-              <PinLogoOnly />
+              <UpgradeLogo />
             </div>
-            <h2>
+            {/* <h2>
               Some of Our <span>Newest</span> Gear
-            </h2>
+            </h2> */}
           </header>
           <Await resolve={products}>
             {({products}) => (
-              <div
-                className="productGrid homeSlider fadeIn"
-                ref={(el2) => {
-                  animateThis2 = el2;
-                }}
-              >
-                <Slide
-                  slidesToScroll={1}
-                  slidesToShow={1}
-                  indicators={true}
-                  responsive={responsiveSettings}
-                  autoplay={false}
-                  easing="ease"
+              <div className="productGrid homeSlider">
+                <div
+                  className="fadeIn"
+                  ref={(el1) => {
+                    animateThis1 = el1;
+                  }}
                 >
-                  {products.nodes.map((product) => (
-                    <div className="homeGrid" key={product.id}>
-                      <Link
-                        className="recommended-product"
-                        to={`/products/${product.handle}`}
-                        reloadDocument
+                  <Slider
+                    asNavFor={nav2}
+                    ref={(slider) => (sliderRef1 = slider)}
+                    infinite={false}
+                    arrows={false}
+                    fade={true}
+                  >
+                    {products.nodes.map((product) => (
+                      <div
+                        className={`homeGrid newSlick ${product?.className?.value}`}
+                        key={product.id}
                       >
+                        <div>
+                          <div className="card-image">
+                            {product.totalInventory < 1 && (
+                              <div className="text-right text-notice">
+                                <span className="outOfStock">Out of Stock</span>
+                              </div>
+                            )}
+                            <Image
+                              data={product.upgradeImage.reference.image}
+                              sizes="(min-width: 768px) 800px, 2500px"
+                            />
+                            <Image
+                              src={UpgradeHalftone}
+                              alt="Halftone"
+                              width={1378}
+                              height={575}
+                              className="upgradeHalftone"
+                            />
+
+                            <div className="abs">
+                              <h3>{product.title}</h3>
+                              <div className="always-flex">
+                                <Link
+                                  className="recommended-product button"
+                                  to={`/products/${product.handle}`}
+                                  reloadDocument
+                                >
+                                  <span>{product?.upgradeTitle?.value}</span>
+                                </Link>
+                                <Link
+                                  className="recommended-product button"
+                                  to={`/${product?.upgradeLink2?.value}`}
+                                  reloadDocument
+                                >
+                                  <span>{product?.upgradeTitle2?.value}</span>
+                                </Link>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </Slider>
+                </div>
+                <div
+                  className="inside-sm fadeIn secondSlider"
+                  ref={(el2) => {
+                    animateThis2 = el2;
+                  }}
+                >
+                  <Slider
+                    asNavFor={nav1}
+                    ref={(slider) => (sliderRef2 = slider)}
+                    slidesToShow={1}
+                    swipeToSlide={true}
+                    focusOnSelect={true}
+                    infinite={false}
+                    className="slickSecond"
+                    centerMode={true}
+                  >
+                    {products.nodes.map((product) => (
+                      <div className="homeGridSm" key={product.id}>
                         <div>
                           <div className="card-image">
                             {product.totalInventory < 1 && (
@@ -367,21 +270,22 @@ function RecommendedProducts({products}) {
                               data={product.images.nodes[0]}
                               aspectRatio="1/1"
                               sizes="(min-width: 45em) 20vw, 50vw"
+                              className="upgradeImageProduct"
                             />
                           </div>
-                          <div className="textArea justify">
+                          {/* <div className="textArea justify">
                             <h3>{product.title}</h3>
                             <div className="price">
                               <Money
                                 data={product.priceRange.minVariantPrice}
                               />
                             </div>
-                          </div>
+                          </div> */}
                         </div>
-                      </Link>
-                    </div>
-                  ))}
-                </Slide>
+                      </div>
+                    ))}
+                  </Slider>
+                </div>
               </div>
             )}
           </Await>
@@ -391,6 +295,138 @@ function RecommendedProducts({products}) {
     </>
   );
 }
+
+/**
+ * @param {{
+ *   products: Promise<RecommendedProductsQuery>;
+ * }}
+ */
+// function RecommendedProducts({products}) {
+// const responsiveSettings = [
+//   {
+//     breakpoint: 1200,
+//     settings: {
+//       slidesToShow: 4,
+//       slidesToScroll: 4,
+//     },
+//   },
+//   {
+//     breakpoint: 900,
+//     settings: {
+//       slidesToShow: 3,
+//       slidesToScroll: 3,
+//     },
+//   },
+//   {
+//     breakpoint: 600,
+//     settings: {
+//       slidesToShow: 2,
+//       slidesToScroll: 2,
+//     },
+//   },
+// ];
+//   let animateThis1 = useRef(null);
+//   let animateThis2 = useRef(null);
+//   useEffect(() => {
+//     gsap.registerPlugin(ScrollTrigger);
+
+//     gsap.to(animateThis1, {
+//       scrollTrigger: {
+//         trigger: animateThis1,
+//         //markers: true,
+//         start: '100 bottom',
+//         toggleClass: 'enable',
+//       },
+//       duration: 2,
+//     });
+//     gsap.to(animateThis2, {
+//       scrollTrigger: {
+//         trigger: animateThis2,
+//         //markers: true,
+//         start: '100 bottom',
+//         toggleClass: 'enable',
+//       },
+//       duration: 2,
+//     });
+//   });
+
+//   return (
+//     <>
+//       <PageViewViewContentPixel />
+
+//       <section id="new2024" className="grayBack">
+//         <div className="inside-xxxl homeSlidePadd">
+//           <header
+//             className="fadeIn"
+//             ref={(el1) => {
+//               animateThis1 = el1;
+//             }}
+//           >
+//             <div className="notWhite">
+//               <PinLogoOnly />
+//             </div>
+//             <h2>
+//               Some of Our <span>Newest</span> Gear
+//             </h2>
+//           </header>
+//           <Await resolve={products}>
+//             {({products}) => (
+//               <div
+//                 className="productGrid homeSlider fadeIn"
+//                 ref={(el2) => {
+//                   animateThis2 = el2;
+//                 }}
+//               >
+//                 <Slide
+//                   slidesToScroll={1}
+//                   slidesToShow={1}
+//                   indicators={true}
+//                   responsive={responsiveSettings}
+//                   autoplay={false}
+//                   easing="ease"
+//                 >
+//                   {products.nodes.map((product) => (
+//                     <div className="homeGrid" key={product.id}>
+//                       <Link
+//                         className="recommended-product"
+//                         to={`/products/${product.handle}`}
+//                         reloadDocument
+//                       >
+//                         <div>
+//                           <div className="card-image">
+//                             {product.totalInventory < 1 && (
+//                               <div className="text-right text-notice">
+//                                 <span className="outOfStock">Out of Stock</span>
+//                               </div>
+//                             )}
+//                             <Image
+//                               data={product.images.nodes[0]}
+//                               aspectRatio="1/1"
+//                               sizes="(min-width: 45em) 20vw, 50vw"
+//                             />
+//                           </div>
+//                           <div className="textArea justify">
+//                             <h3>{product.title}</h3>
+//                             <div className="price">
+//                               <Money
+//                                 data={product.priceRange.minVariantPrice}
+//                               />
+//                             </div>
+//                           </div>
+//                         </div>
+//                       </Link>
+//                     </div>
+//                   ))}
+//                 </Slide>
+//               </div>
+//             )}
+//           </Await>
+//           <br />
+//         </div>
+//       </section>
+//     </>
+//   );
+// }
 
 const PAGE_QUERY = `#graphql
 ${MEDIA_FRAGMENT}
@@ -524,6 +560,18 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
           }
         }
       }
+    }
+    className: metafield(namespace: "custom", key: "classname") {
+      value
+    }
+    upgradeTitle: metafield(namespace: "custom", key: "upgrade_title") {
+      value
+    }
+    upgradeTitle2: metafield(namespace: "custom", key: "upgrade_title_2") {
+      value
+    }
+    upgradeLink2: metafield(namespace: "custom", key: "upgrade_link_2") {
+      value
     }
     priceRange {
       minVariantPrice {

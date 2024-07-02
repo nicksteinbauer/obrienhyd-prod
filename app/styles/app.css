@@ -3076,11 +3076,56 @@ aside .iterationContainer {
 
 .newSlick img {
   border-radius: 0; }
-.newSlick .card-image a {
+.newSlick .card-image .abs {
   position: absolute;
   z-index: 2;
   top: 40px;
-  right: 40px; }
+  right: 40px;
+  border-radius: 6px;
+  padding: 20px; }
+  .newSlick .card-image .abs h3 {
+    margin-top: 0;
+    padding-top: 0; }
+  .newSlick .card-image .abs .button {
+    display: inline-block;
+    background: #0276b2;
+    border-radius: 6px;
+    color: #fff;
+    padding: 4px 8px;
+    margin: 10px 5px 10px 0;
+    transition: background .3s ease; }
+  .newSlick .card-image .abs .button:hover {
+    background: #de6e4b; }
+
+.upgradeHalftone {
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+.heroOverlay .inside-md {
+  min-width: 300px; }
+  @media screen and (min-width: 600px) {
+    .heroOverlay .inside-md {
+      min-width: 450px; } }
+  @media screen and (min-width: 992px) {
+    .heroOverlay .inside-md {
+      min-width: 600px; } }
+.heroOverlay .upgradeLogo.inside-xs {
+  width: 100%;
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0; }
+  .heroOverlay .upgradeLogo.inside-xs svg {
+    width: 100%; }
+  .heroOverlay .upgradeLogo.inside-xs .obblack {
+    fill: #fff; }
+
+.obblue {
+  fill: #0276b2; }
+
+.white h3 {
+  color: #fff;
+  text-shadow: 1px 1px 5px #000000; }
 
 .grayBack {
   background-color: #f7f7f7;

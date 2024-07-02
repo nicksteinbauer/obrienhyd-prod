@@ -816,6 +816,10 @@ export type RecommendedProductFragment = Pick<
       }>;
     }
   >;
+  className?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
+  upgradeTitle?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
+  upgradeTitle2?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
+  upgradeLink2?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
   priceRange: {
     minVariantPrice: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>;
   };
@@ -846,6 +850,16 @@ export type RecommendedProductsQuery = {
               >;
             }>;
           }
+        >;
+        className?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'value'>>;
+        upgradeTitle?: StorefrontAPI.Maybe<
+          Pick<StorefrontAPI.Metafield, 'value'>
+        >;
+        upgradeTitle2?: StorefrontAPI.Maybe<
+          Pick<StorefrontAPI.Metafield, 'value'>
+        >;
+        upgradeLink2?: StorefrontAPI.Maybe<
+          Pick<StorefrontAPI.Metafield, 'value'>
         >;
         priceRange: {
           minVariantPrice: Pick<
@@ -2127,7 +2141,7 @@ interface GeneratedQueryTypes {
     return: PageHomeQuery;
     variables: PageHomeQueryVariables;
   };
-  '#graphql\n  fragment RecommendedProduct on Product {\n    id\n    title\n    handle\n    totalInventory\n    upgradeImage: metafield(namespace: "custom", key: "upgrade_image") {\n      value\n      reference {\n        ... on MediaImage {\n          image {\n            url\n            width\n            height\n          }\n        }\n      }\n    }\n    priceRange {\n      minVariantPrice {\n        amount\n        currencyCode\n      }\n    }\n    images(first: 1) {\n      nodes {\n        id\n        url\n        altText\n        width\n        height\n      }\n    }\n  }\n  query RecommendedProducts ($country: CountryCode, $language: LanguageCode)\n    @inContext(country: $country, language: $language) {\n    products(query: "tag:Upgrade", first: 10, sortKey: UPDATED_AT) {\n      nodes {\n        ...RecommendedProduct\n      }\n    }\n  }\n': {
+  '#graphql\n  fragment RecommendedProduct on Product {\n    id\n    title\n    handle\n    totalInventory\n    upgradeImage: metafield(namespace: "custom", key: "upgrade_image") {\n      value\n      reference {\n        ... on MediaImage {\n          image {\n            url\n            width\n            height\n          }\n        }\n      }\n    }\n    className: metafield(namespace: "custom", key: "classname") {\n      value\n    }\n    upgradeTitle: metafield(namespace: "custom", key: "upgrade_title") {\n      value\n    }\n    upgradeTitle2: metafield(namespace: "custom", key: "upgrade_title_2") {\n      value\n    }\n    upgradeLink2: metafield(namespace: "custom", key: "upgrade_link_2") {\n      value\n    }\n    priceRange {\n      minVariantPrice {\n        amount\n        currencyCode\n      }\n    }\n    images(first: 1) {\n      nodes {\n        id\n        url\n        altText\n        width\n        height\n      }\n    }\n  }\n  query RecommendedProducts ($country: CountryCode, $language: LanguageCode)\n    @inContext(country: $country, language: $language) {\n    products(query: "tag:Upgrade", first: 10, sortKey: UPDATED_AT) {\n      nodes {\n        ...RecommendedProduct\n      }\n    }\n  }\n': {
     return: RecommendedProductsQuery;
     variables: RecommendedProductsQueryVariables;
   };
