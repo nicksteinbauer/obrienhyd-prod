@@ -21,6 +21,7 @@ import {Layout} from '~/components/Layout';
 import ReactGA from 'react-ga4';
 import {useEffect} from 'react';
 
+import {init as initFullStory} from '@fullstory/browser';
 /**
  * Access the result of the root loader from a React component.
  * @return {LoaderReturnData}
@@ -117,6 +118,14 @@ export default function App() {
   // );
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      initFullStory({
+        orgId: 'o-1XESPW-na1',
+      });
+    }
+  }, []);
+
+  useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://acsbapp.com/apps/app/dist/js/app.js';
     script.async = true;
@@ -177,8 +186,6 @@ export default function App() {
           type="text/javascript"
           src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WkytYu"
         />
-        <FullStoryScript />
-
         <meta
           name="google-site-verification"
           content="U81j3usvQnYPTdy01rIMsGnoiCctOQBfnwPOX1S1OEg"
@@ -219,116 +226,10 @@ export default function App() {
   );
 }
 
-const FullStoryScript = () => {
-  useEffect(() => {
-    'use strict';
-
-    function sample(rate, daysValid) {
-      const cookieName = '_fs_sample_user';
-      try {
-        if (
-          document.cookie.indexOf(cookieName + '=true') > -1 ||
-          document.cookie.indexOf(cookieName + '=false') > -1
-        ) {
-          return document.cookie.indexOf(cookieName + '=true') > -1;
-        } else {
-          const shouldSample = Math.random() < rate / 100;
-          const days =
-            daysValid !== undefined && daysValid > 0 ? daysValid : 30;
-          const date = new Date();
-          date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-          document.cookie = `${cookieName}=${shouldSample}; expires=${date.toGMTString()}; path=/`;
-          return shouldSample;
-        }
-      } catch (err) {
-        console.error('FullStory unavailable, unable to sample user');
-        return false;
-      }
-    }
-
-    const rate = 25;
-    const daysValid = 90;
-    if (sample(rate, daysValid)) {
-      window['_fs_debug'] = false;
-      window['_fs_host'] = 'fullstory.com';
-      window['_fs_script'] = 'edge.fullstory.com/s/fs.js';
-      window['_fs_org'] = 'o-1XESPW-na1';
-      window['_fs_namespace'] = 'FS';
-      (function (m, n, e, t, l, o, g, y) {
-        if (e in m) {
-          if (m.console && m.console.log) {
-            m.console.log(
-              'FullStory namespace conflict. Please set window["_fs_namespace"].',
-            );
-          }
-          return;
-        }
-        g = m[e] = function (a, b, s) {
-          g.q ? g.q.push([a, b, s]) : g._api(a, b, s);
-        };
-        g.q = [];
-        o = n.createElement(t);
-        o.async = 1;
-        o.crossOrigin = 'anonymous';
-        o.src = 'https://' + window['_fs_script'];
-        y = n.getElementsByTagName(t)[0];
-        y.parentNode.insertBefore(o, y);
-        g.identify = function (i, v, s) {
-          g(l, {uid: i}, s);
-          if (v) g(l, v, s);
-        };
-        g.setUserVars = function (v, s) {
-          g(l, v, s);
-        };
-        g.event = function (i, v, s) {
-          g('event', {n: i, p: v}, s);
-        };
-        g.anonymize = function () {
-          g.identify(!!0);
-        };
-        g.shutdown = function () {
-          g('rec', !1);
-        };
-        g.restart = function () {
-          g('rec', !0);
-        };
-        g.log = function (a, b) {
-          g('log', [a, b]);
-        };
-        g.consent = function (a) {
-          g('consent', !arguments.length || a);
-        };
-        g.identifyAccount = function (i, v) {
-          o = 'account';
-          v = v || {};
-          v.acctId = i;
-          g(o, v);
-        };
-        g.clearUserCookie = function () {};
-        g.setVars = function (n, p) {
-          g('setVars', [n, p]);
-        };
-        g._w = {};
-        y = 'XMLHttpRequest';
-        g._w[y] = m[y];
-        y = 'fetch';
-        g._w[y] = m[y];
-        if (m[y])
-          m[y] = function () {
-            return g._w[y].apply(this, arguments);
-          };
-        g._v = '1.3.0';
-      })(window, document, window['_fs_namespace'], 'script', 'user');
-    }
-  }, []);
-
-  return null;
-};
-
 export function ErrorBoundary() {
   const error = useRouteError();
   /** @type {LoaderReturnData} */
-  const rootData = useLoaderData();
+  //const rootData = useLoaderData();
   const nonce = useNonce();
   let errorMessage = 'Unknown error';
   let errorStatus = 500;
@@ -349,7 +250,7 @@ export function ErrorBoundary() {
         <Links />
       </head>
       <body>
-        <Layout {...rootData}>
+        <Layout>
           <div className="route-error">
             <h1>Oops</h1>
             <h2>{errorStatus}</h2>

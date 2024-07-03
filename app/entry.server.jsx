@@ -61,6 +61,8 @@ export default async function handleRequest(
       'https://static-forms.klaviyo.com/',
       'https://a.klaviyo.com/',
       'https://www.google.com/',
+      'https://edge.fullstory.com/',
+      'https://rs.fullstory.com/',
     ],
     frameSrc: [
       "'self'",
@@ -125,6 +127,7 @@ export default async function handleRequest(
       'http://www.storelocatorwidgets.com/',
       'https://static.klaviyo.com/',
       'https://static-tracking.klaviyo.com/',
+      'https://edge.fullstory.com/',
     ],
     scriptSrcAttr: ["'self'", "'unsafe-inline'"],
     imgSrc: [
