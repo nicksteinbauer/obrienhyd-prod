@@ -36,6 +36,7 @@ export default async function handleRequest(
       'https://maxcdn.bootstrapcdn.com/',
       'https://assets.gorgias.chat/',
       'http://maxcdn.bootstrapcdn.com/',
+      'https://shop.obrien.com/',
       'data:',
     ],
     connectSrc: [
