@@ -1,5 +1,8 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import AboveFooter from './AboveFooter';
 import WhiteStackedLogo from '../logos/WhiteStackedLogo.jsx';
+import {Image} from '@shopify/hydrogen';
 
 import {NavLink} from '@remix-run/react';
 
@@ -121,6 +124,18 @@ export default function ObrienFooter() {
               </li>
             </ul>
           </div> */}
+        </div>
+        <div className="OTfooter">
+          <a>
+            <Image
+              alt="check"
+              src="https://cdn.shopify.com/s/files/1/0652/6831/8398/files/privacy-icon_1.png?v=1720635676"
+              width={50}
+            />
+          </a>
+          <button id="ot-sdk-btn" className="ot-sdk-show-settings">
+            Your Privacy Choices
+          </button>
         </div>
       </footer>
     </>

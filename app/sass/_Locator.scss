@@ -94,3 +94,44 @@
         }
     }
 }
+
+// Footer Check code
+
+.OTfooter button#ot-sdk-btn {
+    color: #fff;
+    border: none;
+    height: auto;
+    white-space: normal;
+    word-wrap: normal;
+    padding: 0;
+    font-size: 12px;
+    line-height: inherit;
+    transition: none;
+    background: #0000;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+ 
+.OTfooter button#ot-sdk-btn:hover {
+    background:none;
+}
+ 
+.OTfooter {
+    margin:0 auto;
+    max-width: 175px;
+    text-align:center;
+    display: flex;
+    align-items: center;
+    padding-top:35px;
+}
+ 
+.OTfooter:hover {
+    text-decoration:underline;
+}
+ 
+.OTfooterIMG {
+    border: 0 none;
+    display: flex;
+    align-items: center;
+}
