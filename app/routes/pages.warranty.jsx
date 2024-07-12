@@ -2,7 +2,7 @@ import {json} from '@shopify/remix-oxygen';
 import {useLoaderData} from '@remix-run/react';
 
 import PageViewViewContentContactPixel from '~/components/metaPixel/PageViewViewContentContactPixel';
-import GorgiasContact from '~/components/forms/GorgiasContact';
+import JotformWarranty from '~/components/forms/JotformWarranty';
 
 /**
  * @type {MetaFunction<typeof loader>}
@@ -47,7 +47,7 @@ export default function Page() {
               className="basicContent"
               dangerouslySetInnerHTML={{__html: page.body}}
             />
-            <GorgiasContact />
+            <JotformWarranty />
           </div>
         </div>
       </div>
