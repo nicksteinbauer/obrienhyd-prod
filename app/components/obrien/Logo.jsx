@@ -1,8 +1,9 @@
-import {NavLink} from '@remix-run/react';
+import {Link} from '@remix-run/react';
+
 export default function Logo() {
   return (
     <>
-      <NavLink className="obrienMainLogoLink" to="/">
+      <Link className="obrienMainLogoLink" to="/" reloadDocument>
         <span className="mainTitle">
           O&apos;Brien Watersport | Wakeboards, Waterskis, Tubes, Life Jackets,
           Wakesurf, SUP
@@ -91,7 +92,7 @@ export default function Logo() {
             </g>
           </g>
         </svg>
-      </NavLink>
+      </Link>
     </>
   );
 }
