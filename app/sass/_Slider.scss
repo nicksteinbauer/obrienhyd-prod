@@ -14,7 +14,7 @@
     padding-bottom: 0;
 }
 .secondSlider {
-    margin-top: -60px;
+    margin-top: -20px;
     max-width: 600px;
     @media screen and (min-width: $screen-md) {
         margin-top: -100px;
@@ -79,4 +79,11 @@
 .indicators {
     //margin: 0;
     padding: 0;
+}
+
+.productGrid.homeSlider {
+    padding-top: 20px;
+    @media screen and (min-width: $screen-md) {
+        padding-top: 40px;
+    }
 }

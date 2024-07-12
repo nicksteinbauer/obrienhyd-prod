@@ -1123,6 +1123,9 @@ export type ProductItemFragment = Pick<
     minVariantPrice: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>;
     maxVariantPrice: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>;
   };
+  compareAtPriceRange: {
+    maxVariantPrice: Pick<StorefrontAPI.MoneyV2, 'amount' | 'currencyCode'>;
+  };
   variants: {
     nodes: Array<{
       selectedOptions: Array<
@@ -1130,6 +1133,7 @@ export type ProductItemFragment = Pick<
       >;
     }>;
   };
+  collections: {nodes: Array<Pick<StorefrontAPI.Collection, 'title'>>};
 };
 
 export type CollectionQueryVariables = StorefrontAPI.Exact<{
@@ -1178,12 +1182,21 @@ export type CollectionQuery = {
                 'amount' | 'currencyCode'
               >;
             };
+            compareAtPriceRange: {
+              maxVariantPrice: Pick<
+                StorefrontAPI.MoneyV2,
+                'amount' | 'currencyCode'
+              >;
+            };
             variants: {
               nodes: Array<{
                 selectedOptions: Array<
                   Pick<StorefrontAPI.SelectedOption, 'name' | 'value'>
                 >;
               }>;
+            };
+            collections: {
+              nodes: Array<Pick<StorefrontAPI.Collection, 'title'>>;
             };
           }
         >;

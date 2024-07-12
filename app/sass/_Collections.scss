@@ -24,6 +24,14 @@
             display: inline-block;
             margin-right: 4px;
         }
+        span.newSale {
+            background-color: rgba($color: $ob-blue, $alpha: .9);
+            color: #fff;
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 8px;
+            margin-right: 4px;
+        }
     }
     .textArea {
         .price {
@@ -58,4 +66,14 @@ ul.ulSwim {
 .nextPrev:hover {
     text-decoration: none;
     background-color: $ob-btblue;
+}
+
+.comparePrice {
+    color: #444;
+    font-family: $font-family;
+    font-size: .8em;
+}
+.comparePrice.strike {
+    align-items: center;
+    margin-left: 6px;
 }

@@ -124,6 +124,9 @@ function ProductItem({product, loading}) {
   const variant = product.variants.nodes[0];
   const variantUrl = useVariantUrl(product.handle, variant.selectedOptions);
 
+  const {compareAtPriceRange} = product;
+  const compareAtPrice = compareAtPriceRange?.maxVariantPrice?.amount;
+
   return (
     <Link
       className="product-item"
@@ -133,11 +136,15 @@ function ProductItem({product, loading}) {
       reloadDocument
     >
       <div className="card-image">
-        {product.totalInventory < 1 && (
-          <div className="text-right text-notice">
+        <div className="text-right text-notice">
+          {product.totalInventory < 1 && (
             <span className="outOfStock">Out of Stock</span>
-          </div>
-        )}
+          )}
+
+          {parseFloat(compareAtPrice) > 0 && (
+            <span className="newSale">Sale</span>
+          )}
+        </div>
         {product.featuredImage && (
           <Image
             alt={product.featuredImage.altText || product.title}
@@ -149,8 +156,13 @@ function ProductItem({product, loading}) {
         )}
       </div>
       <h3>{product.title}</h3>
-      <div className="price">
+      <div className="price always-flex">
         <Money data={product.priceRange.minVariantPrice} />
+        {parseFloat(compareAtPrice) > 0 && (
+          <s className="opacity-50 strike comparePrice">
+            <Money data={compareAtPriceRange.maxVariantPrice} />
+          </s>
+        )}
       </div>
     </Link>
   );
@@ -181,12 +193,22 @@ const PRODUCT_ITEM_FRAGMENT = `#graphql
         ...MoneyProductItem
       }
     }
+    compareAtPriceRange {
+      maxVariantPrice {
+        ...MoneyProductItem
+      }
+    }
     variants(first: 1) {
       nodes {
         selectedOptions {
           name
           value
         }
+      }
+    }
+    collections(first: 10) {
+      nodes {
+        title
       }
     }
   }
