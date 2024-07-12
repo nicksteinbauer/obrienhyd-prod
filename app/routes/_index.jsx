@@ -205,7 +205,7 @@ function RecommendedProducts({products}) {
                               </div>
                             )}
                             <Image
-                              data={product.upgradeImage.reference.image}
+                              data={product?.upgradeImage?.reference?.image}
                               sizes="(min-width: 768px) 800px, 2500px"
                             />
                             <Image
