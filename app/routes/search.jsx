@@ -149,7 +149,7 @@ const SEARCH_QUERY = `#graphql
   ) @inContext(country: $country, language: $language) {
     products: search(
       query: $query,
-      unavailableProducts: HIDE,
+      # unavailableProducts: HIDE,
       types: [PRODUCT],
       first: $first,
       sortKey: RELEVANCE,
