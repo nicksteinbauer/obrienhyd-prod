@@ -21,7 +21,8 @@ import {Layout} from '~/components/Layout';
 import ReactGA from 'react-ga4';
 import {useEffect} from 'react';
 
-import {init as initFullStory} from '@fullstory/browser';
+//import {init as initFullStory} from '@fullstory/browser';
+import FullStoryProvider from './components/FullStoryProvider';
 /**
  * Access the result of the root loader from a React component.
  * @return {LoaderReturnData}
@@ -117,13 +118,13 @@ export default function App() {
   //   /^\/products\/\w+/.test(m.pathname),
   // );
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      initFullStory({
-        orgId: 'o-1XESPW-na1',
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined') {
+  //     initFullStory({
+  //       orgId: 'o-1XESPW-na1',
+  //     });
+  //   }
+  // }, []);
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -175,54 +176,56 @@ export default function App() {
   }, []);
 
   return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <Meta />
-        <Links />
-        <Script
-          async
-          type="text/javascript"
-          src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WkytYu"
-        />
-        <meta
-          name="google-site-verification"
-          content="U81j3usvQnYPTdy01rIMsGnoiCctOQBfnwPOX1S1OEg"
-        />
-        {/* Cookie Consent */}
-        <script
-          type="text/javascript"
-          src="https://cdn.cookielaw.org/consent/018f4e81-6455-7a7c-ae48-763d81c2e93b/OtAutoBlock.js"
-        ></script>
-        <script
-          src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
-          type="text/javascript"
-          data-domain-script="018f4e81-6455-7a7c-ae48-763d81c2e93b"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `function OptanonWrapper() {} 
+    <FullStoryProvider>
+      <html lang="en">
+        <head>
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width,initial-scale=1" />
+          <Meta />
+          <Links />
+          <Script
+            async
+            type="text/javascript"
+            src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WkytYu"
+          />
+          <meta
+            name="google-site-verification"
+            content="U81j3usvQnYPTdy01rIMsGnoiCctOQBfnwPOX1S1OEg"
+          />
+          {/* Cookie Consent */}
+          <script
+            type="text/javascript"
+            src="https://cdn.cookielaw.org/consent/018f4e81-6455-7a7c-ae48-763d81c2e93b/OtAutoBlock.js"
+          ></script>
+          <script
+            src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+            type="text/javascript"
+            data-domain-script="018f4e81-6455-7a7c-ae48-763d81c2e93b"
+          ></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `function OptanonWrapper() {} 
             `,
-          }}
-        />
-        {/* End Cookie Consent */}
-        <script
-          id="gorgias-chat-widget-install-v3"
-          src="https://config.gorgias.chat/bundle-loader/01HKTCXXVCJSJGNZNH55W29XD4"
-        >
-          {' '}
-        </script>
-      </head>
-      <body>
-        <Layout {...data}>
-          <Outlet />
-        </Layout>
-        <ScrollRestoration nonce={nonce} />
-        <Scripts nonce={nonce} />
-        <LiveReload nonce={nonce} />
-      </body>
-    </html>
+            }}
+          />
+          {/* End Cookie Consent */}
+          <script
+            id="gorgias-chat-widget-install-v3"
+            src="https://config.gorgias.chat/bundle-loader/01HKTCXXVCJSJGNZNH55W29XD4"
+          >
+            {' '}
+          </script>
+        </head>
+        <body>
+          <Layout {...data}>
+            <Outlet />
+          </Layout>
+          <ScrollRestoration nonce={nonce} />
+          <Scripts nonce={nonce} />
+          <LiveReload nonce={nonce} />
+        </body>
+      </html>
+    </FullStoryProvider>
   );
 }
 
