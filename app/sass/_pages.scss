@@ -328,3 +328,21 @@ table.sizing.product-chart {
 .manualsSafety {
     margin-top: 20px;
 }
+
+.four04 {
+    h1, h2 {
+        display: block !important;
+    }
+    h1 {
+        &::after {
+            height: 0 !important;
+        }
+    }
+    .obrienSearchContainer {
+        form {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+    }
+}

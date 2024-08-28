@@ -21,6 +21,8 @@ import {Layout} from '~/components/Layout';
 import ReactGA from 'react-ga4';
 import {useEffect} from 'react';
 
+import SearchLogo from './components/logos/SearchLogo';
+
 //import {init as initFullStory} from '@fullstory/browser';
 import FullStoryProvider from './components/FullStoryProvider';
 /**
@@ -254,15 +256,38 @@ export function ErrorBoundary() {
       </head>
       <body>
         <Layout>
-          <div className="route-error">
-            <h1>Oops</h1>
-            <h2>{errorStatus}</h2>
-            {errorMessage && (
-              <fieldset>
-                <pre>{errorMessage}</pre>
-              </fieldset>
-            )}
-          </div>
+          <main className="collectionPage interior">
+            <div className="collectionDescriptionContainer theRest">
+              <div className="inside-md text-center">
+                <header className="four04">
+                  <h1>Oops</h1>
+
+                  <h2>
+                    {errorStatus}
+                    {errorMessage && <span> - {errorMessage}</span>}
+                  </h2>
+                  <p>
+                    The page you were looking for could not be found. It might
+                    have been removed, renamed, or did not exist in the first
+                    place. Perhaps searching can help.
+                  </p>
+                  <div className="flex-vertical obrienSearchContainer">
+                    <form action={`/search`} className="obrienSearch">
+                      <input
+                        className="search"
+                        type="search"
+                        placeholder="Search"
+                        name="q"
+                      />
+                      <button type="submit" className="iconSearch">
+                        <SearchLogo />
+                      </button>
+                    </form>
+                  </div>
+                </header>
+              </div>
+            </div>
+          </main>
         </Layout>
         <ScrollRestoration nonce={nonce} />
         <Scripts nonce={nonce} />
