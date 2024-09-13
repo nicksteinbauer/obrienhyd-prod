@@ -57,9 +57,14 @@ export default function NavSupport(onClick) {
         </NavLink>
       </li>
       <li className="obrien-nav-container__list-item">
-        <a href="https://obrien365.com/ob-wp/" onClick={onClick}>
+        <NavLink
+          className="button"
+          reloadDocument="true"
+          to="/pages/dealer-portal"
+          onClick={onClick}
+        >
           Dealer Portal
-        </a>
+        </NavLink>
       </li>
     </ul>
   );
