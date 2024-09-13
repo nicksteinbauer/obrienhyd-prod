@@ -58,7 +58,6 @@ export default function NavSupport(onClick) {
       </li>
       <li className="obrien-nav-container__list-item">
         <NavLink
-          className="button"
           reloadDocument="true"
           to="/pages/dealer-portal"
           onClick={onClick}
