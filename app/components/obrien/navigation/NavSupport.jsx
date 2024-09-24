@@ -57,13 +57,9 @@ export default function NavSupport(onClick) {
         </NavLink>
       </li>
       <li className="obrien-nav-container__list-item">
-        <NavLink
-          reloadDocument="true"
-          to="/pages/dealer-portal"
-          onClick={onClick}
-        >
+        <a target="_blank" rel="noreferrer" href="http://ag.canto.com/b/U1PCP">
           Dealer Portal
-        </NavLink>
+        </a>
       </li>
     </ul>
   );

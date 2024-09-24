@@ -89,9 +89,13 @@ export default function ObrienFooter() {
                 </NavLink>
               </li>
               <li>
-                <NavLink reloadDocument="true" to="/pages/dealer-portal">
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="http://ag.canto.com/b/U1PCP"
+                >
                   Dealer Portal
-                </NavLink>
+                </a>
               </li>
               <li>
                 <NavLink to="/pages/careers">Careers</NavLink>
