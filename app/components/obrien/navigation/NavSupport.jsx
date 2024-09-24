@@ -61,6 +61,7 @@ export default function NavSupport(onClick) {
           reloadDocument="true"
           to="/pages/dealer-portal"
           onClick={onClick}
+          target="_blank"
         >
           Dealer Portal
         </NavLink>

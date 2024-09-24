@@ -89,13 +89,13 @@ export default function ObrienFooter() {
                 </NavLink>
               </li>
               <li>
-                <a
+                <NavLink
+                  reloadDocument="true"
+                  to="/pages/dealer-portal"
                   target="_blank"
-                  rel="noreferrer"
-                  href="https://obrien365.com/ob-wp/"
                 >
-                  Dealer Support
-                </a>
+                  Dealer Portal
+                </NavLink>
               </li>
               <li>
                 <NavLink to="/pages/careers">Careers</NavLink>
