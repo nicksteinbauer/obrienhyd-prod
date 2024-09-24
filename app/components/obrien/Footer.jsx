@@ -89,11 +89,7 @@ export default function ObrienFooter() {
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  reloadDocument="true"
-                  to="/pages/dealer-portal"
-                  target="_blank"
-                >
+                <NavLink reloadDocument="true" to="/pages/dealer-portal">
                   Dealer Portal
                 </NavLink>
               </li>
