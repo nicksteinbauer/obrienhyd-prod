@@ -306,6 +306,18 @@ export default function Product() {
       <Suspense>
         <Locator />
       </Suspense>
+      {/* Yotpo */}
+      <div
+        className="yotpo-widget-instance"
+        data-yotpo-instance-id="863669"
+        data-yotpo-product-id="Product ID"
+        data-yotpo-name="Product Title"
+        data-yotpo-url="The URL of your product page"
+        data-yotpo-image-url="The product image URL"
+        data-yotpo-price="Product Price"
+        data-yotpo-currency="Product Currency"
+        data-yotpo-description="Product Description"
+      ></div>
     </>
   );
 }

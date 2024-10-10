@@ -37,6 +37,7 @@ export default async function handleRequest(
       'https://assets.gorgias.chat/',
       'http://maxcdn.bootstrapcdn.com/',
       'https://shop.obrien.com/',
+      'https://cdn-widgetsrepository.yotpo.com/',
       'data:',
     ],
     connectSrc: [
@@ -64,6 +65,7 @@ export default async function handleRequest(
       'https://www.google.com/',
       'https://edge.fullstory.com/',
       'https://rs.fullstory.com/',
+      'https://api-cdn.yotpo.com/',
     ],
     frameSrc: [
       "'self'",
@@ -148,6 +150,7 @@ export default async function handleRequest(
       'https://connect.facebook.net/',
       'https://cdn.cookielaw.org/',
       'https://d3k81ch9hvuctc.cloudfront.net/',
+      'http://p.yotpo.com/',
     ],
     styleSrc: [
       "'self'",
@@ -158,6 +161,7 @@ export default async function handleRequest(
       'http://cdn.storelocatorwidgets.com/',
       'http://fonts.googleapis.com/',
       'https://static.klaviyo.com/',
+      'https://cdn-widgetsrepository.yotpo.com/',
     ],
   });
 
