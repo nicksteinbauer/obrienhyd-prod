@@ -177,6 +177,22 @@ export default function App() {
     ]);
   }, []);
 
+  useEffect(() => {
+    // Create the script element
+    const script = document.createElement('script');
+    // Set the script source to the Yotpo widget URL
+    script.src =
+      'https://cdn-widgetsrepository.yotpo.com/v1/loader/CnH95pwO1n8rV0h0gvwhZOsohvKVD8lGqClHszKj';
+    // Make the script load asynchronously
+    script.async = true;
+    // Append the script to the document body
+    document.body.appendChild(script);
+    // Cleanup the script when the component is unmounted
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []); // Empty dependency array ensures this runs only once
+
   return (
     <FullStoryProvider>
       <html lang="en">
