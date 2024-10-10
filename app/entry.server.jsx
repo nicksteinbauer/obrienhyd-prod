@@ -129,6 +129,7 @@ export default async function handleRequest(
       'https://static.klaviyo.com/',
       'https://static-tracking.klaviyo.com/',
       'https://edge.fullstory.com/',
+      'https://cdn-widgetsrepository.yotpo.com/',
     ],
     scriptSrcAttr: ["'self'", "'unsafe-inline'"],
     imgSrc: [
